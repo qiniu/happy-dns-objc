@@ -9,5 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface QNDomain : NSObject
-
+@property (nonatomic, readonly) NSString* domain;
+@property (readonly) BOOL hasCname;
+-(instancetype)init:(NSString*)domain;
 @end

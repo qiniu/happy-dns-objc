@@ -8,6 +8,24 @@
 
 #import <Foundation/Foundation.h>
 
-@interface QNRecord : NSObject
+/**
+ *    A 记录
+ */
+extern const int kQNTypeA;
 
+/**
+ *  Cname 记录
+ */
+extern const int kQNTypeCname;
+
+
+@interface QNRecord : NSObject
+@property (nonatomic, readonly) NSString* value;
+@property (readonly) int ttl;
+@property (readonly) int type;
+@property (readonly) long long timeStamp;
+
+-(instancetype) init:(NSString*)value
+                 ttl:(int)ttl
+                type:(int)type;
 @end

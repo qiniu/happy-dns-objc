@@ -12,4 +12,5 @@
 @interface QNResolver : NSObject <QNResolverDelegate>
 -(NSArray*)query:(QNDomain*)domain;
 -(instancetype)initWithAddres:(NSString *)address;
++(instancetype)systemResolver;
 @end

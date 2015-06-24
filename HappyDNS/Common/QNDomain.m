@@ -9,5 +9,11 @@
 #import "QNDomain.h"
 
 @implementation QNDomain
-
+-(instancetype)init:(NSString*)domain{
+    if (self = [super init]) {
+        _domain = domain;
+        _hasCname = NO;
+    }
+    return self;
+}
 @end
