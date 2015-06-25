@@ -13,8 +13,8 @@
 		DF1552451B3A9536008D3E7C /* ResolverTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DF1552431B3A9536008D3E7C /* ResolverTest.m */; };
 		DF1552471B3A97EB008D3E7C /* libresolv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DF1552461B3A97EB008D3E7C /* libresolv.dylib */; };
 		DF1552491B3A97F7008D3E7C /* libresolv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DF1552481B3A97F7008D3E7C /* libresolv.dylib */; };
-		DF15524B1B3A98E2008D3E7C /* libresolv.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DF15524A1B3A98E2008D3E7C /* libresolv.9.dylib */; };
 		DF15524C1B3A994F008D3E7C /* libresolv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DF1552461B3A97EB008D3E7C /* libresolv.dylib */; };
+		DF15524F1B3B0379008D3E7C /* libresolv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DF1552481B3A97F7008D3E7C /* libresolv.dylib */; };
 		DF22C0C31B37B9B90010FEBF /* HappyDNS.h in Headers */ = {isa = PBXBuildFile; fileRef = DF22C0C21B37B9B90010FEBF /* HappyDNS.h */; };
 		DF22C0CB1B37B9B90010FEBF /* libHappyDNS.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DF22C0BF1B37B9B90010FEBF /* libHappyDNS.dylib */; };
 		DF801F641B396D5100866FDE /* QNRecord.h in Headers */ = {isa = PBXBuildFile; fileRef = DF801F621B396D5100866FDE /* QNRecord.h */; };
@@ -95,6 +95,7 @@
 		DF1552461B3A97EB008D3E7C /* libresolv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libresolv.dylib; path = usr/lib/libresolv.dylib; sourceTree = SDKROOT; };
 		DF1552481B3A97F7008D3E7C /* libresolv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libresolv.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/usr/lib/libresolv.dylib; sourceTree = DEVELOPER_DIR; };
 		DF15524A1B3A98E2008D3E7C /* libresolv.9.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libresolv.9.dylib; path = usr/lib/libresolv.9.dylib; sourceTree = SDKROOT; };
+		DF15524D1B3B0335008D3E7C /* libresolv.9.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libresolv.9.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/usr/lib/libresolv.9.dylib; sourceTree = DEVELOPER_DIR; };
 		DF22C0BF1B37B9B90010FEBF /* libHappyDNS.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libHappyDNS.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF22C0C21B37B9B90010FEBF /* HappyDNS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HappyDNS.h; sourceTree = "<group>"; };
 		DF22C0CA1B37B9B90010FEBF /* HappyDNS_MacTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HappyDNS_MacTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -132,7 +133,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DF15524B1B3A98E2008D3E7C /* libresolv.9.dylib in Frameworks */,
 				DF1552471B3A97EB008D3E7C /* libresolv.dylib in Frameworks */,
 				DF22C0CB1B37B9B90010FEBF /* libHappyDNS.dylib in Frameworks */,
 				71FB87ACF7AF0163E3F8AF2F /* libPods-HappyDNS_MacTests.a in Frameworks */,
@@ -143,6 +143,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF15524F1B3B0379008D3E7C /* libresolv.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -162,6 +163,7 @@
 		3AA9FDBAFF7915B2F079FC24 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DF15524D1B3B0335008D3E7C /* libresolv.9.dylib */,
 				DF15524A1B3A98E2008D3E7C /* libresolv.9.dylib */,
 				DF1552481B3A97F7008D3E7C /* libresolv.dylib */,
 				DF1552461B3A97EB008D3E7C /* libresolv.dylib */,
