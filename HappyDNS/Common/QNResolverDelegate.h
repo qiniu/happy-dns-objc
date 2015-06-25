@@ -10,5 +10,5 @@
 
 @class QNDomain;
 @protocol QNResolverDelegate <NSObject>
--(NSArray*)query:(QNDomain*)domain;
+- (NSArray *)query:(QNDomain *)domain;
 @end

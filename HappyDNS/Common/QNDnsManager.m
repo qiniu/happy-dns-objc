@@ -9,7 +9,8 @@
 #import "QNDnsManager.h"
 
 @implementation QNDnsManager
--(NSArray*)query:(NSString*)domain{
-    return nil;
+- (NSArray *)query:(NSString *)domain {
+	return nil;
 }
+
 @end

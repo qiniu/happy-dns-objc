@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface HappyDNS : NSObject
-
-@end
+#import "QNResolver.h"
+#import "QNResolverDelegate.h"
+#import "QNDomain.h"
+#import "QNDnsManager.h"

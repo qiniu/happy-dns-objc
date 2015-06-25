@@ -10,5 +10,5 @@
 #import "QNResolverDelegate.h"
 
 @interface QNHosts : NSObject <QNResolverDelegate>
--(NSArray*)query:(QNDomain*)domain;
+- (NSArray *)query:(QNDomain *)domain;
 @end

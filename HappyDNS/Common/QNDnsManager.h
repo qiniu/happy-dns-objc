@@ -9,5 +9,5 @@
 #import <Foundation/Foundation.h>
 
 @interface QNDnsManager : NSObject
--(NSArray*)query:(NSString*)domain;
+- (NSArray *)query:(NSString *)domain;
 @end

@@ -12,16 +12,16 @@ const int kQNTypeA = 1;
 const int kQNTypeCname = 5;
 
 @implementation QNRecord
--(instancetype) init:(NSString*)value
+- (instancetype)init:(NSString *)value
                  ttl:(int)ttl
-                type:(int)type{
-    if (self = [super init]) {
-        _value = value;
-        _type = type;
-        _ttl = ttl;
-        _timeStamp = [[NSDate date] timeIntervalSince1970];
-    }
-    return self;
+                type:(int)type {
+	if (self = [super init]) {
+		_value = value;
+		_type = type;
+		_ttl = ttl;
+		_timeStamp = [[NSDate date] timeIntervalSince1970];
+	}
+	return self;
 }
 
 @end

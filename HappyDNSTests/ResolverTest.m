@@ -10,6 +10,7 @@
 #import "QNResolverDelegate.h"
 #import "QNResolver.h"
 #import "QNDomain.h"
+#import "QNRecord.h"
 
 @interface ResolverTest : XCTestCase
 
@@ -30,10 +31,15 @@
     NSArray * records = [resolver query:[[QNDomain alloc]init:@"baidu.com"]];
     XCTAssert(records != nil, @"Pass");
     XCTAssert(records.count > 0, @"Pass");
+    XCTAssert(records.count >= 1 , @"Pass");
+    QNRecord *record = [records objectAtIndex:0];
+    XCTAssert(record.ttl >= 0 , @"Pass");
     
     records = [resolver query:[[QNDomain alloc]init:@"www.qiniu.com"]];
     XCTAssert(records != nil, @"Pass");
     XCTAssert(records.count >= 3 , @"Pass");
+    record = [records objectAtIndex:0];
+    XCTAssert(record.ttl >= 0 , @"Pass");
 }
 
 - (void)testLocal {

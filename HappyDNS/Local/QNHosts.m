@@ -9,7 +9,8 @@
 #import "QNHosts.h"
 
 @implementation QNHosts
--(NSArray*)query:(QNDomain*)domain{
-    return nil;
+- (NSArray *)query:(QNDomain *)domain {
+	return nil;
 }
+
 @end
