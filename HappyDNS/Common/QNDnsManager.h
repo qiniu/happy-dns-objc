@@ -8,6 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
+@class QNNetworkInfo;
+@class QNDomain;
 @interface QNDnsManager : NSObject
 - (NSArray *)query:(NSString *)domain;
+- (NSArray *)queryWithDomain:(QNDomain *)domain;
+- (void)onNetworkChange:(QNNetworkInfo *)netInfo;
+- (instancetype)init:(NSArray *)resolvers networkInfo:(QNNetworkInfo *)netInfo;
 @end

@@ -10,6 +10,12 @@
 
 @interface QNDomain : NSObject
 @property (nonatomic, readonly) NSString *domain;
+
+// 用来判断劫持
 @property (readonly) BOOL hasCname;
+// 用来判断劫持
+@property (readonly) int maxTtl;
 - (instancetype)init:(NSString *)domain;
+
+@property int customTag;
 @end

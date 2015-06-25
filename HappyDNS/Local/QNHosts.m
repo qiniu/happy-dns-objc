@@ -9,7 +9,7 @@
 #import "QNHosts.h"
 
 @implementation QNHosts
-- (NSArray *)query:(QNDomain *)domain {
+- (NSArray *)query:(QNDomain *)domain networkInfo:(QNNetworkInfo *)netInfo {
 	return nil;
 }
 

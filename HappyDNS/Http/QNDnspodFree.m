@@ -11,7 +11,7 @@
 #import "QNRecord.h"
 
 @implementation QNDnspodFree
-- (NSArray *)query:(QNDomain *)domain {
+- (NSArray *)query:(QNDomain *)domain networkInfo:(QNNetworkInfo *)netInfo {
 	NSString *url = [@"http://119.29.29.29/d?ttl=1&dn=" stringByAppendingString:domain.domain];
 	NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
 	NSHTTPURLResponse *response = nil;

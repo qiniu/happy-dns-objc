@@ -13,6 +13,7 @@
 	if (self = [super init]) {
 		_domain = domain;
 		_hasCname = NO;
+		_maxTtl = 0;
 	}
 	return self;
 }

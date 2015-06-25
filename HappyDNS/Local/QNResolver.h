@@ -10,7 +10,7 @@
 #import "QNResolverDelegate.h"
 
 @interface QNResolver : NSObject <QNResolverDelegate>
-- (NSArray *)query:(QNDomain *)domain;
+- (NSArray *)query:(QNDomain *)domain networkInfo:(QNNetworkInfo *)netInfo;
 - (instancetype)initWithAddres:(NSString *)address;
 + (instancetype)systemResolver;
 @end
