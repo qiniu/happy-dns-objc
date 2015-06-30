@@ -15,4 +15,6 @@
 - (NSArray *)queryWithDomain:(QNDomain *)domain;
 - (void)onNetworkChange:(QNNetworkInfo *)netInfo;
 - (instancetype)init:(NSArray *)resolvers networkInfo:(QNNetworkInfo *)netInfo;
+- (instancetype)putHosts:(NSString *)domain ip:(NSString *)ip;
+- (instancetype)putHosts:(NSString *)domain ip:(NSString *)ip provider:(int)provider;
 @end

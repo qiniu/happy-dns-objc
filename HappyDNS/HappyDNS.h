@@ -12,3 +12,4 @@
 #import "QNResolverDelegate.h"
 #import "QNDomain.h"
 #import "QNDnsManager.h"
+#import "QNRecord.h"

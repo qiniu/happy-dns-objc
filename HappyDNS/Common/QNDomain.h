@@ -15,7 +15,13 @@
 @property (readonly) BOOL hasCname;
 // 用来判断劫持
 @property (readonly) int maxTtl;
+
+@property (readonly) BOOL hostsFirst;
+
 - (instancetype)init:(NSString *)domain;
 
-@property int customTag;
+- (instancetype)init:(NSString *)domain hostsFirst:(BOOL)hostsFirst hasCname:(BOOL)hasCname;
+
+- (instancetype)init:(NSString *)domain hostsFirst:(BOOL)hostsFirst hasCname:(BOOL)hasCname maxTtl:(int)maxTtl;
+
 @end

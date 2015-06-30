@@ -24,4 +24,8 @@ const int kQNTypeCname = 5;
 	return self;
 }
 
+- (BOOL)expired:(long long)time {
+	return time > _timeStamp + _ttl;
+}
+
 @end

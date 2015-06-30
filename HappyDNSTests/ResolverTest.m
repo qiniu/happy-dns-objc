@@ -47,9 +47,9 @@
 }
 
 //    http://www.alidns.com/
-- (void)testAli {
-	[self template:@"223.5.5.5"];
-}
+//- (void)testAli {
+//	[self template:@"223.5.5.5"];
+//}
 
 //    https://www.114dns.com/
 - (void)test114 {
@@ -57,22 +57,22 @@
 }
 
 //    http://dudns.baidu.com/
-- (void)testDu {
-	[self template:@"180.76.76.76"];
-}
+//- (void)testDu {
+//	[self template:@"180.76.76.76"];
+//}
 
 //    http://www.sdns.cn/
-- (void)testCnnic {
-	[self template:@"1.2.4.8"];
-}
+//- (void)testCnnic {
+//	[self template:@"1.2.4.8"];
+//}
 
 - (void)testGoogle {
 	[self template:@"8.8.4.4"];
 }
 
 //    http://www.dnspai.com/
-- (void)testPai {
-	[self template:@"101.226.4.6"];
-}
+//- (void)testPai {
+//	[self template:@"101.226.4.6"];
+//}
 
 @end

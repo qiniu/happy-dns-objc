@@ -28,4 +28,6 @@ extern const int kQNTypeCname;
 - (instancetype)init:(NSString *)value
                  ttl:(int)ttl
                 type:(int)type;
+
+- (BOOL)expired:(long long)time;
 @end

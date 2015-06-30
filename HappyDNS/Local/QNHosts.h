@@ -9,6 +9,10 @@
 #import <Foundation/Foundation.h>
 #import "QNResolverDelegate.h"
 
-@interface QNHosts : NSObject <QNResolverDelegate>
+@interface QNHosts : NSObject
+
 - (NSArray *)query:(QNDomain *)domain networkInfo:(QNNetworkInfo *)netInfo;
+- (void)put:(NSString *)domain ip:(NSString *)ip;
+- (void)put:(NSString *)domain ip:(NSString *)ip provider:(int)provider;
+- (instancetype)init;
 @end

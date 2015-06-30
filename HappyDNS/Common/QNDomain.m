@@ -10,10 +10,19 @@
 
 @implementation QNDomain
 - (instancetype)init:(NSString *)domain {
+	return [self init:domain hostsFirst:NO hasCname:NO maxTtl:0];
+}
+
+- (instancetype)init:(NSString *)domain hostsFirst:(BOOL)hostsFirst hasCname:(BOOL)hasCname {
+	return [self init:domain hostsFirst:hostsFirst hasCname:hasCname maxTtl:0];
+}
+
+- (instancetype)init:(NSString *)domain hostsFirst:(BOOL)hostsFirst hasCname:(BOOL)hasCname maxTtl:(int)maxTtl {
 	if (self = [super init]) {
 		_domain = domain;
 		_hasCname = NO;
 		_maxTtl = 0;
+		_hostsFirst = hostsFirst;
 	}
 	return self;
 }
