@@ -2,7 +2,7 @@
 
 [![@qiniu on weibo](http://img.shields.io/badge/weibo-%40qiniutek-blue.svg)](http://weibo.com/qiniutek)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](LICENSE.md)
-[![Build Status](https://travis-ci.org/qiniu/objc-sdk.svg?branch=master)](https://travis-ci.org/qiniu/happy-dns-objc)
+[![Build Status](https://travis-ci.org/qiniu/happy-dns-objc.svg?branch=master)](https://travis-ci.org/qiniu/happy-dns-objc)
 [![Latest Stable Version](http://img.shields.io/cocoapods/v/HappyDNS.svg)](https://github.com/qiniu/happy-dns-objc/releases)
 ![Platform](http://img.shields.io/cocoapods/p/HappyDNS.svg)
 
@@ -26,7 +26,7 @@ pod "HappyDNS"
 ### 所有测试
 
 ``` bash
-$ xctool -workspace HappyDNS.xcworkspace -scheme "HappyDNS Mac" -sdk macosx -configuration Release test -test-sdk macosx
+$ xctool -workspace HappyDNS.xcworkspace -scheme "HappyDNS_Mac" -sdk macosx -configuration Release test -test-sdk macosx
 ```
 
 ### 指定测试
@@ -50,9 +50,7 @@ $ xctool -workspace HappyDNS.xcworkspace -scheme "HappyDNS Mac" -sdk macosx -con
 
 ## 联系我们
 
-- 如果需要帮助，请提交工单（在portal右侧点击咨询和建议提交工单，或者直接向 support@qiniu.com 发送邮件）
 - 如果有什么问题，可以到问答社区提问，[问答社区](http://qiniu.segmentfault.com/)
-- 更详细的文档，见[官方文档站](http://developer.qiniu.com/)
 - 如果发现了bug， 欢迎提交 [issue](https://github.com/qiniu/happy-dns-objc/issues)
 - 如果有功能需求，欢迎提交 [issue](https://github.com/qiniu/happy-dns-objc/issues)
 - 如果要提交代码，欢迎提交 pull request
