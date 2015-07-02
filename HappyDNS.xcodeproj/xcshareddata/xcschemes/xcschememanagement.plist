@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>HappyDNS_Mac.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>0</integer>
+		</dict>
+		<key>HappyDNS_iOS.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>DF22C0BE1B37B9B90010FEBF</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DF22C0C91B37B9B90010FEBF</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DF801F941B3A4F4D00866FDE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DF801F9E1B3A4F4D00866FDE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>
