@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
 
   s.ios.deployment_target = '6.0'
   s.osx.deployment_target = '10.8'
-
+  s.libraries = 'resolv'
   s.source_files = 'HappyDNS/**/*.{h,m}'
   s.requires_arc = true
   s.license = { :type => 'MIT', :text => <<-LICENSE
