@@ -42,7 +42,8 @@
 	NSArray *r1 = [hosts query:[[QNDomain alloc] init:@"hello.qiniu.com"] networkInfo:info];
 	NSArray *r2 = [hosts query:[[QNDomain alloc] init:@"hello.qiniu.com"] networkInfo:info];
 	NSArray *r3 = [hosts query:[[QNDomain alloc] init:@"hello.qiniu.com"] networkInfo:info];
-	XCTAssertTrue(!([r1 isEqualToArray:r2] && [r1 isEqualToArray:r3]), @"PASS");
+    NSArray *r4 = [hosts query:[[QNDomain alloc] init:@"hello.qiniu.com"] networkInfo:info];
+	XCTAssertTrue(!([r1 isEqualToArray:r2] && [r1 isEqualToArray:r3] && [r1 isEqualToArray:r4]), @"PASS");
 }
 
 - (void)testCnc {
