@@ -88,6 +88,20 @@ static int localIp(char *buf){
 	return [[QNNetworkInfo alloc] init:kQNISP_GENERAL provider:kQNISP_GENERAL];
 }
 
+- (BOOL)isEqualToInfo:(QNNetworkInfo *)info {
+	if (self == info)
+		return YES;
+	return self.provider == info.provider && self.networkConnection == info.networkConnection;
+}
+
+- (BOOL)isEqual:(id)other {
+	if (other == self)
+		return YES;
+	if (!other || ![other isKindOfClass:[self class]])
+		return NO;
+	return [self isEqualToInfo:other];
+}
+
 + (BOOL) isNetworkChanged {
 	@synchronized(lock){
 		char local[32] = {0};
@@ -103,4 +117,12 @@ static int localIp(char *buf){
 	}
 }
 
++(NSString*)getIp {
+	char buf[32] = {0};
+	int err = localIp(buf);
+	if (err != 0) {
+		return nil;
+	}
+	return [NSString stringWithUTF8String:buf];
+}
 @end

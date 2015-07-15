@@ -24,12 +24,17 @@
 	// Put teardown code here. This method is called after the invocation of each test method in the class.
 	[super tearDown];
 }
+// conflict with dnsmanager test
+//- (void)testNetworkChange {
+//	BOOL changed = [QNNetworkInfo isNetworkChanged];
+//	XCTAssertTrue(changed, @"PASS");
+//	changed =[QNNetworkInfo isNetworkChanged];
+//	XCTAssertTrue(!changed, @"PASS");
+//}
 
-- (void)testNetworkChange {
-	BOOL changed = [QNNetworkInfo isNetworkChanged];
-	XCTAssertTrue(changed, @"PASS");
-	changed =[QNNetworkInfo isNetworkChanged];
-	XCTAssertTrue(!changed, @"PASS");
+- (void)testLocalIp {
+	NSString *ip = [QNNetworkInfo getIp];
+	XCTAssertNotNil(ip, @"PASS");
 }
 
 @end

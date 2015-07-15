@@ -28,10 +28,15 @@ extern const int kQNISP_OTHER;
 
 - (instancetype)init:(int)connecton provider:(int)provider;
 
+- (BOOL)isEqual:(id)other;
+- (BOOL)isEqualToInfo:(QNNetworkInfo *)info;
+
 + (instancetype)noNet;
 
 + (instancetype)normal;
 
 + (BOOL) isNetworkChanged;
+
++ (NSString *)getIp;
 
 @end

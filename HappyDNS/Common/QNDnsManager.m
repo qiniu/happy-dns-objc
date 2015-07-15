@@ -11,6 +11,7 @@
 #import "QNResolverDelegate.h"
 #import "QNDomain.h"
 #import "QNHosts.h"
+#import "QNNetworkInfo.h"
 
 const int kQNDomainHijackingCode = -7001;
 const int kQNDomainNotOwnCode = -7002;
@@ -92,7 +93,12 @@ static NSArray *records2Ips(NSArray *records) {
 	NSArray *result;
 	@synchronized(_cache)
 	{
-		result = [_cache objectForKey:domain.domain];
+		if ([_curNetwork isEqualToInfo:[QNNetworkInfo normal]] && [QNNetworkInfo isNetworkChanged]) {
+			[_cache removeAllObjects];
+			_resolverStatus = 0;
+		}else{
+			result = [_cache objectForKey:domain.domain];
+		}
 	}
 
 	if (result != nil && result.count > 0) {
@@ -107,16 +113,17 @@ static NSArray *records2Ips(NSArray *records) {
 	for (int i = 0; i < _resolvers.count; i++) {
 		int pos = (firstOk + i) % _resolvers.count;
 		id <QNResolverDelegate> resolver = [_resolvers objectAtIndex:pos];
-		QNNetworkInfo *before = _curNetwork;
-		records = [resolver query:domain networkInfo:before error:&error];
+		QNNetworkInfo *previousNetwork = _curNetwork;
+		NSString *previousIp = [QNNetworkInfo getIp];
+		records = [resolver query:domain networkInfo:previousNetwork error:&error];
 		if (records == nil || records.count == 0) {
-			if (_curNetwork == before) {
+			if (_curNetwork == previousNetwork && [previousIp isEqualToString:[QNNetworkInfo getIp]]) {
 				_resolverStatus = bits_set(_resolverStatus, pos);
 			}
 		}
 		else {
 			NSArray *ret = trimCname(records);
-			if (_curNetwork == before) {
+			if (_curNetwork == previousNetwork && [previousIp isEqualToString:[QNNetworkInfo getIp]]) {
 				@synchronized(_cache)
 				{
 					[_cache setObject:ret forKey:domain.domain];
