@@ -93,7 +93,7 @@ static int setup_dns_server(res_state res, const char *dns_server) {
 	return self;
 }
 
-- (NSArray *)query:(QNDomain *)domain networkInfo:(QNNetworkInfo *)netInfo {
+- (NSArray *)query:(QNDomain *)domain networkInfo:(QNNetworkInfo *)netInfo error:(NSError *__autoreleasing *)error {
 	struct __res_state res;
 
 	int r;

@@ -10,5 +10,5 @@
 #import "QNResolverDelegate.h"
 
 @interface QNDnspodFree : NSObject <QNResolverDelegate>
-- (NSArray *)query:(QNDomain *)domain networkInfo:(QNNetworkInfo *)netInfo;
+- (NSArray *)query:(QNDomain *)domain networkInfo:(QNNetworkInfo *)netInfo error:(NSError *__autoreleasing *)error;
 @end

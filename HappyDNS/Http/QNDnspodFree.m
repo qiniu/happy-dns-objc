@@ -11,16 +11,19 @@
 #import "QNRecord.h"
 
 @implementation QNDnspodFree
-- (NSArray *)query:(QNDomain *)domain networkInfo:(QNNetworkInfo *)netInfo {
+- (NSArray *)query:(QNDomain *)domain networkInfo:(QNNetworkInfo *)netInfo error:(NSError *__autoreleasing *)error {
 	NSString *url = [@"http://119.29.29.29/d?ttl=1&dn=" stringByAppendingString:domain.domain];
 	NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
 	NSHTTPURLResponse *response = nil;
-	NSError *error = nil;
+	NSError *httpError = nil;
 	NSData *data = [NSURLConnection sendSynchronousRequest:urlRequest
-	                                     returningResponse:&response
-	                                                 error:&error];
+	                returningResponse:&response
+	                error:&httpError];
 
-	if (error != nil) {
+	if (httpError != nil) {
+		if (error != nil) {
+			*error = httpError;
+		}
 		return nil;
 	}
 	if (response.statusCode != 200) {

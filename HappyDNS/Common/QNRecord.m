@@ -13,8 +13,8 @@ const int kQNTypeCname = 5;
 
 @implementation QNRecord
 - (instancetype)init:(NSString *)value
-                 ttl:(int)ttl
-                type:(int)type {
+        ttl:(int)ttl
+        type:(int)type {
 	if (self = [super init]) {
 		_value = value;
 		_type = type;

@@ -26,8 +26,8 @@ extern const int kQNTypeCname;
 @property (readonly) long long timeStamp;
 
 - (instancetype)init:(NSString *)value
-                 ttl:(int)ttl
-                type:(int)type;
+        ttl:(int)ttl
+        type:(int)type;
 
 - (BOOL)expired:(long long)time;
 @end

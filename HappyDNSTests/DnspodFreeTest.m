@@ -30,14 +30,14 @@
 
 - (void)testDnspodFree {
 	id <QNResolverDelegate> resolver = [[QNDnspodFree alloc] init];
-	NSArray *records = [resolver query:[[QNDomain alloc]init:@"baidu.com"] networkInfo:nil];
+	NSArray *records = [resolver query:[[QNDomain alloc]init:@"baidu.com"] networkInfo:nil error:nil];
 	XCTAssert(records != nil, @"Pass");
 	XCTAssert(records.count > 0, @"Pass");
 	XCTAssert(records.count >= 1, @"Pass");
 	QNRecord *record = [records objectAtIndex:0];
 	XCTAssert(record.ttl >= 0, @"Pass");
 
-	records = [resolver query:[[QNDomain alloc]init:@"www.qiniu.com"] networkInfo:nil];
+	records = [resolver query:[[QNDomain alloc]init:@"www.qiniu.com"] networkInfo:nil error:nil];
 	XCTAssert(records != nil, @"Pass");
 	XCTAssert(records.count >= 1, @"Pass");
 	record = [records objectAtIndex:0];

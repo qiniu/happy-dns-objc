@@ -12,6 +12,10 @@
 #import "QNDomain.h"
 #import "QNHosts.h"
 
+const int kQNDomainHijackingCode = -7001;
+const int kQNDomainNotOwnCode = -7002;
+const int kQNDomainSeverError = -7003;
+
 @interface QNDnsManager ()
 
 @property (nonatomic) NSCache *cache;
@@ -98,12 +102,13 @@ static NSArray *records2Ips(NSArray *records) {
 		}
 	}
 	NSArray *records = nil;
+	NSError *error = nil;
 	int firstOk = 32 - bits_leadingZeros(_resolverStatus);
 	for (int i = 0; i < _resolvers.count; i++) {
 		int pos = (firstOk + i) % _resolvers.count;
 		id <QNResolverDelegate> resolver = [_resolvers objectAtIndex:pos];
 		QNNetworkInfo *before = _curNetwork;
-		records = [resolver query:domain networkInfo:before];
+		records = [resolver query:domain networkInfo:before error:&error];
 		if (records == nil || records.count == 0) {
 			if (_curNetwork == before) {
 				_resolverStatus = bits_set(_resolverStatus, pos);

@@ -31,4 +31,7 @@ extern const int kQNISP_OTHER;
 + (instancetype)noNet;
 
 + (instancetype)normal;
+
++ (BOOL) isNetworkChanged;
+
 @end

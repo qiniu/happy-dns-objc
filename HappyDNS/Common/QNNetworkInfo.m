@@ -6,6 +6,12 @@
 //  Copyright (c) 2015年 Qiniu Cloud Storage. All rights reserved.
 //
 
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <fcntl.h>
+#include <unistd.h>
+#import <arpa/inet.h>
+
 #import "QNNetworkInfo.h"
 
 const int kQNNO_NETWORK = -1;
@@ -20,6 +26,49 @@ const int kQNISP_LIANTONG = kQNISP_CNC;
 const int kQNISP_CMCC = 3;
 const int kQNISP_YIDONG = kQNISP_CMCC;
 const int kQNISP_OTHER = 999;
+
+static char previousIp[32] = {0};
+static NSString* lock = @"";
+static int localIp(char *buf){
+	int err;
+	int sock;
+
+	// Create the UDP socket itself.
+
+	err = 0;
+	sock = socket(AF_INET, SOCK_DGRAM, 0);
+	if (sock < 0) {
+		err = errno;
+		return err;
+	}
+
+
+	struct sockaddr_in addr;
+
+	memset(&addr, 0, sizeof(addr));
+
+	inet_pton(AF_INET, "8.8.8.8", &addr.sin_addr);
+	addr.sin_family = AF_INET;
+	addr.sin_port = htons(53);
+	err = connect(sock, (const struct sockaddr *) &addr, sizeof(addr));
+
+	if (err < 0) {
+		err = errno;
+	}
+
+	struct sockaddr_in localAddress;
+	socklen_t addressLength = sizeof(struct sockaddr_in);
+	err = getsockname(sock, (struct sockaddr*)&localAddress, &addressLength);
+	close(sock);
+	if (err != 0) {
+		return err;
+	}
+	const char* ip = inet_ntop(AF_INET, &(localAddress.sin_addr), buf, 32);
+	if (ip == nil) {
+		return -1;
+	}
+	return 0;
+}
 
 @implementation QNNetworkInfo
 
@@ -37,6 +86,21 @@ const int kQNISP_OTHER = 999;
 
 + (instancetype)normal {
 	return [[QNNetworkInfo alloc] init:kQNISP_GENERAL provider:kQNISP_GENERAL];
+}
+
++ (BOOL) isNetworkChanged {
+	@synchronized(lock){
+		char local[32] = {0};
+		int err = localIp(local);
+		if (err != 0) {
+			return YES;
+		}
+		if (memcmp(previousIp, local, 32)!=0) {
+			memcpy(previousIp, local, 32);
+			return YES;
+		}
+		return NO;
+	}
 }
 
 @end
