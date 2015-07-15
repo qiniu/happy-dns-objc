@@ -6,6 +6,10 @@
 [![Latest Stable Version](http://img.shields.io/cocoapods/v/HappyDNS.svg)](https://github.com/qiniu/happy-dns-objc/releases)
 ![Platform](http://img.shields.io/cocoapods/p/HappyDNS.svg)
 
+## 用途
+
+调用系统底层Dns解析库，可以使用114 等第三方dns解析，也可以集成dnspod等httpdns。另外也有丰富的hosts 域名配置。
+
 ## 安装
 
 通过CocoaPods
