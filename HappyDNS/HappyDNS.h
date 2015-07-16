@@ -13,3 +13,5 @@
 #import "QNDomain.h"
 #import "QNDnsManager.h"
 #import "QNRecord.h"
+#import "QNNetworkInfo.h"
+#import "QNHijackingDetectWrapper.h"

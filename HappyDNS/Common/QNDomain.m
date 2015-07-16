@@ -20,8 +20,8 @@
 - (instancetype)init:(NSString *)domain hostsFirst:(BOOL)hostsFirst hasCname:(BOOL)hasCname maxTtl:(int)maxTtl {
 	if (self = [super init]) {
 		_domain = domain;
-		_hasCname = NO;
-		_maxTtl = 0;
+		_hasCname = hasCname;
+		_maxTtl = maxTtl;
 		_hostsFirst = hostsFirst;
 	}
 	return self;

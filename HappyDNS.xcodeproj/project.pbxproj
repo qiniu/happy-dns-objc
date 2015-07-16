@@ -33,8 +33,11 @@
 		DF1A94E31B429996006517C0 /* DnsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DF1A94E11B429996006517C0 /* DnsTest.m */; };
 		DF1DA8941B3BDF1800A88CB6 /* HappyDNS.h in Headers */ = {isa = PBXBuildFile; fileRef = DF1DA8931B3BDF1800A88CB6 /* HappyDNS.h */; };
 		DF22C0CB1B37B9B90010FEBF /* libHappyDNS.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DF22C0BF1B37B9B90010FEBF /* libHappyDNS.dylib */; };
-		DF44A1021B563CFB00A0EEB9 /* QNNetworkTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DF44A1011B563CFB00A0EEB9 /* QNNetworkTest.m */; };
-		DF44A1031B563CFB00A0EEB9 /* QNNetworkTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DF44A1011B563CFB00A0EEB9 /* QNNetworkTest.m */; };
+		DF44A1021B563CFB00A0EEB9 /* NetworkTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DF44A1011B563CFB00A0EEB9 /* NetworkTest.m */; };
+		DF44A1031B563CFB00A0EEB9 /* NetworkTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DF44A1011B563CFB00A0EEB9 /* NetworkTest.m */; };
+		DF5AC8E11B575E2800728D30 /* QNHijackingDetectWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = DF5AC8DF1B575E2800728D30 /* QNHijackingDetectWrapper.h */; };
+		DF5AC8E21B575E2800728D30 /* QNHijackingDetectWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = DF5AC8E01B575E2800728D30 /* QNHijackingDetectWrapper.m */; };
+		DF5AC8E31B575E2800728D30 /* QNHijackingDetectWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = DF5AC8E01B575E2800728D30 /* QNHijackingDetectWrapper.m */; };
 		DF801F641B396D5100866FDE /* QNRecord.h in Headers */ = {isa = PBXBuildFile; fileRef = DF801F621B396D5100866FDE /* QNRecord.h */; };
 		DF801F651B396D5100866FDE /* QNRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = DF801F631B396D5100866FDE /* QNRecord.m */; };
 		DF801F691B396DA000866FDE /* QNDnsManager.h in Headers */ = {isa = PBXBuildFile; fileRef = DF801F671B396DA000866FDE /* QNDnsManager.h */; };
@@ -100,7 +103,9 @@
 		DF22C0BF1B37B9B90010FEBF /* libHappyDNS.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libHappyDNS.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF22C0CA1B37B9B90010FEBF /* HappyDNS_MacTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HappyDNS_MacTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF22C0D01B37B9B90010FEBF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DF44A1011B563CFB00A0EEB9 /* QNNetworkTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QNNetworkTest.m; sourceTree = "<group>"; };
+		DF44A1011B563CFB00A0EEB9 /* NetworkTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkTest.m; sourceTree = "<group>"; };
+		DF5AC8DF1B575E2800728D30 /* QNHijackingDetectWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QNHijackingDetectWrapper.h; path = Local/QNHijackingDetectWrapper.h; sourceTree = "<group>"; };
+		DF5AC8E01B575E2800728D30 /* QNHijackingDetectWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QNHijackingDetectWrapper.m; path = Local/QNHijackingDetectWrapper.m; sourceTree = "<group>"; };
 		DF801F621B396D5100866FDE /* QNRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QNRecord.h; path = Common/QNRecord.h; sourceTree = "<group>"; };
 		DF801F631B396D5100866FDE /* QNRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QNRecord.m; path = Common/QNRecord.m; sourceTree = "<group>"; };
 		DF801F671B396DA000866FDE /* QNDnsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QNDnsManager.h; path = Common/QNDnsManager.h; sourceTree = "<group>"; };
@@ -224,7 +229,7 @@
 				DF1552501B3B915D008D3E7C /* DnspodFreeTest.m */,
 				DF1A94DE1B429983006517C0 /* HostsTest.m */,
 				DF1A94E11B429996006517C0 /* DnsTest.m */,
-				DF44A1011B563CFB00A0EEB9 /* QNNetworkTest.m */,
+				DF44A1011B563CFB00A0EEB9 /* NetworkTest.m */,
 			);
 			path = HappyDNSTests;
 			sourceTree = "<group>";
@@ -253,6 +258,8 @@
 				DF801F721B396E3C00866FDE /* QNResolver.m */,
 				DF801F801B396E9A00866FDE /* QNHosts.h */,
 				DF801F811B396E9A00866FDE /* QNHosts.m */,
+				DF5AC8DF1B575E2800728D30 /* QNHijackingDetectWrapper.h */,
+				DF5AC8E01B575E2800728D30 /* QNHijackingDetectWrapper.m */,
 			);
 			name = Local;
 			sourceTree = "<group>";
@@ -290,6 +297,7 @@
 				DF0A03201B3BABBD00E3778C /* QNNetworkInfo.h in Headers */,
 				DF801F691B396DA000866FDE /* QNDnsManager.h in Headers */,
 				DF801F641B396D5100866FDE /* QNRecord.h in Headers */,
+				DF5AC8E11B575E2800728D30 /* QNHijackingDetectWrapper.h in Headers */,
 				DF801F731B396E3C00866FDE /* QNResolver.h in Headers */,
 				DF801F871B396F5500866FDE /* QNResolverDelegate.h in Headers */,
 				DF801F7D1B396E7600866FDE /* QNDnspodFree.h in Headers */,
@@ -510,6 +518,7 @@
 				DF801F651B396D5100866FDE /* QNRecord.m in Sources */,
 				DF801F8D1B39743200866FDE /* QNDomain.m in Sources */,
 				DF801F831B396E9A00866FDE /* QNHosts.m in Sources */,
+				DF5AC8E21B575E2800728D30 /* QNHijackingDetectWrapper.m in Sources */,
 				DF0A03211B3BABBD00E3778C /* QNNetworkInfo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -521,7 +530,7 @@
 				DF1A94DF1B429983006517C0 /* HostsTest.m in Sources */,
 				DF1A94E21B429996006517C0 /* DnsTest.m in Sources */,
 				DF1552441B3A9536008D3E7C /* ResolverTest.m in Sources */,
-				DF44A1021B563CFB00A0EEB9 /* QNNetworkTest.m in Sources */,
+				DF44A1021B563CFB00A0EEB9 /* NetworkTest.m in Sources */,
 				DF1552511B3B915D008D3E7C /* DnspodFreeTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -536,6 +545,7 @@
 				DF15525B1B3B9316008D3E7C /* QNResolver.m in Sources */,
 				DF15525D1B3B9316008D3E7C /* QNHosts.m in Sources */,
 				DF15525F1B3B9316008D3E7C /* QNDnspodFree.m in Sources */,
+				DF5AC8E31B575E2800728D30 /* QNHijackingDetectWrapper.m in Sources */,
 				DF0A03221B3BABBD00E3778C /* QNNetworkInfo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -547,7 +557,7 @@
 				DF1A94E01B429983006517C0 /* HostsTest.m in Sources */,
 				DF1A94E31B429996006517C0 /* DnsTest.m in Sources */,
 				DF1552451B3A9536008D3E7C /* ResolverTest.m in Sources */,
-				DF44A1031B563CFB00A0EEB9 /* QNNetworkTest.m in Sources */,
+				DF44A1031B563CFB00A0EEB9 /* NetworkTest.m in Sources */,
 				DF1552521B3B915D008D3E7C /* DnspodFreeTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

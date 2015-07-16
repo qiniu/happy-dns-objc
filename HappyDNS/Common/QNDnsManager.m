@@ -116,6 +116,14 @@ static NSArray *records2Ips(NSArray *records) {
 		QNNetworkInfo *previousNetwork = _curNetwork;
 		NSString *previousIp = [QNNetworkInfo getIp];
 		records = [resolver query:domain networkInfo:previousNetwork error:&error];
+		if (error != nil) {
+			NSError *tmp = error;
+			error = nil;
+			if (tmp.code == kQNDomainNotOwnCode) {
+				continue;
+			}
+		}
+
 		if (records == nil || records.count == 0) {
 			if (_curNetwork == previousNetwork && [previousIp isEqualToString:[QNNetworkInfo getIp]]) {
 				_resolverStatus = bits_set(_resolverStatus, pos);
