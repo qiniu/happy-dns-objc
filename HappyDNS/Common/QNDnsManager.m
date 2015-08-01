@@ -176,14 +176,7 @@ static NSArray *records2Ips(NSArray *records) {
 }
 
 - (instancetype)init:(NSArray *)resolvers networkInfo:(QNNetworkInfo *)netInfo {
-	if (self = [super init]) {
-		_cache = [[NSCache alloc] init];
-		_cache.countLimit = 1024;
-		_curNetwork = netInfo;
-		_resolvers = [[NSArray alloc] initWithArray:resolvers];
-		_hosts = [[QNHosts alloc] init];
-	}
-	return self;
+    return [self init:resolvers networkInfo:netInfo sorter:nil];
 }
 
 - (instancetype)init:(NSArray *)resolvers networkInfo:(QNNetworkInfo *)netInfo sorter:(id<QNIpSorter>)sorter {
