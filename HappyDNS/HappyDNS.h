@@ -15,3 +15,5 @@
 #import "QNRecord.h"
 #import "QNNetworkInfo.h"
 #import "QNHijackingDetectWrapper.h"
+#import "QNDnspodFree.h"
+#import "QNDnspodEnterprise.h"
