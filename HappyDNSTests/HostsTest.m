@@ -38,12 +38,6 @@
 	XCTAssert([@"1.1.1.1" isEqual:array[0]] || [@"2.2.2.2" isEqual:array[0]], @"PASS");
 	XCTAssert([@"1.1.1.1" isEqual:array[1]] || [@"2.2.2.2" isEqual:array[1]], @"PASS");
 	XCTAssertNotEqualObjects(array[0], array[1], @"PASS");
-
-	NSArray *r1 = [hosts query:[[QNDomain alloc] init:@"hello.qiniu.com"] networkInfo:info];
-	NSArray *r2 = [hosts query:[[QNDomain alloc] init:@"hello.qiniu.com"] networkInfo:info];
-	NSArray *r3 = [hosts query:[[QNDomain alloc] init:@"hello.qiniu.com"] networkInfo:info];
-	NSArray *r4 = [hosts query:[[QNDomain alloc] init:@"hello.qiniu.com"] networkInfo:info];
-	XCTAssertTrue(!([r1 isEqualToArray:r2] && [r1 isEqualToArray:r3] && [r1 isEqualToArray:r4]), @"PASS");
 }
 
 - (void)testCnc {

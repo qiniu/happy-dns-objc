@@ -16,11 +16,11 @@ extern const int kQN_DECRYPT_FAILED;
 @property (readonly, strong) NSString *server;
 
 - (instancetype)initWithId:(NSString*)userId
-                       key:(NSString*)key;
+        key:(NSString*)key;
 
 - (instancetype)initWithId:(NSString*)userId
-                       key:(NSString*)key
-                    server:(NSString*)server;
+        key:(NSString*)key
+        server:(NSString*)server;
 
 
 - (NSArray *)query:(QNDomain *)domain networkInfo:(QNNetworkInfo *)netInfo error:(NSError *__autoreleasing *)error;

@@ -19,11 +19,12 @@ const int kQNDomainSeverError = -7003;
 
 @interface QNDnsManager ()
 
-@property (nonatomic) NSCache *cache;
+@property (nonatomic,strong) NSCache *cache;
 @property (atomic) QNNetworkInfo *curNetwork;
 @property (nonatomic) NSArray *resolvers;
 @property (atomic) UInt32 resolverStatus;
 @property (nonatomic) QNHosts *hosts;
+@property (nonatomic, strong) id<QNIpSorter>sorter;
 @end
 
 //static inline BOOL bits_isSet(UInt32 v, int index) {
@@ -78,12 +79,39 @@ static NSArray *records2Ips(NSArray *records) {
 	return array;
 }
 
+@interface Shuffle : NSObject <QNIpSorter>
+
+@end
+
+@implementation Shuffle
+
+- (NSArray *)sort:(NSArray*)ips {
+	if (ips == nil || ips.count <= 1) {
+		return ips;
+	}
+	int skip = arc4random() % ips.count;
+	NSMutableArray *ret = [[NSMutableArray alloc] initWithCapacity:ips.count];
+	for (int i = 0; i < ips.count; i++) {
+		NSString *ip = [ips objectAtIndex:((i + skip) % ips.count)];
+		[ret addObject:ip];
+	}
+	return ret;
+}
+
+@end
+
 @implementation QNDnsManager
 - (NSArray *)query:(NSString *)domain {
 	return [self queryWithDomain:[[QNDomain alloc] init:domain]];
 }
 
 - (NSArray *)queryWithDomain:(QNDomain *)domain {
+	NSArray* ips = [self queryInternalWithDomain:domain];
+	return [_sorter sort:ips];
+}
+
+
+- (NSArray *)queryInternalWithDomain:(QNDomain *)domain {
 	if (domain.hostsFirst) {
 		NSArray *ret = [_hosts query:domain networkInfo:_curNetwork];
 		if (ret != nil && ret.count != 0) {
@@ -154,6 +182,22 @@ static NSArray *records2Ips(NSArray *records) {
 		_curNetwork = netInfo;
 		_resolvers = [[NSArray alloc] initWithArray:resolvers];
 		_hosts = [[QNHosts alloc] init];
+	}
+	return self;
+}
+
+- (instancetype)init:(NSArray *)resolvers networkInfo:(QNNetworkInfo *)netInfo sorter:(id<QNIpSorter>)sorter {
+	if (self = [super init]) {
+		_cache = [[NSCache alloc] init];
+		_cache.countLimit = 1024;
+		_curNetwork = netInfo;
+		_resolvers = [[NSArray alloc] initWithArray:resolvers];
+		_hosts = [[QNHosts alloc] init];
+		if (sorter == nil) {
+			_sorter = [[Shuffle alloc]init];
+		}else{
+			_sorter = sorter;
+		}
 	}
 	return self;
 }

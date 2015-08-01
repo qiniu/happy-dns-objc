@@ -48,19 +48,6 @@ static NSArray *filte(NSArray *input, int provider) {
 	return normal;
 }
 
-static NSArray *shuffle(NSArray *input) {
-	if (input == nil || input.count <= 1) {
-		return input;
-	}
-	int skip = arc4random() % input.count;
-	NSMutableArray *ret = [[NSMutableArray alloc] initWithCapacity:input.count];
-	for (int i = 0; i < input.count; i++) {
-		NSString *ip = [input objectAtIndex:((i + skip) % input.count)];
-		[ret addObject:ip];
-	}
-	return ret;
-}
-
 @implementation QNHosts
 - (NSArray *)query:(QNDomain *)domain networkInfo:(QNNetworkInfo *)netInfo {
 	NSMutableArray *x;
@@ -72,7 +59,7 @@ static NSArray *shuffle(NSArray *input) {
 	if (x == nil || x.count == 0) {
 		return nil;
 	}
-	return shuffle(filte(x, netInfo.provider));
+	return filte(x, netInfo.provider);
 }
 
 - (void)put:(NSString *)domain ip:(NSString *)ip {

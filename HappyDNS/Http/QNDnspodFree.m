@@ -13,17 +13,17 @@
 @implementation QNDnspodFree
 
 - (instancetype)init {
-    return [self initWithServer:@"119.29.29.29"];
+	return [self initWithServer:@"119.29.29.29"];
 }
 - (instancetype)initWithServer:(NSString*)server {
-    if (self = [super init]) {
-        _server = server;
-    }
-    return self;
+	if (self = [super init]) {
+		_server = server;
+	}
+	return self;
 }
 
 - (NSArray *)query:(QNDomain *)domain networkInfo:(QNNetworkInfo *)netInfo error:(NSError *__autoreleasing *)error {
-    NSString *url = [NSString stringWithFormat:@"http://%@/d?ttl=1&dn=%@", _server, domain.domain];
+	NSString *url = [NSString stringWithFormat:@"http://%@/d?ttl=1&dn=%@", _server, domain.domain];
 	NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
 	NSHTTPURLResponse *response = nil;
 	NSError *httpError = nil;
