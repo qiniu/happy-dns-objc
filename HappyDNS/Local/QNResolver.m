@@ -60,7 +60,7 @@ static NSArray *query_ip(res_state res, const char *host) {
 		QNRecord *record = [[QNRecord alloc] init:val ttl:ttl type:t];
 		[array addObject:record];
 	}
-
+	res_ndestroy(res);
 	return array;
 }
 
