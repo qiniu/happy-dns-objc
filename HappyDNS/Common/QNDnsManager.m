@@ -64,7 +64,7 @@ static inline UInt32 bits_leadingZeros(UInt32 x) {
 static NSArray *trimCname(NSArray *records) {
 	NSMutableArray *array = [[NSMutableArray alloc] init];
 	for (QNRecord *r in records) {
-		if (r.type == kQNTypeA) {
+		if (r.type != kQNTypeCname) {
 			[array addObject:r];
 		}
 	}
