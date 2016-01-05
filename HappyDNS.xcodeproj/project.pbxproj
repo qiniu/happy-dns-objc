@@ -33,6 +33,11 @@
 		DF1A94E31B429996006517C0 /* DnsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DF1A94E11B429996006517C0 /* DnsTest.m */; };
 		DF1DA8941B3BDF1800A88CB6 /* HappyDNS.h in Headers */ = {isa = PBXBuildFile; fileRef = DF1DA8931B3BDF1800A88CB6 /* HappyDNS.h */; };
 		DF22C0CB1B37B9B90010FEBF /* libHappyDNS.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DF22C0BF1B37B9B90010FEBF /* libHappyDNS.dylib */; };
+		DF2B76F51C3C1D5300643678 /* QNTxtResolver.h in Headers */ = {isa = PBXBuildFile; fileRef = DF2B76F31C3C1D5300643678 /* QNTxtResolver.h */; };
+		DF2B76F61C3C1D5300643678 /* QNTxtResolver.m in Sources */ = {isa = PBXBuildFile; fileRef = DF2B76F41C3C1D5300643678 /* QNTxtResolver.m */; };
+		DF2B76F71C3C1D5300643678 /* QNTxtResolver.m in Sources */ = {isa = PBXBuildFile; fileRef = DF2B76F41C3C1D5300643678 /* QNTxtResolver.m */; };
+		DF2B76F91C3C1E5A00643678 /* TxtResolverTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DF2B76F81C3C1E5A00643678 /* TxtResolverTest.m */; };
+		DF2B76FA1C3C1E5A00643678 /* TxtResolverTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DF2B76F81C3C1E5A00643678 /* TxtResolverTest.m */; };
 		DF44A1021B563CFB00A0EEB9 /* NetworkTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DF44A1011B563CFB00A0EEB9 /* NetworkTest.m */; };
 		DF44A1031B563CFB00A0EEB9 /* NetworkTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DF44A1011B563CFB00A0EEB9 /* NetworkTest.m */; };
 		DF5AC8E11B575E2800728D30 /* QNHijackingDetectWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = DF5AC8DF1B575E2800728D30 /* QNHijackingDetectWrapper.h */; };
@@ -118,6 +123,9 @@
 		DF22C0BF1B37B9B90010FEBF /* libHappyDNS.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libHappyDNS.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF22C0CA1B37B9B90010FEBF /* HappyDNS_MacTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HappyDNS_MacTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF22C0D01B37B9B90010FEBF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DF2B76F31C3C1D5300643678 /* QNTxtResolver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QNTxtResolver.h; path = Local/QNTxtResolver.h; sourceTree = "<group>"; };
+		DF2B76F41C3C1D5300643678 /* QNTxtResolver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QNTxtResolver.m; path = Local/QNTxtResolver.m; sourceTree = "<group>"; };
+		DF2B76F81C3C1E5A00643678 /* TxtResolverTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TxtResolverTest.m; sourceTree = "<group>"; };
 		DF44A1011B563CFB00A0EEB9 /* NetworkTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkTest.m; sourceTree = "<group>"; };
 		DF5AC8DF1B575E2800728D30 /* QNHijackingDetectWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QNHijackingDetectWrapper.h; path = Local/QNHijackingDetectWrapper.h; sourceTree = "<group>"; };
 		DF5AC8E01B575E2800728D30 /* QNHijackingDetectWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QNHijackingDetectWrapper.m; path = Local/QNHijackingDetectWrapper.m; sourceTree = "<group>"; };
@@ -257,6 +265,7 @@
 				DFFC8AA61B6BD47100EC938D /* DnspodEnterpriseTest.m */,
 				DFFC8AB31B6C4DD200EC938D /* DesTest.m */,
 				DFFC8AB61B6C62E800EC938D /* HexTest.m */,
+				DF2B76F81C3C1E5A00643678 /* TxtResolverTest.m */,
 			);
 			path = HappyDNSTests;
 			sourceTree = "<group>";
@@ -289,6 +298,8 @@
 				DF801F811B396E9A00866FDE /* QNHosts.m */,
 				DF5AC8DF1B575E2800728D30 /* QNHijackingDetectWrapper.h */,
 				DF5AC8E01B575E2800728D30 /* QNHijackingDetectWrapper.m */,
+				DF2B76F31C3C1D5300643678 /* QNTxtResolver.h */,
+				DF2B76F41C3C1D5300643678 /* QNTxtResolver.m */,
 			);
 			name = Local;
 			sourceTree = "<group>";
@@ -331,6 +342,7 @@
 				DF801F691B396DA000866FDE /* QNDnsManager.h in Headers */,
 				DF801F641B396D5100866FDE /* QNRecord.h in Headers */,
 				DF5AC8E11B575E2800728D30 /* QNHijackingDetectWrapper.h in Headers */,
+				DF2B76F51C3C1D5300643678 /* QNTxtResolver.h in Headers */,
 				DF801F731B396E3C00866FDE /* QNResolver.h in Headers */,
 				DF801F871B396F5500866FDE /* QNResolverDelegate.h in Headers */,
 				DF801F7D1B396E7600866FDE /* QNDnspodFree.h in Headers */,
@@ -551,6 +563,7 @@
 				DF801F741B396E3C00866FDE /* QNResolver.m in Sources */,
 				DFFC8AB11B6BD77000EC938D /* QNDnspodEnterprise.m in Sources */,
 				DF801F6A1B396DA000866FDE /* QNDnsManager.m in Sources */,
+				DF2B76F61C3C1D5300643678 /* QNTxtResolver.m in Sources */,
 				DF801F7E1B396E7600866FDE /* QNDnspodFree.m in Sources */,
 				DFFC8AAC1B6BD73900EC938D /* QNDes.m in Sources */,
 				DF801F651B396D5100866FDE /* QNRecord.m in Sources */,
@@ -570,6 +583,7 @@
 				DFFC8AB71B6C62E800EC938D /* HexTest.m in Sources */,
 				DFFC8AB41B6C4DD200EC938D /* DesTest.m in Sources */,
 				DF1A94DF1B429983006517C0 /* HostsTest.m in Sources */,
+				DF2B76F91C3C1E5A00643678 /* TxtResolverTest.m in Sources */,
 				DF1A94E21B429996006517C0 /* DnsTest.m in Sources */,
 				DF1552441B3A9536008D3E7C /* ResolverTest.m in Sources */,
 				DF44A1021B563CFB00A0EEB9 /* NetworkTest.m in Sources */,
@@ -584,6 +598,7 @@
 				DF1552541B3B9316008D3E7C /* QNDnsManager.m in Sources */,
 				DFFC8AB21B6BD77000EC938D /* QNDnspodEnterprise.m in Sources */,
 				DF1552561B3B9316008D3E7C /* QNRecord.m in Sources */,
+				DF2B76F71C3C1D5300643678 /* QNTxtResolver.m in Sources */,
 				DF1552591B3B9316008D3E7C /* QNDomain.m in Sources */,
 				DFFC8AAD1B6BD73900EC938D /* QNDes.m in Sources */,
 				DF15525B1B3B9316008D3E7C /* QNResolver.m in Sources */,
@@ -603,6 +618,7 @@
 				DFFC8AB81B6C62E800EC938D /* HexTest.m in Sources */,
 				DFFC8AB51B6C4DD200EC938D /* DesTest.m in Sources */,
 				DF1A94E01B429983006517C0 /* HostsTest.m in Sources */,
+				DF2B76FA1C3C1E5A00643678 /* TxtResolverTest.m in Sources */,
 				DF1A94E31B429996006517C0 /* DnsTest.m in Sources */,
 				DF1552451B3A9536008D3E7C /* ResolverTest.m in Sources */,
 				DF44A1031B563CFB00A0EEB9 /* NetworkTest.m in Sources */,
