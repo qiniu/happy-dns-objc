@@ -29,7 +29,7 @@
 
 - (void)template:(NSString *)server {
     id <QNResolverDelegate> resolver = [[QNTxtResolver alloc] initWithAddres:server];
-    
+// txttest.qiniu.com.   600 IN  TXT "183.136.139.10,183.136.139.16,115.231.182.136"
     NSArray *records = [resolver query:[[QNDomain alloc]init:@"txttest.qiniu.com"] networkInfo:nil error:nil];
     XCTAssert(records != nil, @"Pass");
     XCTAssert(records.count >= 2, @"Pass");
@@ -41,14 +41,8 @@
     [self template:nil];
 }
 
-//    https://www.114dns.com/
 - (void)test114 {
     [self template:@"114.114.115.115"];
 }
-
-
-//- (void)testGoogle {
-//    [self template:@"8.8.4.4"];
-//}
 
 @end
