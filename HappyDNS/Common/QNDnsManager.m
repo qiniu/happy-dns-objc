@@ -106,6 +106,9 @@ static NSArray *records2Ips(NSArray *records) {
 }
 
 - (NSArray *)queryWithDomain:(QNDomain *)domain {
+    if (domain.domain == nil) {
+        return nil;
+    }
 	NSArray* ips = [self queryInternalWithDomain:domain];
 	return [_sorter sort:ips];
 }
