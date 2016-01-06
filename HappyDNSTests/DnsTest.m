@@ -106,4 +106,17 @@
     XCTAssertTrue(ipArr.count > 0, @"PASS");
 }
 
+- (void)testUrlQuery {
+    NSMutableArray *array = [[NSMutableArray alloc]init];
+    [array addObject:[QNResolver systemResolver]];
+    [array addObject:[[QNResolver alloc] initWithAddres:@"114.114.115.115"]];
+    QNDnsManager *dns = [[QNDnsManager alloc] init:array networkInfo:[QNNetworkInfo normal]];
+    NSURL* u = [[NSURL alloc] initWithString:@"rtmp://www.qiniu.com/abc?q=1"];
+    NSURL* u2 = [dns queryAndReplaceWithIP:u];
+   
+    XCTAssertNotNil(u2, @"PASS");
+    XCTAssertEqual(u.path, u2.path, @"PASS");
+    XCTAssertEqual(u.scheme, u2.scheme, @"PASS");
+    XCTAssertNotEqual(u.host, u2.host, @"PASS");
+}
 @end

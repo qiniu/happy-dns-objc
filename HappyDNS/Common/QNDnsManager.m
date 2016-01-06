@@ -216,4 +216,22 @@ static NSArray *records2Ips(NSArray *records) {
 	return self;
 }
 
+-(NSURL*) queryAndReplaceWithIP:(NSURL*)url {
+    NSURLComponents *urlComponents = [[NSURLComponents alloc] initWithURL:url resolvingAgainstBaseURL:YES];
+    if (!urlComponents) {
+        return nil;
+    }
+    
+    NSString *host = urlComponents.host;
+    NSArray *ips = [self query:host];
+    
+    NSURL *URL = nil;
+    if (ips && ips.count > 0) {
+        urlComponents.host = ips[0];
+    }
+    
+    URL = urlComponents.URL;
+    return URL;
+}
+
 @end
