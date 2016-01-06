@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = 'HappyDNS'
-  s.version      = '0.2.3'
+  s.version      = '0.2.4'
   s.summary      = 'DNS library for iOS and Mac'
   s.homepage     = 'https://github.com/qiniu/happy-dns-objc'
   s.social_media_url = 'http://weibo.com/qiniutek'
@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
   s.license = { :type => 'MIT', :text => <<-LICENSE
 The MIT License (MIT)
 
-Copyright (c) 2012-2015 qiniu.com
+Copyright (c) 2012-2016 qiniu.com
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

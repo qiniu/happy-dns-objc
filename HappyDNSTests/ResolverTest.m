@@ -40,6 +40,9 @@
 	XCTAssert(records.count >= 3, @"Pass");
 	record = [records objectAtIndex:0];
 	XCTAssert(record.ttl >= 0, @"Pass");
+    
+    records = [resolver query:[[QNDomain alloc]init:@"fasdfasfasf.qiniu.com"] networkInfo:nil error:nil];
+    XCTAssert(records == nil, @"Pass");
 }
 
 - (void)testLocal {

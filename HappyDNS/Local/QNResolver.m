@@ -27,6 +27,7 @@ static NSArray *query_ip(res_state res, const char *host) {
 
 	int count = ns_msg_count(handle, ns_s_an);
 	if (count <= 0) {
+        res_ndestroy(res);
 		return nil;
 	}
 	NSMutableArray *array = [[NSMutableArray alloc] initWithCapacity:count];
@@ -36,6 +37,7 @@ static NSArray *query_ip(res_state res, const char *host) {
 	for (int i = 0; i < count; i++) {
 		ns_rr rr;
 		if (ns_parserr(&handle, ns_s_an, i, &rr) != 0) {
+            res_ndestroy(res);
 			return nil;
 		}
 		int t = ns_rr_type(rr);
@@ -88,7 +90,7 @@ static int setup_dns_server(res_state res, const char *dns_server) {
 @implementation QNResolver
 - (instancetype)initWithAddres:(NSString *)address {
 	if (self = [super init]) {
-		self.address = address;
+		_address = address;
 	}
 	return self;
 }
