@@ -113,9 +113,5 @@ static int setup_dns_server(res_state res, const char *dns_server) {
     return query_ip(&res, [domain.domain cStringUsingEncoding:NSUTF8StringEncoding]);
 }
 
-+ (instancetype)systemResolver {
-    return [[QNResolver alloc] initWithAddres:nil];
-}
-
 @end
 
