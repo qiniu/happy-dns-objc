@@ -50,8 +50,8 @@ static NSArray *query_ip(res_state res, const char *host) {
     }
     NSString *val;
     if (t == ns_t_txt) {
-        const char* p = (const char*)ns_rr_rdata(rr)+1;
-        val = [NSString stringWithUTF8String:p];
+        memcpy(txtbuf, ns_rr_rdata(rr)+1, rdlen-1);
+        val = [NSString stringWithUTF8String:txtbuf];
     }else{
         res_ndestroy(res);
         return nil;

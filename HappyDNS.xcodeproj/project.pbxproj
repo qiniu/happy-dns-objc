@@ -18,7 +18,6 @@
 		DF1552471B3A97EB008D3E7C /* libresolv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DF1552461B3A97EB008D3E7C /* libresolv.dylib */; };
 		DF1552491B3A97F7008D3E7C /* libresolv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DF1552481B3A97F7008D3E7C /* libresolv.dylib */; };
 		DF15524C1B3A994F008D3E7C /* libresolv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DF1552461B3A97EB008D3E7C /* libresolv.dylib */; };
-		DF15524F1B3B0379008D3E7C /* libresolv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DF1552481B3A97F7008D3E7C /* libresolv.dylib */; };
 		DF1552511B3B915D008D3E7C /* DnspodFreeTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DF1552501B3B915D008D3E7C /* DnspodFreeTest.m */; };
 		DF1552521B3B915D008D3E7C /* DnspodFreeTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DF1552501B3B915D008D3E7C /* DnspodFreeTest.m */; };
 		DF1552541B3B9316008D3E7C /* QNDnsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DF801F681B396DA000866FDE /* QNDnsManager.m */; };
@@ -126,6 +125,7 @@
 		DF2B76F31C3C1D5300643678 /* QNTxtResolver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QNTxtResolver.h; path = Local/QNTxtResolver.h; sourceTree = "<group>"; };
 		DF2B76F41C3C1D5300643678 /* QNTxtResolver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QNTxtResolver.m; path = Local/QNTxtResolver.m; sourceTree = "<group>"; };
 		DF2B76F81C3C1E5A00643678 /* TxtResolverTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TxtResolverTest.m; sourceTree = "<group>"; };
+		DF2B76FB1C3CD41800643678 /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.2.sdk/usr/lib/libresolv.tbd; sourceTree = DEVELOPER_DIR; };
 		DF44A1011B563CFB00A0EEB9 /* NetworkTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkTest.m; sourceTree = "<group>"; };
 		DF5AC8DF1B575E2800728D30 /* QNHijackingDetectWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QNHijackingDetectWrapper.h; path = Local/QNHijackingDetectWrapper.h; sourceTree = "<group>"; };
 		DF5AC8E01B575E2800728D30 /* QNHijackingDetectWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QNHijackingDetectWrapper.m; path = Local/QNHijackingDetectWrapper.m; sourceTree = "<group>"; };
@@ -178,7 +178,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DF15524F1B3B0379008D3E7C /* libresolv.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -198,6 +197,7 @@
 		3AA9FDBAFF7915B2F079FC24 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DF2B76FB1C3CD41800643678 /* libresolv.tbd */,
 				DF15524D1B3B0335008D3E7C /* libresolv.9.dylib */,
 				DF15524A1B3A98E2008D3E7C /* libresolv.9.dylib */,
 				DF1552481B3A97F7008D3E7C /* libresolv.dylib */,
@@ -789,7 +789,10 @@
 					"$(inherited)",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lresolve",
+				);
 				PRODUCT_NAME = HappyDNS;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -800,7 +803,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lresolve",
+				);
 				PRODUCT_NAME = HappyDNS;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
