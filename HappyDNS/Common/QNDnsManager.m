@@ -227,10 +227,11 @@ static NSArray *records2Ips(NSArray *records) {
     NSURL *URL = nil;
     if (ips && ips.count > 0) {
         NSString *ip = ips[0];
+        NSLog(@"ip %@", ip);
         if ([ip containsString:@":"]) {
             urlComponents.host = [NSString stringWithFormat:@"[%@]", ip];
         } else {
-            urlComponents.host = ips[0];
+            urlComponents.host = ip;
         }
     }
 

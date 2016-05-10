@@ -117,8 +117,8 @@
     XCTAssertNotNil(u2, @"PASS");
     NSLog(@"%@ %@", u.path, u2.path);
     XCTAssertEqualObjects(u.path, u2.path, @"PASS");
-    XCTAssertEqual(u.scheme, u2.scheme, @"PASS");
-    XCTAssertNotEqual(u.host, u2.host, @"PASS");
+    XCTAssertEqualObjects(u.scheme, u2.scheme, @"PASS");
+    XCTAssertNotEqualObjects(u.host, u2.host, @"PASS");
 }
 
 - (void)testUrlQueryV6 {
@@ -132,8 +132,8 @@
     XCTAssertNotNil(u2, @"PASS");
     NSLog(@"path %@ %@", u.path, u2.path);
     XCTAssertEqualObjects(u.path, u2.path, @"PASS");
-    XCTAssertEqual(u.scheme, u2.scheme, @"PASS");
+    XCTAssertEqualObjects(u.scheme, u2.scheme, @"PASS");
     NSLog(@"host %@ %@", u.host, u2.host);
-    XCTAssertNotEqual(u.host, u2.host, @"PASS");
+    XCTAssertNotEqualObjects(u.host, u2.host, @"PASS");
 }
 @end
