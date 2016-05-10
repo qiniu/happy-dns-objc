@@ -12,7 +12,7 @@
 @class QNDomain;
 
 @protocol QNIpSorter <NSObject>
-- (NSArray *)sort:(NSArray*)ips;
+- (NSArray *)sort:(NSArray *)ips;
 @end
 
 @interface QNDnsManager : NSObject
