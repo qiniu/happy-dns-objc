@@ -35,8 +35,8 @@ extern const int kQNTypeTXT;
 @property (nonatomic, readonly) long long timeStamp;
 
 - (instancetype)init:(NSString *)value
-        ttl:(int)ttl
-        type:(int)type;
+                 ttl:(int)ttl
+                type:(int)type;
 
 - (BOOL)expired:(long long)time;
 @end

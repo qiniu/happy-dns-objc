@@ -8,10 +8,10 @@
 
 #import <XCTest/XCTest.h>
 
-#import "QNResolverDelegate.h"
-#import "QNTxtResolver.h"
 #import "QNDomain.h"
 #import "QNRecord.h"
+#import "QNResolverDelegate.h"
+#import "QNTxtResolver.h"
 
 @interface TxtResolverTest : XCTestCase
 
@@ -27,10 +27,10 @@
     [super tearDown];
 }
 
-- (void)template:(NSString *)server {
-    id <QNResolverDelegate> resolver = [[QNTxtResolver alloc] initWithAddres:server];
-// txttest.qiniu.com.   600 IN  TXT "183.136.139.10,183.136.139.16,115.231.182.136"
-    NSArray *records = [resolver query:[[QNDomain alloc]init:@"txttest.qiniu.com"] networkInfo:nil error:nil];
+- (void) template:(NSString *)server {
+    id<QNResolverDelegate> resolver = [[QNTxtResolver alloc] initWithAddres:server];
+    // txttest.qiniu.com.   600 IN  TXT "183.136.139.10,183.136.139.16,115.231.182.136"
+    NSArray *records = [resolver query:[[QNDomain alloc] init:@"txttest.qiniu.com"] networkInfo:nil error:nil];
     XCTAssert(records != nil, @"Pass");
     XCTAssert(records.count >= 2, @"Pass");
     QNRecord *record = [records objectAtIndex:0];

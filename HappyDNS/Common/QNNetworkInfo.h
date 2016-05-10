@@ -35,7 +35,7 @@ extern const int kQNISP_OTHER;
 
 + (instancetype)normal;
 
-+ (BOOL) isNetworkChanged;
++ (BOOL)isNetworkChanged;
 
 + (NSString *)getIp;
 
