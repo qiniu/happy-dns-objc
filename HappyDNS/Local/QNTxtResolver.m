@@ -67,16 +67,9 @@ static NSArray *query_ip(res_state res, const char *host) {
     return ret;
 }
 
-static int setup_dns_server(res_state res, const char *dns_server) {
-    int r = res_ninit(res);
-    if (r != 0) {
-        return r;
-    }
-    if (dns_server == NULL) {
-        return 0;
-    }
+static int setup_dns_server_v4(res_state res, const char *dns_server) {
     struct in_addr addr;
-    r = inet_pton(AF_INET, dns_server, &addr);
+    int r = inet_pton(AF_INET, dns_server, &addr);
     if (r == 0) {
         return -1;
     }
@@ -86,6 +79,27 @@ static int setup_dns_server(res_state res, const char *dns_server) {
     res->nsaddr_list[0].sin_port = htons(NS_DEFAULTPORT);
     res->nscount = 1;
     return 0;
+}
+
+// does not support ipv6 nameserver now
+static int setup_dns_server_v6(res_state res, const char *dns_server) {
+    return -1;
+}
+
+static int setup_dns_server(res_state res, const char *dns_server) {
+    int r = res_ninit(res);
+    if (r != 0) {
+        return r;
+    }
+    if (dns_server == NULL) {
+        return 0;
+    }
+
+    if (strchr(dns_server, ':') == NULL) {
+        return setup_dns_server_v4(res, dns_server);
+    }
+
+    return setup_dns_server_v6(res, dns_server);
 }
 
 @implementation QNTxtResolver
