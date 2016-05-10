@@ -26,5 +26,5 @@
 @end
 
 @interface QNDnsManager (NSURL)
-- (NSURL*) queryAndReplaceWithIP:(NSURL*)url;
+- (NSURL *)queryAndReplaceWithIP:(NSURL *)url;
 @end

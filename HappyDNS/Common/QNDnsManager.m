@@ -68,7 +68,7 @@ static inline UInt32 bits_leadingZeros(UInt32 x) {
 static NSArray *trimCname(NSArray *records) {
     NSMutableArray *array = [[NSMutableArray alloc] init];
     for (QNRecord *r in records) {
-        if (r.type == kQNTypeA) {
+        if (r.type == kQNTypeA || r.type == kQNTypeAAAA) {
             [array addObject:r];
         }
     }
@@ -215,20 +215,25 @@ static NSArray *records2Ips(NSArray *records) {
     return self;
 }
 
--(NSURL*) queryAndReplaceWithIP:(NSURL*)url {
+- (NSURL *)queryAndReplaceWithIP:(NSURL *)url {
     NSURLComponents *urlComponents = [[NSURLComponents alloc] initWithURL:url resolvingAgainstBaseURL:YES];
     if (!urlComponents) {
         return nil;
     }
-    
+
     NSString *host = urlComponents.host;
     NSArray *ips = [self query:host];
-    
+
     NSURL *URL = nil;
     if (ips && ips.count > 0) {
-        urlComponents.host = ips[0];
+        NSString *ip = ips[0];
+        if ([ip containsString:@":"]) {
+            urlComponents.host = [NSString stringWithFormat:@"[%@]", ip];
+        } else {
+            urlComponents.host = ips[0];
+        }
     }
-    
+
     URL = urlComponents.URL;
     return URL;
 }

@@ -107,16 +107,33 @@
 }
 
 - (void)testUrlQuery {
-    NSMutableArray *array = [[NSMutableArray alloc]init];
+    NSMutableArray *array = [[NSMutableArray alloc] init];
     [array addObject:[QNResolver systemResolver]];
     [array addObject:[[QNResolver alloc] initWithAddres:@"114.114.115.115"]];
     QNDnsManager *dns = [[QNDnsManager alloc] init:array networkInfo:[QNNetworkInfo normal]];
-    NSURL* u = [[NSURL alloc] initWithString:@"rtmp://www.qiniu.com/abc?q=1"];
-    NSURL* u2 = [dns queryAndReplaceWithIP:u];
-   
+    NSURL *u = [[NSURL alloc] initWithString:@"rtmp://www.qiniu.com/abc?q=1"];
+    NSURL *u2 = [dns queryAndReplaceWithIP:u];
+
     XCTAssertNotNil(u2, @"PASS");
-    XCTAssertEqual(u.path, u2.path, @"PASS");
+    NSLog(@"%@ %@", u.path, u2.path);
+    XCTAssertEqualObjects(u.path, u2.path, @"PASS");
     XCTAssertEqual(u.scheme, u2.scheme, @"PASS");
+    XCTAssertNotEqual(u.host, u2.host, @"PASS");
+}
+
+- (void)testUrlQueryV6 {
+    NSMutableArray *array = [[NSMutableArray alloc] init];
+    [array addObject:[QNResolver systemResolver]];
+    [array addObject:[[QNResolver alloc] initWithAddres:@"114.114.115.115"]];
+    QNDnsManager *dns = [[QNDnsManager alloc] init:array networkInfo:[QNNetworkInfo normal]];
+    NSURL *u = [[NSURL alloc] initWithString:@"rtmp://ipv6test.qiniu.com/abc?q=1"];
+    NSURL *u2 = [dns queryAndReplaceWithIP:u];
+
+    XCTAssertNotNil(u2, @"PASS");
+    NSLog(@"path %@ %@", u.path, u2.path);
+    XCTAssertEqualObjects(u.path, u2.path, @"PASS");
+    XCTAssertEqual(u.scheme, u2.scheme, @"PASS");
+    NSLog(@"host %@ %@", u.host, u2.host);
     XCTAssertNotEqual(u.host, u2.host, @"PASS");
 }
 @end
