@@ -227,8 +227,8 @@ static NSArray *records2Ips(NSArray *records) {
     NSURL *URL = nil;
     if (ips && ips.count > 0) {
         NSString *ip = ips[0];
-        NSLog(@"ip %@", ip);
-        if ([ip containsString:@":"]) {
+        NSRange range = [ip rangeOfString:@":"];
+        if (range.location != NSNotFound) {
             urlComponents.host = [NSString stringWithFormat:@"[%@]", ip];
         } else {
             urlComponents.host = ip;
