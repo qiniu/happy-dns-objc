@@ -23,8 +23,8 @@ extern const int kQNISP_OTHER;
 
 @interface QNNetworkInfo : NSObject
 
-@property (readonly) int networkConnection;
-@property (readonly) int provider;
+@property (nonatomic, readonly) int networkConnection;
+@property (nonatomic, readonly) int provider;
 
 - (instancetype)init:(int)connecton provider:(int)provider;
 

@@ -9,7 +9,9 @@
 #import "QNRecord.h"
 
 const int kQNTypeA = 1;
+const int kQNTypeAAAA = 28;
 const int kQNTypeCname = 5;
+const int kQNTypeTXT = 16;
 
 @implementation QNRecord
 - (instancetype)init:(NSString *)value

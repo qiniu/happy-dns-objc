@@ -76,7 +76,7 @@ static int setup_dns_server(res_state res, const char *dns_server) {
         return 0;
     }
     struct in_addr addr;
-    r = inet_aton(dns_server, &addr);
+    r = inet_pton(AF_INET, dns_server, &addr);
     if (r == 0) {
         return -1;
     }
