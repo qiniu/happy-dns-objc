@@ -12,6 +12,8 @@
 #import "QNResolverDelegate.h"
 #import <XCTest/XCTest.h>
 
+#import "QNIP.h"
+
 @interface ResolverTest : XCTestCase
 
 @end
@@ -45,6 +47,9 @@
 }
 
 - (void)templateV6:(NSString *)server {
+    if (![QNIP isV6]) {
+        return;
+    }
     id<QNResolverDelegate> resolver = [[QNResolver alloc] initWithAddres:server];
     NSArray *records = [resolver query:[[QNDomain alloc] init:@"ipv6test.qiniu.com"] networkInfo:nil error:nil];
     XCTAssert(records != nil, @"Pass");
@@ -99,5 +104,11 @@
 //- (void)testPai {
 //	[self template:@"101.226.4.6"];
 //}
+
+- (void)testGetDnsServer {
+    NSString *dns = [QNResolver systemDnsServer];
+    NSLog(@"dns %@", dns);
+    XCTAssertNotNil(dns, @"pass");
+}
 
 @end
