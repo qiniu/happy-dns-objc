@@ -142,7 +142,7 @@ static int setup_dns_server(res_state res, NSString *dns_server) {
     int family = ai->ai_family;
 
     if (family == AF_INET6) {
-        ((struct sockaddr_in6 *)&ai->ai_addr)->sin6_port = htons(53);
+        ((struct sockaddr_in6 *)ai->ai_addr)->sin6_port = htons(53);
         server.sin6 = *((struct sockaddr_in6 *)ai->ai_addr);
     } else {
         server.sin = *((struct sockaddr_in *)ai->ai_addr);
