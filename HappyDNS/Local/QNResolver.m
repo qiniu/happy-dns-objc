@@ -10,13 +10,24 @@
 #include <resolv.h>
 #include <string.h>
 
+#import <netdb.h>
+#import <netinet/in.h>
+#import <unistd.h>
+
 #import "QNDomain.h"
+#import "QNIP.h"
 #import "QNRecord.h"
 #import "QNResolver.h"
+#include <netinet/in.h>
+#include <netinet/tcp.h>
 
 @interface QNResolver ()
 @property (nonatomic) NSString *address;
 @end
+
+static BOOL isV6(NSString *address) {
+    return strchr(address.UTF8String, ':') == 0;
+}
 
 static NSArray *query_ip_v4(res_state res, const char *host) {
     u_char answer[1500];
@@ -56,7 +67,7 @@ static NSArray *query_ip_v4(res_state res, const char *host) {
         } else {
             continue;
         }
-
+        val = [QNIP adaptiveIp:val];
         QNRecord *record = [[QNRecord alloc] init:val ttl:ttl type:t];
         [array addObject:record];
     }
@@ -110,26 +121,7 @@ static NSArray *query_ip_v6(res_state res, const char *host) {
     return array;
 }
 
-static int setup_dns_server_v4(res_state res, const char *dns_server) {
-    struct in_addr addr;
-    int r = inet_pton(AF_INET, dns_server, &addr);
-    if (r == 0) {
-        return -1;
-    }
-
-    res->nsaddr_list[0].sin_addr = addr;
-    res->nsaddr_list[0].sin_family = AF_INET;
-    res->nsaddr_list[0].sin_port = htons(NS_DEFAULTPORT);
-    res->nscount = 1;
-    return 0;
-}
-
-// does not support ipv6 nameserver now
-static int setup_dns_server_v6(res_state res, const char *dns_server) {
-    return -1;
-}
-
-static int setup_dns_server(res_state res, const char *dns_server) {
+static int setup_dns_server(res_state res, NSString *dns_server) {
     int r = res_ninit(res);
     if (r != 0) {
         return r;
@@ -138,11 +130,27 @@ static int setup_dns_server(res_state res, const char *dns_server) {
         return 0;
     }
 
-    if (strchr(dns_server, ':') == NULL) {
-        return setup_dns_server_v4(res, dns_server);
+    union res_sockaddr_union server = {0};
+
+    struct addrinfo hints = {0}, *ai;
+    hints.ai_family = AF_UNSPEC;
+    hints.ai_socktype = SOCK_STREAM;
+    int ret = getaddrinfo(dns_server.UTF8String, "53", &hints, &ai);
+    if (ret != 0) {
+        return -1;
+    }
+    int family = ai->ai_family;
+
+    if (family == AF_INET6) {
+        ((struct sockaddr_in6 *)&ai->ai_addr)->sin6_port = htons(53);
+        server.sin6 = *((struct sockaddr_in6 *)ai->ai_addr);
+    } else {
+        server.sin = *((struct sockaddr_in *)ai->ai_addr);
     }
 
-    return setup_dns_server_v6(res, dns_server);
+    freeaddrinfo(ai);
+    res_setservers(res, &server, 1);
+    return 0;
 }
 
 @implementation QNResolver
@@ -156,25 +164,53 @@ static int setup_dns_server(res_state res, const char *dns_server) {
 - (NSArray *)query:(QNDomain *)domain networkInfo:(QNNetworkInfo *)netInfo error:(NSError *__autoreleasing *)error {
     struct __res_state res;
 
-    int r;
-    if (_address == nil) {
-        r = setup_dns_server(&res, NULL);
-    } else {
-        r = setup_dns_server(&res, [_address cStringUsingEncoding:NSASCIIStringEncoding]);
-    }
+    int r = setup_dns_server(&res, _address);
     if (r != 0) {
         return nil;
     }
 
     NSArray *ret = query_ip_v4(&res, [domain.domain cStringUsingEncoding:NSUTF8StringEncoding]);
-    if (ret != NULL) {
+    if (ret != nil && ret.count != 0) {
         return ret;
     }
-    return query_ip_v6(&res, [domain.domain cStringUsingEncoding:NSUTF8StringEncoding]);
+    NSString *addr = _address != nil ? _address : [QNResolver systemDnsServer];
+    if (addr != nil && isV6(addr)) {
+        return query_ip_v6(&res, [domain.domain cStringUsingEncoding:NSUTF8StringEncoding]);
+    }
+    return nil;
 }
 
 + (instancetype)systemResolver {
     return [[QNResolver alloc] initWithAddres:nil];
+}
+
++ (NSString *)systemDnsServer {
+    struct __res_state res;
+    int r = res_ninit(&res);
+    if (r != 0) {
+        return nil;
+    }
+
+    union res_sockaddr_union server[MAXNS] = {0};
+    r = res_getservers(&res, server, MAXNS);
+    res_ndestroy(&res);
+    if (r <= 0) {
+        return nil;
+    }
+
+    int family = server[0].sin.sin_family;
+    char buf[64] = {0};
+    const void *addr;
+    if (family == AF_INET6) {
+        addr = &server[0].sin6.sin6_addr;
+    } else {
+        addr = &server[0].sin.sin_addr;
+    }
+    const char *p = inet_ntop(family, addr, buf, sizeof(buf));
+    if (p == NULL) {
+        return nil;
+    }
+    return [NSString stringWithUTF8String:p];
 }
 
 @end

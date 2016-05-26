@@ -49,10 +49,10 @@
     QNNetworkInfo *info = [[QNNetworkInfo alloc] init:kQNMOBILE provider:kQNISP_CNC];
     NSArray *r = [hosts query:[[QNDomain alloc] init:@"qiniu.com"] networkInfo:info];
     XCTAssertTrue(r.count == 1, @"PASS");
-    XCTAssertEqual(@"4.4.4.4", r[0]);
+    XCTAssertEqualObjects(@"4.4.4.4", r[0]);
     r = [hosts query:[[QNDomain alloc] init:@"qiniu.com"] networkInfo:[QNNetworkInfo normal]];
     XCTAssertTrue(r.count == 1, @"PASS");
-    XCTAssertEqual(@"3.3.3.3", r[0]);
+    XCTAssertEqualObjects(@"3.3.3.3", r[0]);
 }
 
 @end

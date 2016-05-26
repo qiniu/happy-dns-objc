@@ -12,6 +12,7 @@
 #import "QNDes.h"
 #import "QNDomain.h"
 #import "QNHex.h"
+#import "QNIP.h"
 #import "QNRecord.h"
 
 const int kQN_ENCRYPT_FAILED = -10001;
@@ -35,7 +36,7 @@ const int kQN_DECRYPT_FAILED = -10002;
                        key:(NSString *)key
                     server:(NSString *)server {
     if (self = [super init]) {
-        _server = server;
+        _server = [QNIP adaptiveIp:server];
         _userId = userId;
         _des = [[QNDes alloc] init:[key dataUsingEncoding:NSUTF8StringEncoding]];
     }
@@ -72,7 +73,7 @@ const int kQN_DECRYPT_FAILED = -10002;
         }
         return nil;
     }
-    NSString *url = [NSString stringWithFormat:@"http://%@/d?ttl=1&dn=%@&id=%@", _server, encrypt, _userId];
+    NSString *url = [NSString stringWithFormat:@"http://%@/d?ttl=1&dn=%@&id=%@", [QNIP ipHost:_server], encrypt, _userId];
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
     NSHTTPURLResponse *response = nil;
     NSError *httpError = nil;

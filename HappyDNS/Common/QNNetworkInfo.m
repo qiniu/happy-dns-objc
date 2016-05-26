@@ -12,6 +12,7 @@
 #include <sys/socket.h>
 #include <unistd.h>
 
+#import "QNIP.h"
 #import "QNNetworkInfo.h"
 
 const int kQNNO_NETWORK = -1;
@@ -29,45 +30,6 @@ const int kQNISP_OTHER = 999;
 
 static char previousIp[32] = {0};
 static NSString *lock = @"";
-static int localIp(char *buf) {
-    int err;
-    int sock;
-
-    // Create the UDP socket itself.
-
-    err = 0;
-    sock = socket(AF_INET, SOCK_DGRAM, 0);
-    if (sock < 0) {
-        err = errno;
-        return err;
-    }
-
-    struct sockaddr_in addr;
-
-    memset(&addr, 0, sizeof(addr));
-
-    inet_pton(AF_INET, "8.8.8.8", &addr.sin_addr);
-    addr.sin_family = AF_INET;
-    addr.sin_port = htons(53);
-    err = connect(sock, (const struct sockaddr *)&addr, sizeof(addr));
-
-    if (err < 0) {
-        err = errno;
-    }
-
-    struct sockaddr_in localAddress;
-    socklen_t addressLength = sizeof(struct sockaddr_in);
-    err = getsockname(sock, (struct sockaddr *)&localAddress, &addressLength);
-    close(sock);
-    if (err != 0) {
-        return err;
-    }
-    const char *ip = inet_ntop(AF_INET, &(localAddress.sin_addr), buf, 32);
-    if (ip == nil) {
-        return -1;
-    }
-    return 0;
-}
 
 @implementation QNNetworkInfo
 
@@ -104,12 +66,12 @@ static int localIp(char *buf) {
 + (BOOL)isNetworkChanged {
     @synchronized(lock) {
         char local[32] = {0};
-        int err = localIp(local);
+        int err = qn_localIp(local, sizeof(local));
         if (err != 0) {
             return YES;
         }
-        if (memcmp(previousIp, local, 32) != 0) {
-            memcpy(previousIp, local, 32);
+        if (memcmp(previousIp, local, sizeof(local)) != 0) {
+            memcpy(previousIp, local, sizeof(local));
             return YES;
         }
         return NO;
@@ -117,11 +79,6 @@ static int localIp(char *buf) {
 }
 
 + (NSString *)getIp {
-    char buf[32] = {0};
-    int err = localIp(buf);
-    if (err != 0) {
-        return nil;
-    }
-    return [NSString stringWithUTF8String:buf];
+    return [QNIP local];
 }
 @end
