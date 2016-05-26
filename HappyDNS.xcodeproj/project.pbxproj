@@ -807,7 +807,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				OTHER_LDFLAGS = (
 					"-ObjC",
-					"-lresolve",
+					"-lresolv",
 				);
 				PRODUCT_NAME = HappyDNS;
 				SDKROOT = iphoneos;
@@ -821,7 +821,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				OTHER_LDFLAGS = (
 					"-ObjC",
-					"-lresolve",
+					"-lresolv",
 				);
 				PRODUCT_NAME = HappyDNS;
 				SDKROOT = iphoneos;
