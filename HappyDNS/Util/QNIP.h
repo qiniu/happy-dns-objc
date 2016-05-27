@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-int qn_localIp(char *buf, int buf_size);
-void qn_nat64(char *buf, int buf_size, uint32_t ipv4addr);
+extern int qn_localIp(char *buf, int buf_size);
+extern void qn_nat64(char *buf, int buf_size, uint32_t ipv4addr);
 
 @interface QNIP : NSObject
 

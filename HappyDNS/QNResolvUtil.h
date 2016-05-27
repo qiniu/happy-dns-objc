@@ -9,8 +9,10 @@
 #ifndef QNResolv_h
 #define QNResolv_h
 
-BOOL isV6(NSString *address);
+#include <resolv.h>
 
-int setup_dns_server(res_state res, NSString *dns_server);
+extern BOOL isV6(NSString *address);
+
+extern int setup_dns_server(res_state res, NSString *dns_server);
 
 #endif /* QNResolv_h */

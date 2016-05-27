@@ -191,7 +191,7 @@ int qn_localIp(char *buf, int buf_size) {
     struct in_addr s = {0};
     inet_pton(AF_INET, ip.UTF8String, (void *)&s);
     char buf[64] = {0};
-    qn_nat64(buf, sizeof(buf), s.s_addr);
+    qn_nat64(buf, sizeof(buf), (uint32_t)s.s_addr);
     return [NSString stringWithUTF8String:buf];
 }
 
