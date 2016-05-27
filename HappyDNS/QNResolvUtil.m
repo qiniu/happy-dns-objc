@@ -29,7 +29,8 @@ BOOL isV6(NSString *address) {
     return strchr(address.UTF8String, ':') != NULL;
 }
 
-int setup_dns_server(res_state res, NSString *dns_server) {
+int setup_dns_server(void *_res_state, NSString *dns_server) {
+    res_state res = (res_state)_res_state;
     int r = res_ninit(res);
     if (r != 0) {
         return r;
