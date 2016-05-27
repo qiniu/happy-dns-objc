@@ -22,10 +22,10 @@
 #import <UIKit/UIKit.h>
 #endif
 
-void qn_nat64(char *buf, int buf_size, const char *ipv4addr) {
+void qn_nat64(char *buf, int buf_size, uint32_t ipv4addr) {
     bzero(buf, buf_size);
     //nat 4 to ipv6
-    const char *p = ipv4addr;
+    const char *p = (const char *)&ipv4addr;
     const char prefix[] = "64:ff9b::";
     memcpy(buf, prefix, sizeof(prefix));
     char *phex = buf + sizeof(prefix) - 1;
@@ -185,6 +185,14 @@ int qn_localIp(char *buf, int buf_size) {
         return [NSString stringWithFormat:@"[%@]", ip];
     }
     return ip;
+}
+
++ (NSString *)nat64:(NSString *)ip {
+    struct in_addr s = {0};
+    inet_pton(AF_INET, ip.UTF8String, (void *)&s);
+    char buf[64] = {0};
+    qn_nat64(buf, sizeof(buf), s.s_addr);
+    return [NSString stringWithUTF8String:buf];
 }
 
 @end

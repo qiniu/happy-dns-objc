@@ -61,6 +61,15 @@
     }
 }
 
+- (void)testNat64 {
+    NSString* ip = @"119.29.29.29";
+    NSString* ip2 = [QNIP nat64:ip];
+    NSLog(@"ip %@", ip2);
+    XCTAssertNotNil(ip2, @"pass");
+
+    XCTAssertEqualObjects(ip2, @"64:ff9b::771d:1d1d", @"pass");
+}
+
 - (void)testLocalIP {
     NSString* ip = [QNIP local];
     NSLog(@"ip %@", ip);
