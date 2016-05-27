@@ -35,7 +35,7 @@ int setup_dns_server(void *_res_state, NSString *dns_server) {
     if (r != 0) {
         return r;
     }
-    if (dns_server == NULL) {
+    if (dns_server == nil) {
         return 0;
     }
 
