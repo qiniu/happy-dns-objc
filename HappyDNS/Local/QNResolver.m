@@ -21,6 +21,8 @@
 #import "QNRecord.h"
 #import "QNResolver.h"
 
+#import "QNResolvUtil.h"
+
 #if __IPHONE_OS_VERSION_MIN_REQUIRED
 #import <MobileCoreServices/MobileCoreServices.h>
 #import <UIKit/UIKit.h>
@@ -29,10 +31,6 @@
 @interface QNResolver ()
 @property (nonatomic) NSString *address;
 @end
-
-static BOOL isV6(NSString *address) {
-    return strchr(address.UTF8String, ':') != NULL;
-}
 
 static NSArray *query_ip_v4(res_state res, const char *host) {
     u_char answer[1500];
@@ -77,59 +75,6 @@ static NSArray *query_ip_v4(res_state res, const char *host) {
     }
     res_ndestroy(res);
     return array;
-}
-
-static int setup_dns_server(res_state res, NSString *dns_server) {
-    int r = res_ninit(res);
-    if (r != 0) {
-        return r;
-    }
-    if (dns_server == NULL) {
-        return 0;
-    }
-
-    union res_sockaddr_union server = {0};
-
-    struct addrinfo hints = {0}, *ai = NULL;
-    hints.ai_family = AF_UNSPEC;
-    hints.ai_socktype = SOCK_STREAM;
-    int ret = getaddrinfo(dns_server.UTF8String, "53", &hints, &ai);
-    if (ret != 0) {
-        return -1;
-    }
-    int family = ai->ai_family;
-
-    if (family == AF_INET6) {
-        ((struct sockaddr_in6 *)ai->ai_addr)->sin6_port = htons(53);
-        server.sin6 = *((struct sockaddr_in6 *)ai->ai_addr);
-    } else {
-        server.sin = *((struct sockaddr_in *)ai->ai_addr);
-    }
-
-#ifdef __IPHONE_OS_VERSION_MAX_ALLOWED
-    float sysVersion = [[[UIDevice currentDevice] systemVersion] floatValue];
-    if (sysVersion < 9.0 && sysVersion >= 8.0 && family == AF_INET) {
-        if ([QNIP isV6]) {
-            freeaddrinfo(ai);
-            ai = NULL;
-            bzero(&hints, 0);
-            hints.ai_family = AF_UNSPEC;
-            hints.ai_socktype = SOCK_STREAM;
-            char buf[64] = {0};
-            qn_nat64(buf, sizeof(buf), dns_server.UTF8String);
-            int ret = getaddrinfo(buf, "53", &hints, &ai);
-            if (ret != 0) {
-                return -1;
-            }
-            ((struct sockaddr_in6 *)ai->ai_addr)->sin6_port = htons(53);
-            server.sin6 = *((struct sockaddr_in6 *)ai->ai_addr);
-        }
-    }
-#endif
-
-    freeaddrinfo(ai);
-    res_setservers(res, &server, 1);
-    return 0;
 }
 
 @implementation QNResolver
