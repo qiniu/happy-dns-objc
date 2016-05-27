@@ -41,8 +41,8 @@
     [self template:nil];
 }
 
-- (void)test114 {
-    [self template:@"114.114.115.115"];
+- (void)testDnspod {
+    [self template:@"119.29.29.29"];
 }
 
 @end

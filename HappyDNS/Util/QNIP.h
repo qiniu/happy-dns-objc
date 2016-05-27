@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 int qn_localIp(char *buf, int buf_size);
+void qn_nat64(char *buf, int buf_size, uint32_t ipv4addr);
 
 @interface QNIP : NSObject
 
@@ -21,4 +22,5 @@ int qn_localIp(char *buf, int buf_size);
 // ipv6 in url like http://[::xxx]/
 + (NSString *)ipHost:(NSString *)ip;
 
++ (NSString *)nat64:(NSString *)ip;
 @end

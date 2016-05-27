@@ -14,15 +14,43 @@
 #include <netinet/in.h>
 #include <netinet/tcp.h>
 
+#import "QNHex.h"
 #import "QNIP.h"
 
-static NSString *lock = @"";
-int qn_localIp(char *buf, int buf_size) {
+#if __IPHONE_OS_VERSION_MIN_REQUIRED
+#import <MobileCoreServices/MobileCoreServices.h>
+#import <UIKit/UIKit.h>
+#endif
+
+void qn_nat64(char *buf, int buf_size, uint32_t ipv4addr) {
+    bzero(buf, buf_size);
+    //nat 4 to ipv6
+    const char *p = (const char *)&ipv4addr;
+    const char prefix[] = "64:ff9b::";
+    memcpy(buf, prefix, sizeof(prefix));
+    char *phex = buf + sizeof(prefix) - 1;
+    qn_encodeHexData(phex, p, 2, false);
+    if (*phex == '0') {
+        memmove(phex, phex + 1, 3);
+        phex += 3;
+    } else {
+        phex += 4;
+    }
+    *phex = ':';
+    phex++;
+    qn_encodeHexData(phex, p + 2, 2, false);
+    if (*phex == '0') {
+        memmove(phex, phex + 1, 3);
+        phex[3] = 0;
+    }
+}
+
+int qn_local_ip_internal(char *buf, int buf_size, const char *t_ip) {
     struct addrinfo hints = {0}, *ai;
     int err = 0;
     hints.ai_family = AF_UNSPEC;
     hints.ai_socktype = SOCK_DGRAM;
-    int ret = getaddrinfo("8.8.8.8", "53", &hints, &ai);
+    int ret = getaddrinfo(t_ip, "53", &hints, &ai);
     if (ret != 0) {
         err = errno;
         return err;
@@ -42,10 +70,13 @@ int qn_localIp(char *buf, int buf_size) {
     }
 
     err = connect(sock, ai->ai_addr, ai->ai_addrlen);
-    if (err < 0) {
-        err = errno;
-    }
     freeaddrinfo(ai);
+    if (err < 0) {
+        close(sock);
+        err = errno;
+        return err;
+    }
+
     uint32_t localAddress[16] = {0};
 
     socklen_t addressLength = sizeof(localAddress);
@@ -67,6 +98,19 @@ int qn_localIp(char *buf, int buf_size) {
     return 0;
 }
 
+int qn_localIp(char *buf, int buf_size) {
+    int ret = qn_local_ip_internal(buf, buf_size, "8.8.8.8");
+    if (ret != 0) {
+#ifdef __IPHONE_OS_VERSION_MAX_ALLOWED
+        float sysVersion = [[[UIDevice currentDevice] systemVersion] floatValue];
+        if (sysVersion < 9.0 && sysVersion >= 8.0) {
+            ret = qn_local_ip_internal(buf, buf_size, "64:ff9b::808:808");
+        }
+#endif
+    }
+    return ret;
+}
+
 @implementation QNIP
 
 + (BOOL)isV6 {
@@ -79,7 +123,18 @@ int qn_localIp(char *buf, int buf_size) {
     }
     int family = ai->ai_family;
     freeaddrinfo(ai);
-    return family == AF_INET6;
+    BOOL result = family == AF_INET6;
+#ifdef __IPHONE_OS_VERSION_MAX_ALLOWED
+    float sysVersion = [[[UIDevice currentDevice] systemVersion] floatValue];
+    if (sysVersion < 9.0 && sysVersion >= 8.0 && !ret) {
+        char buf[64] = {0};
+        ret = qn_local_ip_internal(buf, sizeof(buf), "64:ff9b::808:808");
+        if (strchr(buf, ':') != NULL) {
+            result = YES;
+        }
+    }
+#endif
+    return result;
 }
 
 + (NSString *)adaptiveIp:(NSString *)ipv4 {
@@ -100,14 +155,24 @@ int qn_localIp(char *buf, int buf_size) {
     }
     char buf[32] = {0};
     const char *ip = inet_ntop(family, addr, buf, sizeof(buf));
+#ifdef __IPHONE_OS_VERSION_MAX_ALLOWED
+    float sysVersion = [[[UIDevice currentDevice] systemVersion] floatValue];
+    if (sysVersion < 9.0 && sysVersion >= 8.0 && family == AF_INET) {
+        char buf2[64] = {0};
+        ret = qn_local_ip_internal(buf2, sizeof(buf2), "64:ff9b::808:808");
+        if (strchr(buf2, ':') != NULL) {
+            qn_nat64(buf, sizeof(buf), addr);
+        }
+    }
+#endif
 
     freeaddrinfo(ai);
     return [NSString stringWithUTF8String:ip];
 }
 
 + (NSString *)local {
-    char buf[32] = {0};
-    int err = qn_localIp(buf, 32);
+    char buf[64] = {0};
+    int err = qn_localIp(buf, sizeof(buf));
     if (err != 0) {
         return nil;
     }
@@ -120,6 +185,14 @@ int qn_localIp(char *buf, int buf_size) {
         return [NSString stringWithFormat:@"[%@]", ip];
     }
     return ip;
+}
+
++ (NSString *)nat64:(NSString *)ip {
+    struct in_addr s = {0};
+    inet_pton(AF_INET, ip.UTF8String, (void *)&s);
+    char buf[64] = {0};
+    qn_nat64(buf, sizeof(buf), s.s_addr);
+    return [NSString stringWithUTF8String:buf];
 }
 
 @end

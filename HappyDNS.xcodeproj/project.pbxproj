@@ -60,6 +60,9 @@
 		DFDD2A771CF58887006ECFCE /* QNIP.m in Sources */ = {isa = PBXBuildFile; fileRef = DFDD2A741CF58887006ECFCE /* QNIP.m */; };
 		DFDD2A7B1CF65906006ECFCE /* IPTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DFDD2A7A1CF65906006ECFCE /* IPTest.m */; };
 		DFDD2A7C1CF65906006ECFCE /* IPTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DFDD2A7A1CF65906006ECFCE /* IPTest.m */; };
+		DFF427FA1CF8C3E300B0BDB9 /* QNResolvUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = DFF427F91CF8C3E300B0BDB9 /* QNResolvUtil.h */; };
+		DFF427FC1CF8C4D700B0BDB9 /* QNResolvUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = DFF427FB1CF8C4D700B0BDB9 /* QNResolvUtil.m */; };
+		DFF427FD1CF8C4D700B0BDB9 /* QNResolvUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = DFF427FB1CF8C4D700B0BDB9 /* QNResolvUtil.m */; };
 		DFFC8AA31B6BBEB400EC938D /* QNHex.h in Headers */ = {isa = PBXBuildFile; fileRef = DFFC8AA11B6BBEB400EC938D /* QNHex.h */; };
 		DFFC8AA41B6BBEB400EC938D /* QNHex.m in Sources */ = {isa = PBXBuildFile; fileRef = DFFC8AA21B6BBEB400EC938D /* QNHex.m */; };
 		DFFC8AA51B6BBEB400EC938D /* QNHex.m in Sources */ = {isa = PBXBuildFile; fileRef = DFFC8AA21B6BBEB400EC938D /* QNHex.m */; };
@@ -152,6 +155,8 @@
 		DFDD2A731CF58887006ECFCE /* QNIP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QNIP.h; path = Util/QNIP.h; sourceTree = "<group>"; };
 		DFDD2A741CF58887006ECFCE /* QNIP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QNIP.m; path = Util/QNIP.m; sourceTree = "<group>"; };
 		DFDD2A7A1CF65906006ECFCE /* IPTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPTest.m; sourceTree = "<group>"; };
+		DFF427F91CF8C3E300B0BDB9 /* QNResolvUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QNResolvUtil.h; sourceTree = "<group>"; };
+		DFF427FB1CF8C4D700B0BDB9 /* QNResolvUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QNResolvUtil.m; sourceTree = "<group>"; };
 		DFFC8AA11B6BBEB400EC938D /* QNHex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QNHex.h; path = Util/QNHex.h; sourceTree = "<group>"; };
 		DFFC8AA21B6BBEB400EC938D /* QNHex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QNHex.m; path = Util/QNHex.m; sourceTree = "<group>"; };
 		DFFC8AA61B6BD47100EC938D /* DnspodEnterpriseTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DnspodEnterpriseTest.m; sourceTree = "<group>"; };
@@ -309,6 +314,8 @@
 				DF5AC8E01B575E2800728D30 /* QNHijackingDetectWrapper.m */,
 				DF2B76F31C3C1D5300643678 /* QNTxtResolver.h */,
 				DF2B76F41C3C1D5300643678 /* QNTxtResolver.m */,
+				DFF427F91CF8C3E300B0BDB9 /* QNResolvUtil.h */,
+				DFF427FB1CF8C4D700B0BDB9 /* QNResolvUtil.m */,
 			);
 			name = Local;
 			sourceTree = "<group>";
@@ -359,6 +366,7 @@
 				DF801F7D1B396E7600866FDE /* QNDnspodFree.h in Headers */,
 				DFFC8AAB1B6BD73900EC938D /* QNDes.h in Headers */,
 				DFDD2A751CF58887006ECFCE /* QNIP.h in Headers */,
+				DFF427FA1CF8C3E300B0BDB9 /* QNResolvUtil.h in Headers */,
 				DFFC8AB01B6BD77000EC938D /* QNDnspodEnterprise.h in Headers */,
 				DF801F8C1B39743200866FDE /* QNDomain.h in Headers */,
 				DFFC8AA31B6BBEB400EC938D /* QNHex.h in Headers */,
@@ -583,6 +591,7 @@
 				DFFC8AA41B6BBEB400EC938D /* QNHex.m in Sources */,
 				DF801F8D1B39743200866FDE /* QNDomain.m in Sources */,
 				DF801F831B396E9A00866FDE /* QNHosts.m in Sources */,
+				DFF427FC1CF8C4D700B0BDB9 /* QNResolvUtil.m in Sources */,
 				DF5AC8E21B575E2800728D30 /* QNHijackingDetectWrapper.m in Sources */,
 				DF0A03211B3BABBD00E3778C /* QNNetworkInfo.m in Sources */,
 			);
@@ -620,6 +629,7 @@
 				DFFC8AA51B6BBEB400EC938D /* QNHex.m in Sources */,
 				DF15525D1B3B9316008D3E7C /* QNHosts.m in Sources */,
 				DF15525F1B3B9316008D3E7C /* QNDnspodFree.m in Sources */,
+				DFF427FD1CF8C4D700B0BDB9 /* QNResolvUtil.m in Sources */,
 				DF5AC8E31B575E2800728D30 /* QNHijackingDetectWrapper.m in Sources */,
 				DF0A03221B3BABBD00E3778C /* QNNetworkInfo.m in Sources */,
 			);

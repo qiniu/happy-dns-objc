@@ -8,7 +8,7 @@
 
 #import "QNHosts.h"
 #import "QNDomain.h"
-#import "QNIP.h"
+//#import "QNIP.h"
 #import "QNNetworkInfo.h"
 
 @interface QNHosts ()
@@ -36,7 +36,7 @@ static NSArray *filter(NSArray *input, int provider) {
     NSMutableArray *normal = [[NSMutableArray alloc] initWithCapacity:input.count];
     NSMutableArray *special = [[NSMutableArray alloc] init];
     for (QNHostsValue *v in input) {
-        NSString *ip = [QNIP adaptiveIp:v.ip];
+        NSString *ip = v.ip;
         if (v.provider == kQNISP_GENERAL) {
             [normal addObject:ip];
         }
