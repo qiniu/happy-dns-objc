@@ -28,7 +28,37 @@
 
 - (void)testAdaptiveIP {
     NSString* ip = @"1.2.3.4";
-    XCTAssertEqualObjects(ip, [QNIP adaptiveIp:ip], @"pass");
+    NSString* ip2 = [QNIP adaptiveIp:ip];
+    XCTAssertNotNil(ip2, @"pass");
+    if (![QNIP isV6]) {
+        XCTAssertEqualObjects(ip2, ip, @"pass");
+    } else {
+        XCTAssertEqualObjects(ip2, @"64:ff9b::102:304", @"pass");
+    }
+}
+
+- (void)testAdaptiveIP2 {
+    NSString* ip = @"8.8.8.8";
+    NSString* ip2 = [QNIP adaptiveIp:ip];
+    NSLog(@"ip %@", ip2);
+    XCTAssertNotNil(ip2, @"pass");
+    if (![QNIP isV6]) {
+        XCTAssertEqualObjects(ip2, ip, @"pass");
+    } else {
+        XCTAssertEqualObjects(ip2, @"64:ff9b::808:808", @"pass");
+    }
+}
+
+- (void)testAdaptiveIP3 {
+    NSString* ip = @"119.29.29.29";
+    NSString* ip2 = [QNIP adaptiveIp:ip];
+    NSLog(@"ip %@", ip2);
+    XCTAssertNotNil(ip2, @"pass");
+    if (![QNIP isV6]) {
+        XCTAssertEqualObjects(ip2, ip, @"pass");
+    } else {
+        XCTAssertEqualObjects(ip2, @"64:ff9b::771d:1d1d", @"pass");
+    }
 }
 
 - (void)testLocalIP {

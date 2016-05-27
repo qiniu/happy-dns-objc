@@ -64,10 +64,6 @@
     [self template:nil];
 }
 
-- (void)testLocalV6 {
-    [self templateV6:nil];
-}
-
 //    http://www.alidns.com/
 //- (void)testAli {
 //	[self template:@"223.5.5.5"];
@@ -76,10 +72,6 @@
 //    https://www.114dns.com/
 - (void)test114 {
     [self template:@"114.114.115.115"];
-}
-
-- (void)test114V6 {
-    [self templateV6:@"114.114.115.115"];
 }
 
 //    http://dudns.baidu.com/
@@ -94,10 +86,6 @@
 
 - (void)testGoogle {
     [self template:@"8.8.4.4"];
-}
-
-- (void)testGoogleV6 {
-    [self templateV6:@"8.8.4.4"];
 }
 
 //    http://www.dnspai.com/

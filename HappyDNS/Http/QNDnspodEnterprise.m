@@ -36,7 +36,7 @@ const int kQN_DECRYPT_FAILED = -10002;
                        key:(NSString *)key
                     server:(NSString *)server {
     if (self = [super init]) {
-        _server = [QNIP adaptiveIp:server];
+        _server = server;
         _userId = userId;
         _des = [[QNDes alloc] init:[key dataUsingEncoding:NSUTF8StringEncoding]];
     }

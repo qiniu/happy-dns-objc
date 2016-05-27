@@ -18,7 +18,8 @@
 }
 - (instancetype)initWithServer:(NSString *)server {
     if (self = [super init]) {
-        _server = [QNIP adaptiveIp:server];
+        //        _server = [QNIP adaptiveIp:server];
+        _server = server;
     }
     return self;
 }

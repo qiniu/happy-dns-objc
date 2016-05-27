@@ -9,10 +9,10 @@
 #import "QNDnsManager.h"
 #import "QNDomain.h"
 #import "QNHosts.h"
+#import "QNIP.h"
 #import "QNNetworkInfo.h"
 #import "QNRecord.h"
 #import "QNResolverDelegate.h"
-#import "QNIP.h"
 
 const int kQNDomainHijackingCode = -7001;
 const int kQNDomainNotOwnCode = -7002;
