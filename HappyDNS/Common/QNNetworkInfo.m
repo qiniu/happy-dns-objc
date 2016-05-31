@@ -28,7 +28,9 @@ const int kQNISP_CMCC = 3;
 const int kQNISP_YIDONG = kQNISP_CMCC;
 const int kQNISP_OTHER = 999;
 
-static char previousIp[32] = {0};
+#define IPLength 64
+
+static char previousIp[IPLength] = {0};
 static NSString *lock = @"";
 
 @implementation QNNetworkInfo
@@ -65,7 +67,7 @@ static NSString *lock = @"";
 
 + (BOOL)isNetworkChanged {
     @synchronized(lock) {
-        char local[32] = {0};
+        char local[IPLength] = {0};
         int err = qn_localIp(local, sizeof(local));
         if (err != 0) {
             return YES;

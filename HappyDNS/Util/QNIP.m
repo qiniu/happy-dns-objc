@@ -153,7 +153,7 @@ int qn_localIp(char *buf, int buf_size) {
     } else {
         addr = &((struct sockaddr_in *)ai->ai_addr)->sin_addr;
     }
-    char buf[32] = {0};
+    char buf[64] = {0};
     const char *ip = inet_ntop(family, addr, buf, sizeof(buf));
 #ifdef __IPHONE_OS_VERSION_MAX_ALLOWED
     float sysVersion = [[[UIDevice currentDevice] systemVersion] floatValue];
@@ -195,4 +195,20 @@ int qn_localIp(char *buf, int buf_size) {
     return [NSString stringWithUTF8String:buf];
 }
 
++ (BOOL)isIpV6FullySupported {
+#if defined(__IPHONE_OS_VERSION_MAX_ALLOWED)
+    float sysVersion = [[[UIDevice currentDevice] systemVersion] floatValue];
+    if (sysVersion < 9.0) {
+        return NO;
+    }
+#else
+    NSOperatingSystemVersion sysVersion = [[NSProcessInfo processInfo] operatingSystemVersion];
+    if (sysVersion.majorVersion < 10) {
+        return NO;
+    } else if (sysVersion.majorVersion == 10) {
+        return sysVersion.minorVersion >= 11;
+    }
+#endif
+    return YES;
+}
 @end

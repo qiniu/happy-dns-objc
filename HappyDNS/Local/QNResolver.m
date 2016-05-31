@@ -58,7 +58,7 @@ static NSArray *query_ip_v4(res_state res, const char *host) {
         int ttl = ns_rr_ttl(rr);
         NSString *val;
         if (t == ns_t_a) {
-            const char *p = inet_ntop(AF_INET, ns_rr_rdata(rr), buf, 32);
+            const char *p = inet_ntop(AF_INET, ns_rr_rdata(rr), buf, sizeof(buf));
             val = [NSString stringWithUTF8String:p];
         } else if (t == ns_t_cname) {
             int x = ns_name_uncompress(answer, &(answer[len]), ns_rr_rdata(rr), cnameBuf, sizeof(cnameBuf));
