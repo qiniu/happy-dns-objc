@@ -55,8 +55,9 @@
 		DF801F871B396F5500866FDE /* QNResolverDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = DF801F851B396F5500866FDE /* QNResolverDelegate.h */; };
 		DF801F8C1B39743200866FDE /* QNDomain.h in Headers */ = {isa = PBXBuildFile; fileRef = DF801F8A1B39743200866FDE /* QNDomain.h */; };
 		DF801F8D1B39743200866FDE /* QNDomain.m in Sources */ = {isa = PBXBuildFile; fileRef = DF801F8B1B39743200866FDE /* QNDomain.m */; };
-		DF9050961CFD7E6D008B98C2 /* QNResolvUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = DF9050941CFD7E6D008B98C2 /* QNResolvUtil.m */; };
-		DF9050971CFD7E6D008B98C2 /* QNResolvUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = DF9050951CFD7E6D008B98C2 /* QNResolvUtil.h */; };
+		DF90509A1CFD888F008B98C2 /* QNResolvUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = DF9050981CFD888F008B98C2 /* QNResolvUtil.m */; };
+		DF90509B1CFD888F008B98C2 /* QNResolvUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = DF9050991CFD888F008B98C2 /* QNResolvUtil.h */; };
+		DF90509C1CFD88AA008B98C2 /* QNResolvUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = DF9050981CFD888F008B98C2 /* QNResolvUtil.m */; };
 		DFDD2A751CF58887006ECFCE /* QNIP.h in Headers */ = {isa = PBXBuildFile; fileRef = DFDD2A731CF58887006ECFCE /* QNIP.h */; };
 		DFDD2A761CF58887006ECFCE /* QNIP.m in Sources */ = {isa = PBXBuildFile; fileRef = DFDD2A741CF58887006ECFCE /* QNIP.m */; };
 		DFDD2A771CF58887006ECFCE /* QNIP.m in Sources */ = {isa = PBXBuildFile; fileRef = DFDD2A741CF58887006ECFCE /* QNIP.m */; };
@@ -151,8 +152,8 @@
 		DF801F8B1B39743200866FDE /* QNDomain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QNDomain.m; path = Common/QNDomain.m; sourceTree = "<group>"; };
 		DF801F951B3A4F4D00866FDE /* libHappyDNS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libHappyDNS.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF801F9F1B3A4F4D00866FDE /* HappyDNS_iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HappyDNS_iOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		DF9050941CFD7E6D008B98C2 /* QNResolvUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QNResolvUtil.m; path = Local/QNResolvUtil.m; sourceTree = "<group>"; };
-		DF9050951CFD7E6D008B98C2 /* QNResolvUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QNResolvUtil.h; path = Local/QNResolvUtil.h; sourceTree = "<group>"; };
+		DF9050981CFD888F008B98C2 /* QNResolvUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QNResolvUtil.m; path = Local/QNResolvUtil.m; sourceTree = "<group>"; };
+		DF9050991CFD888F008B98C2 /* QNResolvUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QNResolvUtil.h; path = Local/QNResolvUtil.h; sourceTree = "<group>"; };
 		DFDD2A731CF58887006ECFCE /* QNIP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QNIP.h; path = Util/QNIP.h; sourceTree = "<group>"; };
 		DFDD2A741CF58887006ECFCE /* QNIP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QNIP.m; path = Util/QNIP.m; sourceTree = "<group>"; };
 		DFDD2A7A1CF65906006ECFCE /* IPTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPTest.m; sourceTree = "<group>"; };
@@ -305,8 +306,8 @@
 		DF801F5A1B3944A900866FDE /* Local */ = {
 			isa = PBXGroup;
 			children = (
-				DF9050941CFD7E6D008B98C2 /* QNResolvUtil.m */,
-				DF9050951CFD7E6D008B98C2 /* QNResolvUtil.h */,
+				DF9050981CFD888F008B98C2 /* QNResolvUtil.m */,
+				DF9050991CFD888F008B98C2 /* QNResolvUtil.h */,
 				DF801F711B396E3C00866FDE /* QNResolver.h */,
 				DF801F721B396E3C00866FDE /* QNResolver.m */,
 				DF801F801B396E9A00866FDE /* QNHosts.h */,
@@ -367,7 +368,7 @@
 				DFDD2A751CF58887006ECFCE /* QNIP.h in Headers */,
 				DFFC8AB01B6BD77000EC938D /* QNDnspodEnterprise.h in Headers */,
 				DF801F8C1B39743200866FDE /* QNDomain.h in Headers */,
-				DF9050971CFD7E6D008B98C2 /* QNResolvUtil.h in Headers */,
+				DF90509B1CFD888F008B98C2 /* QNResolvUtil.h in Headers */,
 				DFFC8AA31B6BBEB400EC938D /* QNHex.h in Headers */,
 				DF1DA8941B3BDF1800A88CB6 /* HappyDNS.h in Headers */,
 				DF801F821B396E9A00866FDE /* QNHosts.h in Headers */,
@@ -590,7 +591,7 @@
 				DFFC8AA41B6BBEB400EC938D /* QNHex.m in Sources */,
 				DF801F8D1B39743200866FDE /* QNDomain.m in Sources */,
 				DF801F831B396E9A00866FDE /* QNHosts.m in Sources */,
-				DF9050961CFD7E6D008B98C2 /* QNResolvUtil.m in Sources */,
+				DF90509A1CFD888F008B98C2 /* QNResolvUtil.m in Sources */,
 				DF5AC8E21B575E2800728D30 /* QNHijackingDetectWrapper.m in Sources */,
 				DF0A03211B3BABBD00E3778C /* QNNetworkInfo.m in Sources */,
 			);
@@ -617,6 +618,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF90509C1CFD88AA008B98C2 /* QNResolvUtil.m in Sources */,
 				DF1552541B3B9316008D3E7C /* QNDnsManager.m in Sources */,
 				DFDD2A771CF58887006ECFCE /* QNIP.m in Sources */,
 				DFFC8AB21B6BD77000EC938D /* QNDnspodEnterprise.m in Sources */,
