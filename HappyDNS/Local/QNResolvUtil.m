@@ -58,8 +58,7 @@ int setup_dns_server(void *_res_state, NSString *dns_server) {
     }
 
 #ifdef __IPHONE_OS_VERSION_MAX_ALLOWED
-    float sysVersion = [[[UIDevice currentDevice] systemVersion] floatValue];
-    if (sysVersion < 9.0 && sysVersion >= 8.0 && family == AF_INET) {
+    if (![QNIP isIpV6FullySupported] && family == AF_INET) {
         if ([QNIP isV6]) {
             freeaddrinfo(ai);
             ai = NULL;
@@ -67,7 +66,7 @@ int setup_dns_server(void *_res_state, NSString *dns_server) {
             hints.ai_family = AF_UNSPEC;
             hints.ai_socktype = SOCK_STREAM;
             char buf[64] = {0};
-            qn_nat64(buf, sizeof(buf), dns_server.UTF8String);
+            qn_nat64(buf, sizeof(buf), (uint32_t)server.sin.sin_addr.s_addr);
             int ret = getaddrinfo(buf, "53", &hints, &ai);
             if (ret != 0) {
                 return -1;
