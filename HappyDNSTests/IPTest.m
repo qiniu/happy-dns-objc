@@ -61,18 +61,6 @@
     }
 }
 
-- (void)testAdaptiveIP4 {
-    NSString* ip = @"119.29.29.29";
-    NSString* ip2 = [QNIP adaptiveIp:ip];
-    NSLog(@"ip %@", ip2);
-    XCTAssertNotNil(ip2, @"pass");
-    if (![QNIP isV6]) {
-        XCTAssertEqualObjects(ip2, ip, @"pass");
-    } else {
-        XCTAssertEqualObjects(ip2, @"64:ff9b::771d:1d1d", @"pass");
-    }
-}
-
 - (void)testNat64 {
     NSString* ip = @"119.29.29.29";
     NSString* ip2 = [QNIP nat64:ip];
