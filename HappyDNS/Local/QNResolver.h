@@ -11,7 +11,11 @@
 
 @interface QNResolver : NSObject <QNResolverDelegate>
 - (NSArray *)query:(QNDomain *)domain networkInfo:(QNNetworkInfo *)netInfo error:(NSError *__autoreleasing *)error;
-- (instancetype)initWithAddres:(NSString *)address;
+
+// @deprecated typo
+- (instancetype)initWithAddres:(NSString *)address DEPRECATED_ATTRIBUTE;
+
+- (instancetype)initWithAddress:(NSString *)address;
 + (instancetype)systemResolver;
 + (NSString *)systemDnsServer;
 @end

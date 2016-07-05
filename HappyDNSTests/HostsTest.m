@@ -35,9 +35,13 @@
     QNNetworkInfo *info = [QNNetworkInfo normal];
     NSArray *array = [hosts query:[[QNDomain alloc] init:@"hello.qiniu.com"] networkInfo:info];
     XCTAssert(array.count == 2, @"Pass");
-    XCTAssert([@"1.1.1.1" isEqual:array[0]] || [@"2.2.2.2" isEqual:array[0]], @"PASS");
-    XCTAssert([@"1.1.1.1" isEqual:array[1]] || [@"2.2.2.2" isEqual:array[1]], @"PASS");
-    XCTAssertNotEqualObjects(array[0], array[1], @"PASS");
+    XCTAssert([@"2.2.2.2" isEqual:array[0]], @"PASS");
+    XCTAssert([@"1.1.1.1" isEqual:array[1]], @"PASS");
+
+    NSArray *array2 = [hosts query:[[QNDomain alloc] init:@"hello.qiniu.com"] networkInfo:info];
+    XCTAssert(array2.count == 2, @"Pass");
+    XCTAssert([@"1.1.1.1" isEqual:array2[0]], @"PASS");
+    XCTAssert([@"2.2.2.2" isEqual:array2[1]], @"PASS");
 }
 
 - (void)testCnc {

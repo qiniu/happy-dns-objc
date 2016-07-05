@@ -79,6 +79,10 @@ static NSArray *query_ip_v4(res_state res, const char *host) {
 
 @implementation QNResolver
 - (instancetype)initWithAddres:(NSString *)address {
+    return [self initWithAddress:address];
+}
+
+- (instancetype)initWithAddress:(NSString *)address {
     if (self = [super init]) {
         _address = address;
     }
@@ -101,7 +105,7 @@ static NSArray *query_ip_v4(res_state res, const char *host) {
 }
 
 + (instancetype)systemResolver {
-    return [[QNResolver alloc] initWithAddres:nil];
+    return [[QNResolver alloc] initWithAddress:nil];
 }
 
 + (NSString *)systemDnsServer {

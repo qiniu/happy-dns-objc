@@ -33,7 +33,7 @@
 - (void)testDns {
     NSMutableArray *array = [[NSMutableArray alloc] init];
     [array addObject:[QNResolver systemResolver]];
-    [array addObject:[[QNResolver alloc] initWithAddres:@"119.29.29.29"]];
+    [array addObject:[[QNResolver alloc] initWithAddress:@"119.29.29.29"]];
     QNDnsManager *dns = [[QNDnsManager alloc] init:array networkInfo:[QNNetworkInfo normal]];
     NSArray *ips = [dns query:@"www.qiniu.com"];
     XCTAssertNotNil(ips, @"PASS");
@@ -43,7 +43,7 @@
 - (void)testCnc {
     NSMutableArray *array = [[NSMutableArray alloc] init];
     [array addObject:[QNResolver systemResolver]];
-    [array addObject:[[QNResolver alloc] initWithAddres:@"119.29.29.29"]];
+    [array addObject:[[QNResolver alloc] initWithAddress:@"119.29.29.29"]];
     QNNetworkInfo *info = [[QNNetworkInfo alloc] init:kQNMOBILE provider:kQNISP_CNC];
     QNDnsManager *dns = [[QNDnsManager alloc] init:array networkInfo:info];
     [dns putHosts:@"hello.qiniu.com" ip:@"1.1.1.1"];
@@ -59,7 +59,7 @@
 - (void)testTtl {
     NSMutableArray *array = [[NSMutableArray alloc] init];
     [array addObject:[[QNHijackingDetectWrapper alloc] initWithResolver:[QNResolver systemResolver]]];
-    [array addObject:[[QNHijackingDetectWrapper alloc] initWithResolver:[[QNResolver alloc] initWithAddres:@"114.114.115.115"]]];
+    [array addObject:[[QNHijackingDetectWrapper alloc] initWithResolver:[[QNResolver alloc] initWithAddress:@"114.114.115.115"]]];
     QNNetworkInfo *info = [[QNNetworkInfo alloc] init:kQNMOBILE provider:kQNISP_CNC];
     QNDnsManager *dns = [[QNDnsManager alloc] init:array networkInfo:info];
     [dns putHosts:@"hello.qiniu.com" ip:@"1.1.1.1"];
@@ -81,7 +81,7 @@
 - (void)testCname {
     NSMutableArray *array = [[NSMutableArray alloc] init];
     [array addObject:[[QNHijackingDetectWrapper alloc] initWithResolver:[QNResolver systemResolver]]];
-    [array addObject:[[QNHijackingDetectWrapper alloc] initWithResolver:[[QNResolver alloc] initWithAddres:@"114.114.115.115"]]];
+    [array addObject:[[QNHijackingDetectWrapper alloc] initWithResolver:[[QNResolver alloc] initWithAddress:@"114.114.115.115"]]];
     QNNetworkInfo *info = [QNNetworkInfo normal];
     QNDnsManager *dns = [[QNDnsManager alloc] init:array networkInfo:info];
     [dns putHosts:@"hello.qiniu.com" ip:@"1.1.1.1"];
@@ -109,7 +109,7 @@
 - (void)testUrlQuery {
     NSMutableArray *array = [[NSMutableArray alloc] init];
     [array addObject:[QNResolver systemResolver]];
-    [array addObject:[[QNResolver alloc] initWithAddres:@"119.29.29.29"]];
+    [array addObject:[[QNResolver alloc] initWithAddress:@"119.29.29.29"]];
     QNDnsManager *dns = [[QNDnsManager alloc] init:array networkInfo:[QNNetworkInfo normal]];
     NSURL *u = [[NSURL alloc] initWithString:@"rtmp://www.qiniu.com/abc?q=1"];
     NSURL *u2 = [dns queryAndReplaceWithIP:u];
@@ -124,7 +124,7 @@
 - (void)testUrlQueryV6 {
     NSMutableArray *array = [[NSMutableArray alloc] init];
     [array addObject:[QNResolver systemResolver]];
-    [array addObject:[[QNResolver alloc] initWithAddres:@"119.29.29.29"]];
+    [array addObject:[[QNResolver alloc] initWithAddress:@"119.29.29.29"]];
     QNDnsManager *dns = [[QNDnsManager alloc] init:array networkInfo:[QNNetworkInfo normal]];
     NSURL *u = [[NSURL alloc] initWithString:@"rtmp://ipv6test.qiniu.com/abc?q=1"];
     NSURL *u2 = [dns queryAndReplaceWithIP:u];

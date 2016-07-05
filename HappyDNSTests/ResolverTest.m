@@ -29,7 +29,7 @@
 }
 
 - (void) template:(NSString *)server {
-    id<QNResolverDelegate> resolver = [[QNResolver alloc] initWithAddres:server];
+    id<QNResolverDelegate> resolver = [[QNResolver alloc] initWithAddress:server];
     NSArray *records = [resolver query:[[QNDomain alloc] init:@"baidu.com"] networkInfo:nil error:nil];
     XCTAssert(records != nil, @"Pass");
     XCTAssert(records.count >= 1, @"Pass");
@@ -50,7 +50,7 @@
     if (![QNIP isV6]) {
         return;
     }
-    id<QNResolverDelegate> resolver = [[QNResolver alloc] initWithAddres:server];
+    id<QNResolverDelegate> resolver = [[QNResolver alloc] initWithAddress:server];
     NSArray *records = [resolver query:[[QNDomain alloc] init:@"ipv6test.qiniu.com"] networkInfo:nil error:nil];
     XCTAssert(records != nil, @"Pass");
     XCTAssert(records.count >= 1, @"Pass");
