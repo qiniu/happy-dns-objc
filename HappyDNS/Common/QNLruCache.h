@@ -6,20 +6,18 @@
 //  Copyright © 2016年 Qiniu Cloud Storage. All rights reserved.
 //
 
-#import <Foundation/NSObject.h>
-
 #import <Foundation/Foundation.h>
 
 @interface QNLruCache : NSObject
 
-- (nonnull instancetype)init:(NSUInteger)limit;
+- (instancetype)init:(NSUInteger)limit;
 
 - (void)removeAllObjects;
 
-- (void)removeObjectForKey:(nonnull NSString *)key;
+- (void)removeObjectForKey:(NSString *)key;
 
-- (nullable id)objectForKey:(nonnull NSString *)key;
+- (id)objectForKey:(NSString *)key;
 
-- (void)setObject:(nonnull id)obj forKey:(nonnull NSString *)key;
+- (void)setObject:(id)obj forKey:(NSString *)key;
 
 @end

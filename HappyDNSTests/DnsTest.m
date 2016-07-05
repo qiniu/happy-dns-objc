@@ -155,7 +155,7 @@
 
 - (void)testIpQuery {
     NSMutableArray *array = [[NSMutableArray alloc] init];
-    [array addObject:[NotRunResolver new];
+    [array addObject:[NotRunResolver new]];
     [array addObject:[[QNResolver alloc] initWithAddress:@"119.29.29.29"]];
     QNDnsManager *dns = [[QNDnsManager alloc] init:array networkInfo:[QNNetworkInfo normal]];
     NSURL *u = [[NSURL alloc] initWithString:@"rtmp://119.29.29.29/abc?q=1"];

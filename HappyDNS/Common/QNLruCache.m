@@ -38,7 +38,7 @@
 
 @implementation QNLruCache
 
-- (nonnull instancetype)init:(NSUInteger)limit {
+- (instancetype)init:(NSUInteger)limit {
     if (self = [super init]) {
         _limit = limit;
         _cache = [NSMutableDictionary new];
@@ -52,7 +52,7 @@
     [_list removeAllObjects];
 }
 
-- (void)removeObjectForKey:(nonnull NSString*)key {
+- (void)removeObjectForKey:(NSString*)key {
     _QNElement* obj = [_cache objectForKey:key];
     if (obj == nil) {
         return;
@@ -61,7 +61,7 @@
     [_list removeObjectIdenticalTo:obj];
 }
 
-- (nullable id)objectForKey:(nonnull NSString*)key {
+- (id)objectForKey:(NSString*)key {
     _QNElement* obj = [_cache objectForKey:key];
     if (obj != nil) {
         [_list removeObjectIdenticalTo:obj];
@@ -70,7 +70,7 @@
     return obj.obj;
 }
 
-- (void)setObject:(nonnull id)obj forKey:(nonnull NSString*)key {
+- (void)setObject:(id)obj forKey:(NSString*)key {
     _QNElement* old = [_cache objectForKey:key];
     if (old) {
         old.obj = obj;
