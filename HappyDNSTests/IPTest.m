@@ -88,4 +88,24 @@
     XCTAssertEqualObjects(a, [QNIP ipHost:ipv6], @"pass");
 }
 
+- (void)testMayBeIpV4 {
+    NSString* ip = @"0.0.0.0";
+    XCTAssert([QNIP mayBeIpV4:ip]);
+
+    ip = @"a.0.0.0";
+    XCTAssert(![QNIP mayBeIpV4:ip]);
+
+    ip = @"0.0.0";
+    XCTAssert(![QNIP mayBeIpV4:ip]);
+
+    ip = @"a.b.com";
+    XCTAssert(![QNIP mayBeIpV4:ip]);
+
+    ip = @"255.255.255.255";
+    XCTAssert([QNIP mayBeIpV4:ip]);
+
+    ip = @"99.99.99.99";
+    XCTAssert([QNIP mayBeIpV4:ip]);
+}
+
 @end
