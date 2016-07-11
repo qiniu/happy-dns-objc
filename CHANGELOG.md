@@ -1,11 +1,16 @@
 #Changelog
 
+## 0.3.7 (2016-07-11)
+
+### 增加
+* 超时设置
+
 ## 0.3.6 (2016-07-05)
 
 ### 修复
 * ip 轮换不采用随机策略，每次轮换位置确定
 * 实现LruCache, 避免切到后台时丢失解析
-* typo QNResover initAddres -> initAddress  
+* typo QNResover initAddres -> initAddress
 
 ## 0.3.5 (2016-05-31)
 
