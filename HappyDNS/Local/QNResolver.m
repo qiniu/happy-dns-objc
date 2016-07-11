@@ -29,7 +29,8 @@
 #endif
 
 @interface QNResolver ()
-@property (nonatomic) NSString *address;
+@property (nonatomic, readonly, strong) NSString *address;
+@property (nonatomic, readonly) NSUInteger timeout;
 @end
 
 static NSArray *query_ip_v4(res_state res, const char *host) {
@@ -83,8 +84,14 @@ static NSArray *query_ip_v4(res_state res, const char *host) {
 }
 
 - (instancetype)initWithAddress:(NSString *)address {
+    return [self initWithAddress:address timeout:QN_DNS_DEFAULT_TIMEOUT];
+}
+
+- (instancetype)initWithAddress:(NSString *)address
+                        timeout:(NSUInteger)time {
     if (self = [super init]) {
         _address = address;
+        _timeout = time;
     }
     return self;
 }
@@ -92,14 +99,20 @@ static NSArray *query_ip_v4(res_state res, const char *host) {
 - (NSArray *)query:(QNDomain *)domain networkInfo:(QNNetworkInfo *)netInfo error:(NSError *__autoreleasing *)error {
     struct __res_state res;
 
-    int r = setup_dns_server(&res, _address);
+    int r = setup_dns_server(&res, _address, _timeout);
     if (r != 0) {
+        if (error != nil) {
+            *error = [[NSError alloc] initWithDomain:@"qiniu.dns" code:kQNDomainSeverError userInfo:nil];
+        }
         return nil;
     }
 
     NSArray *ret = query_ip_v4(&res, [domain.domain cStringUsingEncoding:NSUTF8StringEncoding]);
     if (ret != nil && ret.count != 0) {
         return ret;
+    }
+    if (error != nil) {
+        *error = [[NSError alloc] initWithDomain:@"qiniu.dns" code:NSURLErrorDNSLookupFailed userInfo:nil];
     }
     return nil;
 }

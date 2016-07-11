@@ -28,7 +28,7 @@
 }
 
 - (void) template:(NSString *)server {
-    id<QNResolverDelegate> resolver = [[QNTxtResolver alloc] initWithAddres:server];
+    id<QNResolverDelegate> resolver = [[QNTxtResolver alloc] initWithAddress:server];
     // txttest.qiniu.com.   600 IN  TXT "183.136.139.10,183.136.139.16,115.231.182.136"
     NSArray *records = [resolver query:[[QNDomain alloc] init:@"txttest.qiniu.com"] networkInfo:nil error:nil];
     XCTAssert(records != nil, @"Pass");
