@@ -44,4 +44,16 @@
     XCTAssert(record.ttl >= 0, @"Pass");
 }
 
+- (void)testTimeout {
+    id<QNResolverDelegate> resolver = [[QNDnspodFree alloc] initWithServer:@"8.1.1.1" timeout:5];
+    NSDate *t1 = [NSDate date];
+    NSError *err;
+    NSArray *records = [resolver query:[[QNDomain alloc] init:@"qq.com"] networkInfo:nil error:&err];
+    NSTimeInterval duration = -[t1 timeIntervalSinceNow];
+    XCTAssert(records == nil, @"Pass");
+    XCTAssert(err != nil, @"Pass");
+    XCTAssert(err.code == NSURLErrorTimedOut, @"Pass");
+    XCTAssert(duration > 4 && duration < 6, @"Pass");
+}
+
 @end

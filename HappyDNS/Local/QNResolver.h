@@ -16,6 +16,10 @@
 - (instancetype)initWithAddres:(NSString *)address DEPRECATED_ATTRIBUTE;
 
 - (instancetype)initWithAddress:(NSString *)address;
+
+- (instancetype)initWithAddress:(NSString *)address
+                        timeout:(NSUInteger)time;
+
 + (instancetype)systemResolver;
 + (NSString *)systemDnsServer;
 @end
