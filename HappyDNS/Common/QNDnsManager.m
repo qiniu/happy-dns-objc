@@ -15,7 +15,7 @@
 #import "QNRecord.h"
 #import "QNResolverDelegate.h"
 
-#import "QNGetAddrInfo.h"
+#include "QNGetAddrInfo.h"
 
 const int kQNDomainHijackingCode = -7001;
 const int kQNDomainNotOwnCode = -7002;

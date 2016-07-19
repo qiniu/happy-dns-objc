@@ -7,20 +7,19 @@
 //
 
 #include "string.h"
-#include "stdlib.h"
 #include "netdb.h"
+#include "stdlib.h"
 
 #include "QNGetAddrInfo.h"
 
-
 //fast judge domain or ip, not verify ip right.
-static int isIp(const char* domain){
+static int isIp(const char* domain) {
     size_t l = strlen(domain);
-    if (l >15 || l < 7) {
+    if (l > 15 || l < 7) {
         return 0;
     }
-    
-    for (const char* p = domain; p < domain+l; p++) {
+
+    for (const char* p = domain; p < domain + l; p++) {
         if ((*p < '0' || *p > '9') && *p != '.') {
             return 0;
         }
@@ -28,12 +27,12 @@ static int isIp(const char* domain){
     return 1;
 }
 
-static struct addrinfo* addrinfo_clone(struct addrinfo* addr){
-    struct addrinfo *ai;
+static struct addrinfo* addrinfo_clone(struct addrinfo* addr) {
+    struct addrinfo* ai;
     ai = calloc(sizeof(struct addrinfo) + addr->ai_addrlen, 1);
     if (ai) {
         memcpy(ai, addr, sizeof(struct addrinfo));
-        ai->ai_addr = (void *)(ai+1);
+        ai->ai_addr = (void*)(ai + 1);
         memcpy(ai->ai_addr, addr->ai_addr, addr->ai_addrlen);
         if (addr->ai_canonname) {
             ai->ai_canonname = strdup(addr->ai_canonname);
@@ -43,7 +42,7 @@ static struct addrinfo* addrinfo_clone(struct addrinfo* addr){
     return ai;
 }
 
-static void append_addrinfo(struct addrinfo** head, struct addrinfo* addr){
+static void append_addrinfo(struct addrinfo** head, struct addrinfo* addr) {
     if (*head == NULL) {
         *head = addr;
         return;
@@ -55,7 +54,7 @@ static void append_addrinfo(struct addrinfo** head, struct addrinfo* addr){
     ai->ai_next = addr;
 }
 
-void qn_free_ips_ret(qn_ips_ret *ip_list){
+void qn_free_ips_ret(qn_ips_ret* ip_list) {
     if (ip_list == NULL) {
         return;
     }
@@ -68,11 +67,11 @@ void qn_free_ips_ret(qn_ips_ret *ip_list){
 }
 
 static qn_dns_callback dns_callback = NULL;
-int qn_getaddrinfo(const char *hostname, const char *servname, const struct addrinfo *hints, struct addrinfo **res){
+int qn_getaddrinfo(const char* hostname, const char* servname, const struct addrinfo* hints, struct addrinfo** res) {
     if (dns_callback == NULL || hostname == NULL || isIp(hostname)) {
         return getaddrinfo(hostname, servname, hints, res);
     }
-    
+
     qn_ips_ret* ret = dns_callback(hostname);
     if (ret == NULL) {
         return EAI_NODATA;
@@ -105,11 +104,11 @@ int qn_getaddrinfo(const char *hostname, const char *servname, const struct addr
     return 0;
 }
 
-void qn_freeaddrinfo(struct addrinfo *ai){
+void qn_freeaddrinfo(struct addrinfo* ai) {
     if (ai == NULL) {
         return;
     }
-    struct addrinfo *next;
+    struct addrinfo* next;
     do {
         next = ai->ai_next;
         if (ai->ai_canonname)
@@ -120,6 +119,6 @@ void qn_freeaddrinfo(struct addrinfo *ai){
     } while (ai);
 }
 
-void qn_set_dns_callback(qn_dns_callback cb){
+void qn_set_dns_callback(qn_dns_callback cb) {
     dns_callback = cb;
 }
