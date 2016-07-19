@@ -84,18 +84,18 @@
 //	[self template:@"1.2.4.8"];
 //}
 
-//- (void)testGoogle {
-//    [self template:@"8.8.4.4"];
-//}
+- (void)testGoogle {
+    [self template:@"8.8.4.4"];
+}
 
 //    http://www.dnspai.com/
 //- (void)testPai {
 //	[self template:@"101.226.4.6"];
 //}
 
-- (void)testDnspod {
-    [self template:@"119.29.29.29"];
-}
+//- (void)testDnspod {
+//    [self template:@"119.29.29.29"];
+//}
 
 - (void)testGetDnsServer {
     NSString *dns = [QNResolver systemDnsServer];
