@@ -11,6 +11,14 @@
 @class QNNetworkInfo;
 @class QNDomain;
 
+/**
+ *    上传进度回调函数
+ *
+ *    @param key     上传时指定的存储key
+ *    @param percent 进度百分比
+ */
+typedef NSArray * (^QNGetAddrInfoCallback)(NSString *host);
+
 @protocol QNIpSorter <NSObject>
 - (NSArray *)sort:(NSArray *)ips;
 @end
@@ -23,6 +31,7 @@
 - (instancetype)init:(NSArray *)resolvers networkInfo:(QNNetworkInfo *)netInfo sorter:(id<QNIpSorter>)sorter;
 - (instancetype)putHosts:(NSString *)domain ip:(NSString *)ip;
 - (instancetype)putHosts:(NSString *)domain ip:(NSString *)ip provider:(int)provider;
++ (void)setGetAddrInfoBlock:(QNGetAddrInfoCallback)block;
 @end
 
 @interface QNDnsManager (NSURL)
