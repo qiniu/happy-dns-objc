@@ -15,6 +15,8 @@
 #import "QNRecord.h"
 #import "QNResolverDelegate.h"
 
+#import "QNGetAddrInfo.h"
+
 const int kQNDomainHijackingCode = -7001;
 const int kQNDomainNotOwnCode = -7002;
 const int kQNDomainSeverError = -7003;
@@ -232,6 +234,32 @@ static NSArray *records2Ips(NSArray *records) {
 
     URL = urlComponents.URL;
     return URL;
+}
+
+static QNGetAddrInfoCallback getAddrInfoCallback = nil;
+static qn_ips_ret *dns_callback(const char *host) {
+    if (getAddrInfoCallback == nil) {
+        //only for compatible
+        qn_ips_ret *ret = calloc(sizeof(char *), 2);
+        ret->ips[0] = strdup(host);
+        return ret;
+    }
+    NSString *s = [[NSString alloc] initWithUTF8String:host];
+    NSArray *ips = getAddrInfoCallback(s);
+    qn_ips_ret *ret = calloc(sizeof(char *), ips.count + 1);
+    for (int i = 0; i < ips.count; i++) {
+        NSString *ip = ips[i];
+        char *ip2 = strdup([ip cStringUsingEncoding:NSUTF8StringEncoding]);
+        ret->ips[i] = ip2;
+    }
+    return ret;
+}
+
++ (void)setGetAddrInfoBlock:(QNGetAddrInfoCallback)block {
+    if ([QNIP isIpV6FullySupported] || ![QNIP isV6]) {
+        getAddrInfoCallback = block;
+        qn_set_dns_callback(dns_callback);
+    }
 }
 
 @end

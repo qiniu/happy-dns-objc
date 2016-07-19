@@ -93,9 +93,9 @@
 //	[self template:@"101.226.4.6"];
 //}
 
-- (void)testDnspod {
-    [self template:@"119.29.29.29"];
-}
+//- (void)testDnspod {
+//    [self template:@"119.29.29.29"];
+//}
 
 - (void)testGetDnsServer {
     NSString *dns = [QNResolver systemDnsServer];

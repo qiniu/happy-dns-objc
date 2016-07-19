@@ -22,12 +22,36 @@ pod "HappyDNS"
 
 
 ## 使用方法
-
-
-## 测试
-
-
-### 所有测试
+＊ 返回IP列表
+```
+ NSMutableArray *array = [[NSMutableArray alloc] init];
+[array addObject:[QNResolver systemResolver]];
+[array addObject:[[QNResolver alloc] initWithAddress:@"119.29.29.29"]];
+QNDnsManager *dns = [[QNDnsManager alloc] init:array networkInfo:[QNNetworkInfo normal]];
+NSArray *ips = [dns query:@"www.qiniu.com"];
+```
+＊ url 请求，返回一个IP 替换URL 里的domain
+```
+NSMutableArray *array = [[NSMutableArray alloc] init];
+[array addObject:[QNResolver systemResolver]];
+[array addObject:[[QNResolver alloc] initWithAddress:@"119.29.29.29"]];
+QNDnsManager *dns = [[QNDnsManager alloc] init:array networkInfo:[QNNetworkInfo normal]];
+NSURL *u = [[NSURL alloc] initWithString:@"rtmp://www.qiniu.com/abc?q=1"];
+NSURL *u2 = [dns queryAndReplaceWithIP:u];
+```
+* 兼容 getaddrinfo, 方便底层C代码接入
+```
+static QNDnsManager *dns = nil;
+dns = [[QNDnsManager alloc] init:@[ [QNResolver systemResolver] ] networkInfo:nil];
+[QNDnsManager setGetAddrInfoBlock:^NSArray *(NSString *host) {
+        return [dns query:host];
+    }];
+struct addrinfo hints = {0};
+struct addrinfo *ai = NULL;
+int x = qn_getaddrinfo(host, "http", &hints, &ai);
+qn_freeaddrinfo(ai); // 也可以用系统的freeaddrinfo, 代码一致，不过最好用这个
+```
+### 运行测试
 
 ``` bash
 $ xctool -workspace HappyDNS.xcworkspace -scheme "HappyDNS_Mac" -sdk macosx -configuration Release test -test-sdk macosx
