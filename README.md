@@ -47,7 +47,7 @@ dns = [[QNDnsManager alloc] init:@[ [QNResolver systemResolver] ] networkInfo:ni
         return [dns query:host];
     }];
 struct addrinfo hints = {0};
-struct addrinfo *ai;
+struct addrinfo *ai = NULL;
 int x = qn_getaddrinfo(host, "http", &hints, &ai);
 qn_freeaddrinfo(ai); // 也可以用系统的freeaddrinfo, 代码一致，不过最好用这个
 ```

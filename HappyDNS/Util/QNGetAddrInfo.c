@@ -82,7 +82,7 @@ int qn_getaddrinfo(const char *hostname, const char *servname, const struct addr
         return EAI_NODATA;
     }
     int i;
-    struct addrinfo* ai;
+    struct addrinfo* ai = NULL;
     struct addrinfo* store = NULL;
     int r = 0;
     for (i = 0; ret->ips[i] != NULL; i++) {
@@ -90,8 +90,11 @@ int qn_getaddrinfo(const char *hostname, const char *servname, const struct addr
         if (r != 0) {
             break;
         }
+        struct addrinfo* temp = ai;
         ai = addrinfo_clone(ai);
         append_addrinfo(&store, ai);
+        freeaddrinfo(temp);
+        ai = NULL;
     }
     qn_free_ips_ret(ret);
     if (r != 0) {
