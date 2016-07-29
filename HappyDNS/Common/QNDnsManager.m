@@ -297,4 +297,9 @@ static void ip_status_callback(const char *ip, int code, int time_ms) {
     qn_set_ip_report_callback(ip_status_callback);
 }
 
++ (BOOL)needHttpDns {
+    NSTimeZone *timeZone = [NSTimeZone localTimeZone];
+    NSString *tzName = [timeZone name];
+    return [tzName isEqual:@"Asia/Shanghai"] || [tzName isEqual:@"Asia/Chongqing"] || [tzName isEqual:@"Asia/Harbin"] || [tzName isEqual:@"Asia/Urumqi"];
+}
 @end

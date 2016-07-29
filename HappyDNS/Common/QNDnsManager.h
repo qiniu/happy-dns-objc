@@ -136,6 +136,12 @@ typedef void (^QNIpStatusCallback)(NSString *ip, int code, int ms);
  */
 + (void)setIpStatusCallback:(QNIpStatusCallback)block;
 
+/**
+ *    根据时区判断是否要设置httpDns
+ *
+ */
++ (BOOL)needHttpDns;
+
 @end
 
 /**
