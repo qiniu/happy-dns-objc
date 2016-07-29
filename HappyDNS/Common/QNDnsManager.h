@@ -20,6 +20,15 @@
 typedef NSArray * (^QNGetAddrInfoCallback)(NSString *host);
 
 /**
+ *    ip status 回调上层的函数
+ *
+ *    @param ip    请求的IP
+ *    @param code  错误码
+ *    @param ms    消耗时间
+ */
+typedef void (^QNIpStatusCallback)(NSString *ip, int code, int ms);
+
+/**
  *    外部IP 排序接口
  */
 @protocol QNIpSorter <NSObject>
@@ -112,6 +121,21 @@ typedef NSArray * (^QNGetAddrInfoCallback)(NSString *host);
  *    @param block 回调的代码块
  */
 + (void)setGetAddrInfoBlock:(QNGetAddrInfoCallback)block;
+
+/**
+ *    设置底层 getaddrinfo 回调使用的dnsmanager
+ *
+ *    @param dns 回调用的dnsmanager
+ */
++ (void)setDnsManagerForGetAddrInfo:(QNDnsManager *)dns;
+
+/**
+ *    设置底层 业务统计 如connect 回调使用的Callback
+ *
+ *    @param dns 回调用的dnsmanager
+ */
++ (void)setIpStatusCallback:(QNIpStatusCallback)block;
+
 @end
 
 /**
