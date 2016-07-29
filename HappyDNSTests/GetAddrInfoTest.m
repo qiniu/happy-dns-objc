@@ -96,6 +96,16 @@ static QNDnsManager *dns = nil;
     [self template:"taobao.com"];
 }
 
+- (void)testNoIpStatusCallback {
+    qn_set_dns_callback(NULL);
+    struct addrinfo hints2 = resetHints();
+    struct addrinfo *ai2 = NULL;
+    qn_ip_report(ai2, 3, 4);
+    getaddrinfo("8.8.8.8", "80", &hints2, &ai2);
+    qn_ip_report(ai2, 1, 2);
+    freeaddrinfo(ai2);
+}
+
 - (void)testIpStatusCallback {
     __block NSString *ip1;
     __block int c = 0;
