@@ -168,4 +168,14 @@
     XCTAssertEqualObjects(u.host, u2.host, @"PASS");
 }
 
+- (void)testNeedHttpDns {
+    NSTimeZone *timeZone = [NSTimeZone localTimeZone];
+    NSString *tzName = [timeZone name];
+    if ([tzName isEqual:@"Asia/Shanghai"]) {
+        XCTAssertTrue([QNDnsManager needHttpDns]);
+    } else {
+        XCTAssertFalse([QNDnsManager needHttpDns]);
+    }
+}
+
 @end

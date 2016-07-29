@@ -89,13 +89,31 @@ static QNDnsManager *dns = nil;
 
 - (void)testCustomDns {
     dns = [[QNDnsManager alloc] init:@[ [QNResolver systemResolver] ] networkInfo:nil];
-    [QNDnsManager setGetAddrInfoBlock:^NSArray *(NSString *host) {
-        return [dns query:host];
-    }];
+    [QNDnsManager setDnsManagerForGetAddrInfo:dns];
     [self template:"baidu.com"];
     [self template:"www.qiniu.com"];
     [self template:"qq.com"];
     [self template:"taobao.com"];
+}
+
+- (void)testIpStatusCallback {
+    __block NSString *ip1;
+    __block int c = 0;
+    __block int m = 0;
+    [QNDnsManager setIpStatusCallback:^(NSString *ip, int code, int ms) {
+        ip1 = ip;
+        c = code;
+        m = ms;
+    }];
+    struct addrinfo hints2 = resetHints();
+    struct addrinfo *ai2 = NULL;
+    getaddrinfo("8.8.8.8", "80", &hints2, &ai2);
+
+    qn_ip_report(ai2, 1, 2);
+    freeaddrinfo(ai2);
+    XCTAssertEqual(c, 1);
+    XCTAssertEqual(m, 2);
+    XCTAssertEqualObjects(ip1, @"8.8.8.8");
 }
 
 @end
