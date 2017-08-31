@@ -136,12 +136,12 @@ static NSArray *records2Ips(NSArray *records) {
                 [result addObject:first];
             }
         }
-    }
-
-    if (result != nil && result.count > 0) {
-        QNRecord *record = [result objectAtIndex:0];
-        if (![record expired:[[NSDate date] timeIntervalSince1970]]) {
-            return records2Ips(result);
+    
+        if (result != nil && result.count > 0) {
+            QNRecord *record = [result objectAtIndex:0];
+            if (![record expired:[[NSDate date] timeIntervalSince1970]]) {
+                return records2Ips(result);
+            }
         }
     }
     NSArray *records = nil;
