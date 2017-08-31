@@ -463,11 +463,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DF22C0D61B37B9B90010FEBF /* Build configuration list for PBXNativeTarget "HappyDNS_MacTests" */;
 			buildPhases = (
-				88B0FB59E227F28073D491B1 /* Check Pods Manifest.lock */,
+				88B0FB59E227F28073D491B1 /* [CP] Check Pods Manifest.lock */,
 				DF22C0C61B37B9B90010FEBF /* Sources */,
 				DF22C0C71B37B9B90010FEBF /* Frameworks */,
 				DF22C0C81B37B9B90010FEBF /* Resources */,
-				587D8C623415DC2765ADC3FB /* Copy Pods Resources */,
+				587D8C623415DC2765ADC3FB /* [CP] Copy Pods Resources */,
+				4E0625A99B0E26FBD24BA863 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -500,11 +501,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DF801FA91B3A4F4D00866FDE /* Build configuration list for PBXNativeTarget "HappyDNS_iOSTests" */;
 			buildPhases = (
-				9215D0CC5EAB9CCB0A43A44F /* Check Pods Manifest.lock */,
+				9215D0CC5EAB9CCB0A43A44F /* [CP] Check Pods Manifest.lock */,
 				DF801F9B1B3A4F4D00866FDE /* Sources */,
 				DF801F9C1B3A4F4D00866FDE /* Frameworks */,
 				DF801F9D1B3A4F4D00866FDE /* Resources */,
-				5B3D458851A38A700D83AAEE /* Copy Pods Resources */,
+				5B3D458851A38A700D83AAEE /* [CP] Copy Pods Resources */,
+				4E0EC95AA36EC9C419FAFDA8 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -577,14 +579,44 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		587D8C623415DC2765ADC3FB /* Copy Pods Resources */ = {
+		4E0625A99B0E26FBD24BA863 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HappyDNS_MacTests/Pods-HappyDNS_MacTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4E0EC95AA36EC9C419FAFDA8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HappyDNS_iOSTests/Pods-HappyDNS_iOSTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		587D8C623415DC2765ADC3FB /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -592,14 +624,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HappyDNS_MacTests/Pods-HappyDNS_MacTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		5B3D458851A38A700D83AAEE /* Copy Pods Resources */ = {
+		5B3D458851A38A700D83AAEE /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -607,34 +639,40 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HappyDNS_iOSTests/Pods-HappyDNS_iOSTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		88B0FB59E227F28073D491B1 /* Check Pods Manifest.lock */ = {
+		88B0FB59E227F28073D491B1 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HappyDNS_MacTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9215D0CC5EAB9CCB0A43A44F /* Check Pods Manifest.lock */ = {
+		9215D0CC5EAB9CCB0A43A44F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HappyDNS_iOSTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
