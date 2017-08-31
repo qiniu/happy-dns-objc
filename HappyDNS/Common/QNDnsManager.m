@@ -81,7 +81,7 @@ static NSMutableArray *trimCname(NSArray *records) {
 
 static NSArray *records2Ips(NSArray *records) {
     NSMutableArray *array = [[NSMutableArray alloc] init];
-    for (QNRecord *r in [records copy]) {
+    for (QNRecord *r in records) {
         [array addObject:r.value];
     }
     return array;
