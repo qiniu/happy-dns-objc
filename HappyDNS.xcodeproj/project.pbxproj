@@ -30,11 +30,11 @@
 		76DEB91B20031B760080ED0F /* QNTxtResolver.m in Sources */ = {isa = PBXBuildFile; fileRef = DF2B76F41C3C1D5300643678 /* QNTxtResolver.m */; };
 		76DEB91C20031B760080ED0F /* QNDnspodEnterprise.m in Sources */ = {isa = PBXBuildFile; fileRef = DFFC8AAF1B6BD77000EC938D /* QNDnspodEnterprise.m */; };
 		76DEB91D20031B760080ED0F /* QNDnspodFree.m in Sources */ = {isa = PBXBuildFile; fileRef = DF801F7C1B396E7600866FDE /* QNDnspodFree.m */; };
-		76DEB91E20031B850080ED0F /* QNRefresher.h in Headers */ = {isa = PBXBuildFile; fileRef = DFE09E531D3F0D8700235B71 /* QNRefresher.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		76DEB91F20031B850080ED0F /* QNAssessment.h in Headers */ = {isa = PBXBuildFile; fileRef = DFE09E581D3F0DF200235B71 /* QNAssessment.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		76DEB92020031B850080ED0F /* QNIpModel.h in Headers */ = {isa = PBXBuildFile; fileRef = DFE09E591D3F0DF200235B71 /* QNIpModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		76DEB92120031B850080ED0F /* QNHex.h in Headers */ = {isa = PBXBuildFile; fileRef = DFFC8AA11B6BBEB400EC938D /* QNHex.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		76DEB92220031B850080ED0F /* QNDes.h in Headers */ = {isa = PBXBuildFile; fileRef = DFFC8AA91B6BD73900EC938D /* QNDes.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		76DEB91E20031B850080ED0F /* QNRefresher.h in Headers */ = {isa = PBXBuildFile; fileRef = DFE09E531D3F0D8700235B71 /* QNRefresher.h */; };
+		76DEB91F20031B850080ED0F /* QNAssessment.h in Headers */ = {isa = PBXBuildFile; fileRef = DFE09E581D3F0DF200235B71 /* QNAssessment.h */; };
+		76DEB92020031B850080ED0F /* QNIpModel.h in Headers */ = {isa = PBXBuildFile; fileRef = DFE09E591D3F0DF200235B71 /* QNIpModel.h */; };
+		76DEB92120031B850080ED0F /* QNHex.h in Headers */ = {isa = PBXBuildFile; fileRef = DFFC8AA11B6BBEB400EC938D /* QNHex.h */; };
+		76DEB92220031B850080ED0F /* QNDes.h in Headers */ = {isa = PBXBuildFile; fileRef = DFFC8AA91B6BD73900EC938D /* QNDes.h */; };
 		76DEB92320031B850080ED0F /* QNIP.h in Headers */ = {isa = PBXBuildFile; fileRef = DFDD2A731CF58887006ECFCE /* QNIP.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		76DEB92420031B850080ED0F /* QNGetAddrInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = DF8152661D3D4097007C44DA /* QNGetAddrInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		76DEB92520031B960080ED0F /* QNDnsManager.h in Headers */ = {isa = PBXBuildFile; fileRef = DF801F671B396DA000866FDE /* QNDnsManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -42,12 +42,12 @@
 		76DEB92720031B960080ED0F /* QNResolverDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = DF801F851B396F5500866FDE /* QNResolverDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		76DEB92820031B960080ED0F /* QNDomain.h in Headers */ = {isa = PBXBuildFile; fileRef = DF801F8A1B39743200866FDE /* QNDomain.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		76DEB92920031B960080ED0F /* QNNetworkInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = DF0A031E1B3BABBD00E3778C /* QNNetworkInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		76DEB92A20031B960080ED0F /* QNLruCache.h in Headers */ = {isa = PBXBuildFile; fileRef = DF5B337E1D2BB28500CD608F /* QNLruCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		76DEB92B20031B960080ED0F /* QNResolvUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = DF9050991CFD888F008B98C2 /* QNResolvUtil.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		76DEB92A20031B960080ED0F /* QNLruCache.h in Headers */ = {isa = PBXBuildFile; fileRef = DF5B337E1D2BB28500CD608F /* QNLruCache.h */; };
+		76DEB92B20031B960080ED0F /* QNResolvUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = DF9050991CFD888F008B98C2 /* QNResolvUtil.h */; };
 		76DEB92C20031B960080ED0F /* QNResolver.h in Headers */ = {isa = PBXBuildFile; fileRef = DF801F711B396E3C00866FDE /* QNResolver.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		76DEB92D20031B960080ED0F /* QNHosts.h in Headers */ = {isa = PBXBuildFile; fileRef = DF801F801B396E9A00866FDE /* QNHosts.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		76DEB92D20031B960080ED0F /* QNHosts.h in Headers */ = {isa = PBXBuildFile; fileRef = DF801F801B396E9A00866FDE /* QNHosts.h */; };
 		76DEB92E20031B960080ED0F /* QNHijackingDetectWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = DF5AC8DF1B575E2800728D30 /* QNHijackingDetectWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		76DEB92F20031B960080ED0F /* QNTxtResolver.h in Headers */ = {isa = PBXBuildFile; fileRef = DF2B76F31C3C1D5300643678 /* QNTxtResolver.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		76DEB92F20031B960080ED0F /* QNTxtResolver.h in Headers */ = {isa = PBXBuildFile; fileRef = DF2B76F31C3C1D5300643678 /* QNTxtResolver.h */; };
 		76DEB93020031B960080ED0F /* QNDnspodEnterprise.h in Headers */ = {isa = PBXBuildFile; fileRef = DFFC8AAE1B6BD77000EC938D /* QNDnspodEnterprise.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		76DEB93120031B960080ED0F /* QNDnspodFree.h in Headers */ = {isa = PBXBuildFile; fileRef = DF801F7B1B396E7600866FDE /* QNDnspodFree.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		76DEB93320031BEC0080ED0F /* libresolv.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 76DEB93220031BEC0080ED0F /* libresolv.9.tbd */; };
@@ -482,26 +482,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				76DEB90A20031B340080ED0F /* HappyDNS.h in Headers */,
-				76DEB92520031B960080ED0F /* QNDnsManager.h in Headers */,
-				76DEB92620031B960080ED0F /* QNRecord.h in Headers */,
-				76DEB92720031B960080ED0F /* QNResolverDelegate.h in Headers */,
+				76DEB92320031B850080ED0F /* QNIP.h in Headers */,
 				76DEB92820031B960080ED0F /* QNDomain.h in Headers */,
+				76DEB92620031B960080ED0F /* QNRecord.h in Headers */,
+				76DEB92C20031B960080ED0F /* QNResolver.h in Headers */,
+				76DEB93120031B960080ED0F /* QNDnspodFree.h in Headers */,
+				76DEB92520031B960080ED0F /* QNDnsManager.h in Headers */,
+				76DEB92420031B850080ED0F /* QNGetAddrInfo.h in Headers */,
 				76DEB92920031B960080ED0F /* QNNetworkInfo.h in Headers */,
+				76DEB92720031B960080ED0F /* QNResolverDelegate.h in Headers */,
+				76DEB93020031B960080ED0F /* QNDnspodEnterprise.h in Headers */,
+				76DEB92E20031B960080ED0F /* QNHijackingDetectWrapper.h in Headers */,
 				76DEB92A20031B960080ED0F /* QNLruCache.h in Headers */,
 				76DEB92B20031B960080ED0F /* QNResolvUtil.h in Headers */,
-				76DEB92C20031B960080ED0F /* QNResolver.h in Headers */,
 				76DEB92D20031B960080ED0F /* QNHosts.h in Headers */,
-				76DEB92E20031B960080ED0F /* QNHijackingDetectWrapper.h in Headers */,
 				76DEB92F20031B960080ED0F /* QNTxtResolver.h in Headers */,
-				76DEB93020031B960080ED0F /* QNDnspodEnterprise.h in Headers */,
-				76DEB93120031B960080ED0F /* QNDnspodFree.h in Headers */,
 				76DEB91E20031B850080ED0F /* QNRefresher.h in Headers */,
 				76DEB91F20031B850080ED0F /* QNAssessment.h in Headers */,
 				76DEB92020031B850080ED0F /* QNIpModel.h in Headers */,
 				76DEB92120031B850080ED0F /* QNHex.h in Headers */,
 				76DEB92220031B850080ED0F /* QNDes.h in Headers */,
-				76DEB92320031B850080ED0F /* QNIP.h in Headers */,
-				76DEB92420031B850080ED0F /* QNGetAddrInfo.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -642,7 +642,6 @@
 				TargetAttributes = {
 					76DEB8FB20031AD50080ED0F = {
 						CreatedOnToolsVersion = 9.2;
-						DevelopmentTeam = W2TP34G2MM;
 						ProvisioningStyle = Automatic;
 					};
 					DF22C0BE1B37B9B90010FEBF = {
@@ -953,20 +952,22 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = W2TP34G2MM;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "HappyDNS-dynamic/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = www.HappyDNS;
+				PRODUCT_BUNDLE_IDENTIFIER = com.qiniu.HappyDNS;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -992,20 +993,22 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = W2TP34G2MM;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "HappyDNS-dynamic/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = www.HappyDNS;
+				PRODUCT_BUNDLE_IDENTIFIER = com.qiniu.HappyDNS;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
