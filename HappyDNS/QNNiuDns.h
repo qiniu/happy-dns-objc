@@ -1,15 +1,15 @@
 //
-//  QNHttpDNS.h
+//  QNNiuDns.h
 //  HappyDNS
 //
-//  Created by 何昊宇 on 2018/3/6.
+//  Created by 何昊宇 on 2018/3/8.
 //  Copyright © 2018年 Qiniu Cloud Storage. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import "QNResolverDelegate.h"
 
-@interface QNHttpDNS : NSObject<QNResolverDelegate>
+@interface QNNiuDns : NSObject<QNResolverDelegate>
 - (NSArray *)query:(QNDomain *)domain networkInfo:(QNNetworkInfo *)netInfo error:(NSError *__autoreleasing *)error;
 
 @property (nonatomic, strong, readonly) NSString *accountId;

@@ -1,8 +1,8 @@
 //
-//  httpDNSTest.m
+//  NiuDnsTest.m
 //  HappyDNS
 //
-//  Created by 何昊宇 on 2018/3/6.
+//  Created by 何昊宇 on 2018/3/8.
 //  Copyright © 2018年 Qiniu Cloud Storage. All rights reserved.
 //
 
@@ -10,13 +10,13 @@
 #import "QNDomain.h"
 #import "QNRecord.h"
 #import "QNResolverDelegate.h"
-#import "QNHttpDNS.h"
+#import "QNNiuDns.h"
 
-@interface httpDNSTest : XCTestCase
+@interface NiuDnsTest : XCTestCase
 
 @end
 
-@implementation httpDNSTest
+@implementation NiuDnsTest
 
 - (void)setUp {
     [super setUp];
@@ -29,7 +29,7 @@
 }
 
 - (void)testHttpDNSWithEncryptKey {
-    id<QNResolverDelegate> resolver = [[QNHttpDNS alloc] initWithAccountId:@"123456" encryptKey:@"9033480eb8b04b695aa7001ae1d01352" expireTime:3600];
+    id<QNResolverDelegate> resolver = [[QNNiuDns alloc] initWithAccountId:@"123456" encryptKey:@"9033480eb8b04b695aa7001ae1d01352" expireTime:3600];
     NSArray *records = [resolver query:[[QNDomain alloc] init:@"www.baidu.com"] networkInfo:nil error:nil];
     XCTAssert(records != nil, @"Pass");
     XCTAssert(records.count > 0, @"Pass");
@@ -45,7 +45,7 @@
 }
 
 - (void)testHttpDNS {
-    id<QNResolverDelegate> resolver = [[QNHttpDNS alloc] initWithAccountId:@"123456"];
+    id<QNResolverDelegate> resolver = [[QNNiuDns alloc] initWithAccountId:@"123456"];
     NSArray *records = [resolver query:[[QNDomain alloc] init:@"www.baidu.com"] networkInfo:nil error:nil];
     XCTAssert(records != nil, @"Pass");
     XCTAssert(records.count > 0, @"Pass");
@@ -59,6 +59,5 @@
     record = [records objectAtIndex:0];
     XCTAssert(record.ttl >= 0, @"Pass");
 }
-
 
 @end
