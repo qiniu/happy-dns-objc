@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		6B6090D36D2ECCD34FCE6DAE /* libPods-HappyDNS_iOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B7A5E527D9CF80E564A69D85 /* libPods-HappyDNS_iOSTests.a */; };
 		71FB87ACF7AF0163E3F8AF2F /* libPods-HappyDNS_MacTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 04A4DFEA159C0945AFABEA3A /* libPods-HappyDNS_MacTests.a */; };
+		93AB4B5520513F6E00FF2AB3 /* QNNiuDns.h in Headers */ = {isa = PBXBuildFile; fileRef = 93AB4B5320513F6E00FF2AB3 /* QNNiuDns.h */; };
+		93AB4B5620513F6E00FF2AB3 /* QNNiuDns.m in Sources */ = {isa = PBXBuildFile; fileRef = 93AB4B5420513F6E00FF2AB3 /* QNNiuDns.m */; };
+		93AB4B5720513F6E00FF2AB3 /* QNNiuDns.m in Sources */ = {isa = PBXBuildFile; fileRef = 93AB4B5420513F6E00FF2AB3 /* QNNiuDns.m */; };
+		93AB4B5920513FF200FF2AB3 /* NiuDnsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 93AB4B5820513FF200FF2AB3 /* NiuDnsTest.m */; };
+		93AB4B5A20513FF200FF2AB3 /* NiuDnsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 93AB4B5820513FF200FF2AB3 /* NiuDnsTest.m */; };
 		DF0A03181B3B999D00E3778C /* libHappyDNS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DF801F951B3A4F4D00866FDE /* libHappyDNS.a */; };
 		DF0A03201B3BABBD00E3778C /* QNNetworkInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = DF0A031E1B3BABBD00E3778C /* QNNetworkInfo.h */; };
 		DF0A03211B3BABBD00E3778C /* QNNetworkInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = DF0A031F1B3BABBD00E3778C /* QNNetworkInfo.m */; };
@@ -133,6 +138,11 @@
 		1DEA89BB118E6B53C505D328 /* Pods-HappyDNS_MacTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HappyDNS_MacTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HappyDNS_MacTests/Pods-HappyDNS_MacTests.release.xcconfig"; sourceTree = "<group>"; };
 		1E328F479E1702CED8C0DDDC /* Pods-HappyDNS_MacTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HappyDNS_MacTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HappyDNS_MacTests/Pods-HappyDNS_MacTests.debug.xcconfig"; sourceTree = "<group>"; };
 		2A93CF6550EE709B01A78948 /* Pods-HappyDNS_iOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HappyDNS_iOSTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HappyDNS_iOSTests/Pods-HappyDNS_iOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		9387D718204EA24300B91879 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		9387D71B204EA28700B91879 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		93AB4B5320513F6E00FF2AB3 /* QNNiuDns.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QNNiuDns.h; sourceTree = "<group>"; };
+		93AB4B5420513F6E00FF2AB3 /* QNNiuDns.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QNNiuDns.m; sourceTree = "<group>"; };
+		93AB4B5820513FF200FF2AB3 /* NiuDnsTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NiuDnsTest.m; sourceTree = "<group>"; };
 		A7C629E8C4C0F06862464808 /* Pods-HappyDNS_iOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HappyDNS_iOSTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HappyDNS_iOSTests/Pods-HappyDNS_iOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B7A5E527D9CF80E564A69D85 /* libPods-HappyDNS_iOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HappyDNS_iOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF0A031E1B3BABBD00E3778C /* QNNetworkInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QNNetworkInfo.h; path = Common/QNNetworkInfo.h; sourceTree = "<group>"; };
@@ -241,6 +251,8 @@
 		3AA9FDBAFF7915B2F079FC24 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9387D718204EA24300B91879 /* XCTest.framework */,
+				9387D71B204EA28700B91879 /* XCTest.framework */,
 				DF2B76FB1C3CD41800643678 /* libresolv.tbd */,
 				DF15524D1B3B0335008D3E7C /* libresolv.9.dylib */,
 				DF15524A1B3A98E2008D3E7C /* libresolv.9.dylib */,
@@ -315,6 +327,7 @@
 				DFDD2A7A1CF65906006ECFCE /* IPTest.m */,
 				DF5B33831D2BC78900CD608F /* LruCacheTest.m */,
 				DF81526C1D3DA932007C44DA /* GetAddrInfoTest.m */,
+				93AB4B5820513FF200FF2AB3 /* NiuDnsTest.m */,
 			);
 			path = HappyDNSTests;
 			sourceTree = "<group>";
@@ -334,6 +347,8 @@
 				DFFC8AAF1B6BD77000EC938D /* QNDnspodEnterprise.m */,
 				DF801F7B1B396E7600866FDE /* QNDnspodFree.h */,
 				DF801F7C1B396E7600866FDE /* QNDnspodFree.m */,
+				93AB4B5320513F6E00FF2AB3 /* QNNiuDns.h */,
+				93AB4B5420513F6E00FF2AB3 /* QNNiuDns.m */,
 			);
 			name = Http;
 			sourceTree = "<group>";
@@ -416,6 +431,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DF0A03201B3BABBD00E3778C /* QNNetworkInfo.h in Headers */,
+				93AB4B5520513F6E00FF2AB3 /* QNNiuDns.h in Headers */,
 				DF801F691B396DA000866FDE /* QNDnsManager.h in Headers */,
 				DF801F641B396D5100866FDE /* QNRecord.h in Headers */,
 				DF8152691D3D4097007C44DA /* QNGetAddrInfo.h in Headers */,
@@ -690,6 +706,7 @@
 				DFE09E5E1D3F0DF200235B71 /* QNIpModel.m in Sources */,
 				DF2B76F61C3C1D5300643678 /* QNTxtResolver.m in Sources */,
 				DF5B33811D2BB28500CD608F /* QNLruCache.m in Sources */,
+				93AB4B5620513F6E00FF2AB3 /* QNNiuDns.m in Sources */,
 				DF8152671D3D4097007C44DA /* QNGetAddrInfo.m in Sources */,
 				DF801F7E1B396E7600866FDE /* QNDnspodFree.m in Sources */,
 				DFFC8AAC1B6BD73900EC938D /* QNDes.m in Sources */,
@@ -717,6 +734,7 @@
 				DF2B76F91C3C1E5A00643678 /* TxtResolverTest.m in Sources */,
 				DF1A94E21B429996006517C0 /* DnsTest.m in Sources */,
 				DF1552441B3A9536008D3E7C /* ResolverTest.m in Sources */,
+				93AB4B5920513FF200FF2AB3 /* NiuDnsTest.m in Sources */,
 				DF44A1021B563CFB00A0EEB9 /* NetworkTest.m in Sources */,
 				DF1552511B3B915D008D3E7C /* DnspodFreeTest.m in Sources */,
 				DF81526D1D3DA932007C44DA /* GetAddrInfoTest.m in Sources */,
@@ -735,6 +753,7 @@
 				DFE09E5F1D3F0DF200235B71 /* QNIpModel.m in Sources */,
 				DF1552561B3B9316008D3E7C /* QNRecord.m in Sources */,
 				DF5B33821D2BB28500CD608F /* QNLruCache.m in Sources */,
+				93AB4B5720513F6E00FF2AB3 /* QNNiuDns.m in Sources */,
 				DF8152681D3D4097007C44DA /* QNGetAddrInfo.m in Sources */,
 				DF2B76F71C3C1D5300643678 /* QNTxtResolver.m in Sources */,
 				DF1552591B3B9316008D3E7C /* QNDomain.m in Sources */,
@@ -762,6 +781,7 @@
 				DF2B76FA1C3C1E5A00643678 /* TxtResolverTest.m in Sources */,
 				DF1A94E31B429996006517C0 /* DnsTest.m in Sources */,
 				DF1552451B3A9536008D3E7C /* ResolverTest.m in Sources */,
+				93AB4B5A20513FF200FF2AB3 /* NiuDnsTest.m in Sources */,
 				DF44A1031B563CFB00A0EEB9 /* NetworkTest.m in Sources */,
 				DF1552521B3B915D008D3E7C /* DnspodFreeTest.m in Sources */,
 				DF81526E1D3DA932007C44DA /* GetAddrInfoTest.m in Sources */,
@@ -820,6 +840,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -857,6 +878,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = HappyDNS;
@@ -970,7 +992,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = HappyDNSTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.qiniu.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -987,7 +1009,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = HappyDNSTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.qiniu.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
