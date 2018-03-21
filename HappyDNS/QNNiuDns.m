@@ -50,8 +50,8 @@
     return str;
 }
 
-- (NSArray *)decrypt:(NSData *)raw {
-    NSData *enc = [QNHex decodeHexString:[NSString stringWithUTF8String:[raw bytes]]];
+- (NSArray *)decrypt:(NSString *)raw {
+    NSData *enc = [QNHex decodeHexString:raw];
     if (enc == nil) {
         return nil;
     }
@@ -92,31 +92,30 @@
         return nil;
     }
     
-    NSArray *raw;
-    if (self.encryptKey) {
-        NSData * stringData = [data subdataWithRange:NSMakeRange(0, data.length-1)];
-        raw = [self decrypt:stringData];
-    }else {
-        raw = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil];
-    }
+    
+    NSDictionary * raw = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil];
     if (raw == nil) {
         if (error != nil) {
             *error = [[NSError alloc] initWithDomain:domain.domain code:kQN_DECRYPT_FAILED userInfo:nil];
         }
         return nil;
     }
-    NSDictionary * rawDic = raw[0];
-    NSArray *result = [rawDic objectForKey:@"A"];
-    if (result.count <= 0) {
+    NSArray * rawArray;
+    if (self.encryptKey) {
+        rawArray = [self decrypt:raw[@"data"]][0];
+    }else {
+        rawArray = raw[@"data"][0];
+    }
+    if (rawArray.count <= 0) {
         return nil;
     }
-    int ttl = [[rawDic objectForKey:@"ttl"] integerValue];
-    if (ttl <= 0) {
-        return nil;
-    }
-    NSMutableArray *ret = [[NSMutableArray alloc] initWithCapacity:result.count];
-    for (int i = 0; i < result.count; i++) {
-        QNRecord *record = [[QNRecord alloc] init:[result objectAtIndex:i] ttl:ttl type:kQNTypeA];
+    NSMutableArray *ret = [[NSMutableArray alloc] initWithCapacity:rawArray.count];
+    for (int i = 0; i < rawArray.count; i++) {
+        NSDictionary *dataDic = [rawArray objectAtIndex:i];
+        if ([[dataDic objectForKey:@"TTL"] longValue] <= 0) {
+            continue;
+        }
+        QNRecord *record = [[QNRecord alloc] init:[dataDic objectForKey:@"data"] ttl:[[dataDic objectForKey:@"TTL"] intValue] type:kQNTypeA];
         [ret addObject:record];
     }
     return ret;
