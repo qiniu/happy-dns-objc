@@ -1,11 +1,12 @@
 language: objective-c
-rvm: 2.2.2
+osx_image: xcode9.2
+
 before_install:
-  - brew update
-  - brew upgrade xctool
-  - gem install cocoapods
+  - pod install
+
 before_script:
   - export QINIU_TEST_ENV="travis"
+
 script:
-  - xctool -workspace HappyDNS.xcworkspace -scheme HappyDNS_iOS -sdk iphonesimulator -configuration Release test -test-sdk iphonesimulator7.0 -freshInstall -freshSimulator
-  - xctool -workspace HappyDNS.xcworkspace -scheme HappyDNS_Mac -sdk macosx -configuration Debug test -test-sdk macosx -only "HappyDNS_MacTests"
+  - xcodebuild -workspace HappyDNS.xcworkspace -scheme HappyDNS_iOS -sdk iphonesimulator -configuration Release -destination 'platform=iOS Simulator,name=iPhone 5s,OS=11.2' test
+  - xcodebuild -workspace HappyDNS.xcworkspace -scheme HappyDNS_Mac -sdk macosx -configuration Debug test
