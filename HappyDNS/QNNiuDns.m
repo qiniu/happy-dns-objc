@@ -13,7 +13,7 @@
 #import "QNDes.h"
 #import "QNHex.h"
 
-#define ENDPOINT @"https://httpdns.qnydns.net/"
+#define ENDPOINT @"https://httpdns.qnydns.net:18443/"
 
 @interface QNNiuDns()
 
