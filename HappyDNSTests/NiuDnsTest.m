@@ -29,7 +29,7 @@
 }
 
 - (void)testHttpDNSWithEncryptKey {
-    id<QNResolverDelegate> resolver = [[QNNiuDns alloc] initWithAccountId:@"123456" encryptKey:@"5cf552e1f9a6fff3a6fad57502949b74" expireTime:3600];
+    id<QNResolverDelegate> resolver = [[QNNiuDns alloc] initWithAccountId:@"123456" encryptKey:@"a0dfe6fe42c4d948bb52d022b1a4a4d8" expireTime:3600];
     NSArray *records = [resolver query:[[QNDomain alloc] init:@"www.baidu.com"] networkInfo:nil error:nil];
     XCTAssert(records != nil, @"Pass");
     XCTAssert(records.count > 0, @"Pass");
