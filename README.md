@@ -3,6 +3,7 @@
 [![@qiniu on weibo](http://img.shields.io/badge/weibo-%40qiniutek-blue.svg)](http://weibo.com/qiniutek)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](LICENSE.md)
 [![Build Status](https://travis-ci.org/qiniu/happy-dns-objc.svg?branch=master)](https://travis-ci.org/qiniu/happy-dns-objc)
+[![codecov](https://codecov.io/gh/qiniu/happy-dns-objc/branch/master/graph/badge.svg)](https://codecov.io/gh/qiniu/happy-dns-objc)
 [![Latest Stable Version](http://img.shields.io/cocoapods/v/HappyDNS.svg)](https://github.com/qiniu/happy-dns-objc/releases)
 ![Platform](http://img.shields.io/cocoapods/p/HappyDNS.svg)
 
