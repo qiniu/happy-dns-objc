@@ -4,9 +4,11 @@ osx_image: xcode9.2
 before_install:
   - pod install
 
+
+
 script:
 - xcodebuild -workspace HappyDNS.xcworkspace -scheme HappyDNS_iOS -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 5s,OS=11.2' test
-- xcodebuild -workspace HappyDNS.xcworkspace -scheme HappyDNS_Mac -sdk macosx -configuration Debug test -test-sdk macosx -only "HappyDNS_MacTests"
+- xcodebuild -workspace HappyDNS.xcworkspace -scheme HappyDNS_Mac -sdk macosx -configuration Debug test -only "HappyDNS_MacTests"
 
 after_success:
 - bash <(curl -s https://codecov.io/bash)
