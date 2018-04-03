@@ -6,11 +6,11 @@
 //  Copyright © 2018年 Qiniu Cloud Storage. All rights reserved.
 //
 
-#import <XCTest/XCTest.h>
 #import "QNDomain.h"
+#import "QNNiuDns.h"
 #import "QNRecord.h"
 #import "QNResolverDelegate.h"
-#import "QNNiuDns.h"
+#import <XCTest/XCTest.h>
 
 @interface NiuDnsTest : XCTestCase
 
@@ -36,7 +36,7 @@
     XCTAssert(records.count >= 1, @"Pass");
     QNRecord *record = [records objectAtIndex:0];
     XCTAssert(record.ttl >= 0, @"Pass");
-    
+
     records = [resolver query:[[QNDomain alloc] init:@"www.qiniu.com"] networkInfo:nil error:nil];
     XCTAssert(records != nil, @"Pass");
     XCTAssert(records.count >= 1, @"Pass");
@@ -52,7 +52,7 @@
     XCTAssert(records.count >= 1, @"Pass");
     QNRecord *record = [records objectAtIndex:0];
     XCTAssert(record.ttl >= 0, @"Pass");
-    
+
     records = [resolver query:[[QNDomain alloc] init:@"www.qiniu.com"] networkInfo:nil error:nil];
     XCTAssert(records != nil, @"Pass");
     XCTAssert(records.count >= 1, @"Pass");

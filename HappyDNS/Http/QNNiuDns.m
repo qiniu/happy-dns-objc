@@ -7,15 +7,15 @@
 //
 
 #import "QNNiuDns.h"
-#import "QNDomain.h"
-#import "QNRecord.h"
-#import "QNNetworkInfo.h"
 #import "QNDes.h"
+#import "QNDomain.h"
 #import "QNHex.h"
+#import "QNNetworkInfo.h"
+#import "QNRecord.h"
 
 #define ENDPOINT @"https://httpdns.qnydns.net:18443/"
 
-@interface QNNiuDns()
+@interface QNNiuDns ()
 
 @property (nonatomic, strong) QNDes *des;
 
@@ -29,11 +29,11 @@
 
 - (instancetype)initWithAccountId:(NSString *)accountId
                        encryptKey:(NSString *)encryptKey
-                       expireTime:(long) expireTime {
+                       expireTime:(long)expireTime {
     if (self = [super init]) {
         _accountId = accountId;
         _expireTime = expireTime;
-        if(encryptKey) {
+        if (encryptKey) {
             _encryptKey = encryptKey;
             _des = [[QNDes alloc] init:[encryptKey dataUsingEncoding:NSUTF8StringEncoding]];
         }
@@ -63,10 +63,10 @@
 }
 
 - (NSArray *)query:(QNDomain *)domain networkInfo:(QNNetworkInfo *)netInfo error:(NSError *__autoreleasing *)error {
-    
-    NSString * realDomain = domain.domain;
+
+    NSString *realDomain = domain.domain;
     if (self.encryptKey) {
-        realDomain = [self encrypt:[NSString stringWithFormat:@"%@?e=%ld",domain.domain,(long)[[NSDate date] timeIntervalSince1970] + self.expireTime]];
+        realDomain = [self encrypt:[NSString stringWithFormat:@"%@?e=%ld", domain.domain, (long)[[NSDate date] timeIntervalSince1970] + self.expireTime]];
         if (realDomain == nil) {
             if (error != nil) {
                 *error = [[NSError alloc] initWithDomain:domain.domain code:kQN_ENCRYPT_FAILED userInfo:nil];
@@ -74,14 +74,14 @@
             return nil;
         }
     }
-    NSString *url = [NSString stringWithFormat:@"%@%@/d?dn=%@&ttl=1", ENDPOINT,self.accountId,realDomain];
+    NSString *url = [NSString stringWithFormat:@"%@%@/d?dn=%@&ttl=1", ENDPOINT, self.accountId, realDomain];
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:url] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:QN_DNS_DEFAULT_TIMEOUT];
     NSHTTPURLResponse *response = nil;
     NSError *httpError = nil;
-    NSData* data = [NSURLConnection sendSynchronousRequest:urlRequest
+    NSData *data = [NSURLConnection sendSynchronousRequest:urlRequest
                                          returningResponse:&response
                                                      error:&httpError];
-    
+
     if (httpError != nil) {
         if (error != nil) {
             *error = httpError;
@@ -91,19 +91,18 @@
     if (response.statusCode != 200) {
         return nil;
     }
-    
-    
-    NSDictionary * raw = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil];
+
+    NSDictionary *raw = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil];
     if (raw == nil) {
         if (error != nil) {
             *error = [[NSError alloc] initWithDomain:domain.domain code:kQN_DECRYPT_FAILED userInfo:nil];
         }
         return nil;
     }
-    NSArray * rawArray;
+    NSArray *rawArray;
     if (self.encryptKey) {
         rawArray = [self decrypt:raw[@"data"]][0];
-    }else {
+    } else {
         rawArray = raw[@"data"][0];
     }
     if (rawArray.count <= 0) {

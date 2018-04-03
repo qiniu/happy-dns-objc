@@ -6,10 +6,10 @@
 //  Copyright © 2018年 Qiniu Cloud Storage. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import "QNResolverDelegate.h"
+#import <Foundation/Foundation.h>
 
-@interface QNNiuDns : NSObject<QNResolverDelegate>
+@interface QNNiuDns : NSObject <QNResolverDelegate>
 - (NSArray *)query:(QNDomain *)domain networkInfo:(QNNetworkInfo *)netInfo error:(NSError *__autoreleasing *)error;
 
 @property (nonatomic, strong, readonly) NSString *accountId;
@@ -31,6 +31,6 @@
  */
 - (instancetype)initWithAccountId:(NSString *)accountId
                        encryptKey:(NSString *)encryptKey
-                       expireTime:(long) expireTime;
+                       expireTime:(long)expireTime;
 
 @end
