@@ -7,7 +7,7 @@ before_install:
 
 
 script:
-- xcodebuild -workspace HappyDNS.xcworkspace -scheme HappyDNS_iOS -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 5s,OS=11.2' test
+- xcodebuild -workspace HappyDNS.xcworkspace -scheme HappyDNS_iOS -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 5s,OS=11.2' test -enableCodeCoverage YES
 - xcodebuild -workspace HappyDNS.xcworkspace -scheme HappyDNS_Mac -sdk macosx -configuration Debug test
 
 after_success:
