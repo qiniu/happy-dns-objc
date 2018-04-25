@@ -21,16 +21,18 @@
  */
 @property (nonatomic, assign, readonly) long expireTime;
 
-/**
- *    http DNS 初始化
- */
-- (instancetype)initWithAccountId:(NSString *)accountId;
+
+@property (nonatomic, assign, readonly) BOOL isHttps;
+
+@property (nonatomic, assign, readonly) BOOL isNeedEncrypted;
 
 /**
  *    http DNS 加密初始化
  */
 - (instancetype)initWithAccountId:(NSString *)accountId
                        encryptKey:(NSString *)encryptKey
-                       expireTime:(long)expireTime;
+                       expireTime:(long)expireTime
+                          isHttps:(BOOL)isHttps
+                  isNeedEncrypted:(BOOL)isNeedEncrypted;
 
 @end

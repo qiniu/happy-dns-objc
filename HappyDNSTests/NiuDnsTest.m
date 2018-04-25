@@ -28,8 +28,8 @@
     [super tearDown];
 }
 
-- (void)testHttpDNSWithEncryptKey {
-    id<QNResolverDelegate> resolver = [[QNNiuDns alloc] initWithAccountId:@"123456" encryptKey:@"a0dfe6fe42c4d948bb52d022b1a4a4d8" expireTime:3600];
+- (void)testHttpDNS {
+    id<QNResolverDelegate> resolver = [[QNNiuDns alloc] initWithAccountId:@"8470251734" encryptKey:@"73047d275cce9496555b08f86c7286d8" expireTime:(long)[[NSDate date] timeIntervalSince1970] + 3600 isHttps:YES isNeedEncrypted:YES];
     NSArray *records = [resolver query:[[QNDomain alloc] init:@"www.baidu.com"] networkInfo:nil error:nil];
     XCTAssert(records != nil, @"Pass");
     XCTAssert(records.count > 0, @"Pass");
@@ -44,8 +44,8 @@
     XCTAssert(record.ttl >= 0, @"Pass");
 }
 
-- (void)testHttpDNS {
-    id<QNResolverDelegate> resolver = [[QNNiuDns alloc] initWithAccountId:@"123456"];
+- (void)testHttpsDNS {
+    id<QNResolverDelegate> resolver = [[QNNiuDns alloc] initWithAccountId:@"8470251734" encryptKey:@"73047d275cce9496555b08f86c7286d8" expireTime:(long)[[NSDate date] timeIntervalSince1970] + 3600 isHttps:NO isNeedEncrypted:NO];
     NSArray *records = [resolver query:[[QNDomain alloc] init:@"www.baidu.com"] networkInfo:nil error:nil];
     XCTAssert(records != nil, @"Pass");
     XCTAssert(records.count > 0, @"Pass");
