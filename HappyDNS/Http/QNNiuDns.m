@@ -12,8 +12,10 @@
 #import "QNHex.h"
 #import "QNNetworkInfo.h"
 #import "QNRecord.h"
+#import "QNMD5.h"
 
-#define ENDPOINT @"https://httpdns.qnydns.net:18443/"
+#define ENDPOINT_SSL @"https://httpdns.qnydns.net:18443/"
+#define ENDPOINT     @"http://httpdns.qnydns.net:18302/"
 
 @interface QNNiuDns ()
 
@@ -23,16 +25,16 @@
 
 @implementation QNNiuDns
 
-- (instancetype)initWithAccountId:(NSString *)accountId {
-    return [self initWithAccountId:accountId encryptKey:nil expireTime:0];
-}
-
 - (instancetype)initWithAccountId:(NSString *)accountId
                        encryptKey:(NSString *)encryptKey
-                       expireTime:(long)expireTime {
+                       expireTime:(long)expireTime
+                          isHttps:(BOOL)isHttps
+                  isNeedEncrypted:(BOOL)isNeedEncrypted  {
     if (self = [super init]) {
         _accountId = accountId;
         _expireTime = expireTime;
+        _isHttps = isHttps;
+        _isNeedEncrypted = isNeedEncrypted;
         if (encryptKey) {
             _encryptKey = encryptKey;
             _des = [[QNDes alloc] init:[encryptKey dataUsingEncoding:NSUTF8StringEncoding]];
@@ -65,8 +67,8 @@
 - (NSArray *)query:(QNDomain *)domain networkInfo:(QNNetworkInfo *)netInfo error:(NSError *__autoreleasing *)error {
 
     NSString *realDomain = domain.domain;
-    if (self.encryptKey) {
-        realDomain = [self encrypt:[NSString stringWithFormat:@"%@?e=%ld", domain.domain, (long)[[NSDate date] timeIntervalSince1970] + self.expireTime]];
+    if (self.isNeedEncrypted) {
+        realDomain = [self encrypt:[NSString stringWithFormat:@"%@", domain.domain]];
         if (realDomain == nil) {
             if (error != nil) {
                 *error = [[NSError alloc] initWithDomain:domain.domain code:kQN_ENCRYPT_FAILED userInfo:nil];
@@ -74,7 +76,9 @@
             return nil;
         }
     }
-    NSString *url = [NSString stringWithFormat:@"%@%@/d?dn=%@&ttl=1", ENDPOINT, self.accountId, realDomain];
+    NSString * md = [NSString stringWithFormat:@"%@-%@-%ld",domain.domain,self.encryptKey,self.expireTime];
+    NSString *s = [QNMD5 MD5:md];
+    NSString *url = [NSString stringWithFormat:@"%@%@/d?dn=%@&e=%@&s=%@&ttl=1&echo=1", self.isHttps? ENDPOINT_SSL : ENDPOINT, self.accountId, realDomain,[NSString stringWithFormat:@"%ld",self.expireTime],s];
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:url] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:QN_DNS_DEFAULT_TIMEOUT];
     NSHTTPURLResponse *response = nil;
     NSError *httpError = nil;
@@ -100,7 +104,7 @@
         return nil;
     }
     NSArray *rawArray;
-    if (self.encryptKey) {
+    if (self.isNeedEncrypted) {
         rawArray = [self decrypt:raw[@"data"]][0];
     } else {
         rawArray = raw[@"data"][0];
