@@ -6,6 +6,20 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		B0E79DB12105DE70000F6903 /* HappyDNS-Universal */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = B0E79DB22105DE70000F6903 /* Build configuration list for PBXAggregateTarget "HappyDNS-Universal" */;
+			buildPhases = (
+				B0E79DB52105DE93000F6903 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = "HappyDNS-Universal";
+			productName = "HappyDNS-Universal";
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		6B6090D36D2ECCD34FCE6DAE /* libPods-HappyDNS_iOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B7A5E527D9CF80E564A69D85 /* libPods-HappyDNS_iOSTests.a */; };
 		71FB87ACF7AF0163E3F8AF2F /* libPods-HappyDNS_MacTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 04A4DFEA159C0945AFABEA3A /* libPods-HappyDNS_MacTests.a */; };
@@ -650,6 +664,11 @@
 						CreatedOnToolsVersion = 9.4;
 						ProvisioningStyle = Automatic;
 					};
+					B0E79DB12105DE70000F6903 = {
+						CreatedOnToolsVersion = 9.4;
+						DevelopmentTeam = W2TP34G2MM;
+						ProvisioningStyle = Automatic;
+					};
 					DF22C0BE1B37B9B90010FEBF = {
 						CreatedOnToolsVersion = 6.3.2;
 					};
@@ -681,6 +700,7 @@
 				DF801F941B3A4F4D00866FDE /* HappyDNS_iOS */,
 				DF801F9E1B3A4F4D00866FDE /* HappyDNS_iOSTests */,
 				B0E79D802105DA0D000F6903 /* HappyDNS */,
+				B0E79DB12105DE70000F6903 /* HappyDNS-Universal */,
 			);
 		};
 /* End PBXProject section */
@@ -805,6 +825,19 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		B0E79DB52105DE93000F6903 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/sh\n\n# define output folder environment variable\nUNIVERSAL_OUTPUTFOLDER=${BUILD_DIR}/${CONFIGURATION}-universal\n\n# Step 1. Build Device and Simulator versions\nxcodebuild -target ${PROJECT_NAME} ONLY_ACTIVE_ARCH=NO -configuration ${CONFIGURATION} -sdk iphoneos  BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\" clean build\nxcodebuild -target ${PROJECT_NAME} ONLY_ACTIVE_ARCH=NO -configuration ${CONFIGURATION} -sdk iphonesimulator  BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\" clean build\n\n# make sure the output directory exists\nmkdir -p \"${UNIVERSAL_OUTPUTFOLDER}\"\n\n# Step 2. Create universal binary file using lipo\nlipo -create \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/${PROJECT_NAME}.framework/${PROJECT_NAME}\" \"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${PROJECT_NAME}.framework/${PROJECT_NAME}\" -output \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}\"\n\n# Last touch. copy the header or lib files. Just for convenience\ncp -R \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/\" \"${UNIVERSAL_OUTPUTFOLDER}/\"\n\ncp -f \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}\" \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework/${PROJECT_NAME}\"\n\nrm -f \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}\"\n\nopen \"${UNIVERSAL_OUTPUTFOLDER}\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1038,6 +1071,26 @@
 			};
 			name = Release;
 		};
+		B0E79DB32105DE70000F6903 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = W2TP34G2MM;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		B0E79DB42105DE70000F6903 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = W2TP34G2MM;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
 		DF22C0D11B37B9B90010FEBF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1260,6 +1313,15 @@
 			buildConfigurations = (
 				B0E79D862105DA0D000F6903 /* Debug */,
 				B0E79D872105DA0D000F6903 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B0E79DB22105DE70000F6903 /* Build configuration list for PBXAggregateTarget "HappyDNS-Universal" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B0E79DB32105DE70000F6903 /* Debug */,
+				B0E79DB42105DE70000F6903 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
