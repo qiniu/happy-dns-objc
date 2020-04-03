@@ -10,6 +10,7 @@
 
 @class QNNetworkInfo;
 @class QNDomain;
+@class QNRecord;
 
 /**
  *    getaddrinfo 回调上层的函数
@@ -48,6 +49,9 @@ typedef void (^QNIpStatusCallback)(NSString *ip, int code, int ms);
  */
 @interface QNDnsManager : NSObject
 
+/// 默认ttl值 单位：秒
+@property(nonatomic, assign)int defalutTtl;
+
 /**
  *    解析域名
  *
@@ -55,7 +59,16 @@ typedef void (^QNIpStatusCallback)(NSString *ip, int code, int ms);
  *
  *    @return IP列表
  */
-- (NSArray *)query:(NSString *)domain;
+- (NSArray <NSString *> *)query:(NSString *)domain;
+
+/**
+ *    解析域名
+ *
+ *    @param domain 域名
+ *
+ *    @return QNRecord列表  QNRecord.value即为host
+*/
+- (NSArray <QNRecord *> *)queryRecords:(NSString *)domain;
 
 /**
  *    解析域名，使用Domain对象进行详细约定
@@ -64,7 +77,7 @@ typedef void (^QNIpStatusCallback)(NSString *ip, int code, int ms);
  *
  *    @return IP 列表
  */
-- (NSArray *)queryWithDomain:(QNDomain *)domain;
+- (NSArray <NSString *> *)queryWithDomain:(QNDomain *)domain;
 
 /**
  *    通知网络发生变化
