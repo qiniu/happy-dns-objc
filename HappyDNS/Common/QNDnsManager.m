@@ -165,7 +165,11 @@ static NSArray *records2Ips(NSArray *records) {
         if (result != nil && result.count > 0) {
             QNRecord *record = [result objectAtIndex:0];
             if (![record expired:[[NSDate date] timeIntervalSince1970]]) {
-                return records2Ips(result);
+                if (needRecordInfo) {
+                    return result;
+                } else {
+                    return records2Ips(result);
+                }
             }
         }
     }
