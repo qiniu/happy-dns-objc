@@ -16,11 +16,13 @@ const int kQNTypeTXT = 16;
 @implementation QNRecord
 - (instancetype)init:(NSString *)value
                  ttl:(int)ttl
-                type:(int)type {
+                type:(int)type
+              source:(QNRecordSource)source {
     if (self = [super init]) {
         _value = value;
         _type = type;
         _ttl = ttl;
+        _source = source;
         _timeStamp = [[NSDate date] timeIntervalSince1970];
     }
     return self;
