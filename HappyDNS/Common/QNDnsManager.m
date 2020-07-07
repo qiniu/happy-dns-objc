@@ -135,7 +135,7 @@ static NSArray *records2Ips(NSArray *records) {
             if (needRecordInfo) {
                 NSMutableArray *retP = [NSMutableArray array];
                 for (NSString *host in ret) {
-                    QNRecord *record = [[QNRecord alloc] init:host ttl:self.defalutTtl type:kQNTypeA];
+                    QNRecord *record = [[QNRecord alloc] init:host ttl:self.defaultTtl type:kQNTypeA source:QNRecordSourceUnknown];
                     [retP addObject:record];
                 }
                 return [retP copy];
@@ -189,6 +189,10 @@ static NSArray *records2Ips(NSArray *records) {
             if (tmp.code == kQNDomainNotOwnCode) {
                 continue;
             }
+            
+            if (self.queryErrorHandler) {
+                self.queryErrorHandler(error, domain.domain);
+            }
         }
 
         if (records == nil || records.count == 0) {
@@ -215,7 +219,7 @@ static NSArray *records2Ips(NSArray *records) {
         if (needRecordInfo) {
             NSMutableArray *retP = [NSMutableArray array];
             for (NSString *host in ret) {
-                QNRecord *record = [[QNRecord alloc] init:host ttl:self.defalutTtl type:kQNTypeA];
+                QNRecord *record = [[QNRecord alloc] init:host ttl:self.defaultTtl type:kQNTypeA source:QNRecordSourceUnknown];
                 [retP addObject:record];
             }
             return [retP copy];

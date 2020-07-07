@@ -1,4 +1,13 @@
 #Changelog
+## 0.3.17 (2020-07-03)
+
+### 修改
+* qiniu  record增加source, dns manager增加query error handler
+
+## 0.3.16 (2020-05-07)
+
+### 修改
+* qiniu  http dns 增加额外query接口
 
 ## 0.3.15 (2019-02-12)
 
