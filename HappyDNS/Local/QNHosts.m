@@ -61,7 +61,7 @@ static NSArray *filter(NSArray *input, int provider) {
         return nil;
     }
     if (x.count >= 2) {
-        @synchronized(x) {
+        @synchronized(_dict) {
             QNHostsValue *first = [x firstObject];
             [x removeObjectAtIndex:0];
             [x addObject:first];
@@ -69,7 +69,7 @@ static NSArray *filter(NSArray *input, int provider) {
     }
     
     NSArray *hosts = nil;
-    @synchronized(x) {
+    @synchronized(_dict) {
         hosts = [x copy];
     }
     return filter(hosts, netInfo.provider);
