@@ -51,7 +51,7 @@
     [array addObject:[QNResolver systemResolver]];
     [array addObject:[[QNResolver alloc] initWithAddress:@"119.29.29.29"]];
     QNDnsManager *dns = [[QNDnsManager alloc] init:array networkInfo:[QNNetworkInfo normal]];
-    NSArray *ips = [dns query:@"www.qiniu.com"];
+    NSArray *ips = [dns query:@"www.baidu.com"];
     XCTAssertNotNil(ips, @"PASS");
     XCTAssertTrue(ips.count > 0, @"PASS");
 }

@@ -71,7 +71,7 @@ static NSArray *query_ip_v4(res_state res, const char *host) {
         } else {
             continue;
         }
-        QNRecord *record = [[QNRecord alloc] init:val ttl:ttl type:t];
+        QNRecord *record = [[QNRecord alloc] init:val ttl:ttl type:t source:QNRecordSourceSystem];
         [array addObject:record];
     }
     res_ndestroy(res);
