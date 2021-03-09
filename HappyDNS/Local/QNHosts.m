@@ -61,11 +61,13 @@ static NSArray *filter(NSArray *input, int provider) {
         return nil;
     }
     if (x.count >= 2) {
-        QNHostsValue *first = [x firstObject];
-        [x removeObjectAtIndex:0];
-        [x addObject:first];
+        @synchronized(x) {
+            QNHostsValue *first = [x firstObject];
+            [x removeObjectAtIndex:0];
+            [x addObject:first];
+        }
     }
-    return filter(x, netInfo.provider);
+    return filter([x copy], netInfo.provider);
 }
 
 - (void)put:(NSString *)domain ip:(NSString *)ip {
