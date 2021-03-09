@@ -67,7 +67,12 @@ static NSArray *filter(NSArray *input, int provider) {
             [x addObject:first];
         }
     }
-    return filter([x copy], netInfo.provider);
+    
+    NSArray *hosts = nil;
+    @synchronized(x) {
+        hosts = [x copy];
+    }
+    return filter(hosts, netInfo.provider);
 }
 
 - (void)put:(NSString *)domain ip:(NSString *)ip {
