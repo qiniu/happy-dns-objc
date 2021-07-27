@@ -48,13 +48,11 @@ typedef NS_ENUM(NSUInteger, QNRecordSource) {
                 type:(int)type
               source:(QNRecordSource)source;
 
-
 - (instancetype)init:(NSString *)value
                  ttl:(int)ttl
                 type:(int)type
            timeStamp:(long long)timeStamp
               source:(QNRecordSource)source;
-
 
 - (BOOL)expired:(long long)time;
 
