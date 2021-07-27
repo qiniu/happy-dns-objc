@@ -29,19 +29,19 @@
 }
 
 - (void)testDnspodEnterprise {
-    //    id <QNResolverDelegate> resolver = [[QNDnspodEnterprise alloc] initWithId:@"007" key:@"abcdef"];
-    //    NSArray *records = [resolver query:[[QNDomain alloc]init:@"baidu.com"] networkInfo:nil error:nil];
-    //    XCTAssert(records != nil, @"Pass");
-    //    XCTAssert(records.count > 0, @"Pass");
-    //    XCTAssert(records.count >= 1, @"Pass");
-    //    QNRecord *record = [records objectAtIndex:0];
-    //    XCTAssert(record.ttl >= 0, @"Pass");
-    //
-    //    records = [resolver query:[[QNDomain alloc]init:@"www.qiniu.com"] networkInfo:nil error:nil];
-    //    XCTAssert(records != nil, @"Pass");
-    //    XCTAssert(records.count >= 1, @"Pass");
-    //    record = [records objectAtIndex:0];
-    //    XCTAssert(record.ttl >= 0, @"Pass");
+        id <QNResolverDelegate> resolver = [[QNDnspodEnterprise alloc] initWithId:@"007" key:@"abcdef"];
+        NSArray *records = [resolver query:[[QNDomain alloc]init:@"baidu.com"] networkInfo:nil error:nil];
+        XCTAssert(records != nil, @"Pass");
+        XCTAssert(records.count > 0, @"Pass");
+        XCTAssert(records.count >= 1, @"Pass");
+        QNRecord *record = [records objectAtIndex:0];
+        XCTAssert(record.ttl >= 0, @"Pass");
+    
+        records = [resolver query:[[QNDomain alloc]init:@"www.qiniu.com"] networkInfo:nil error:nil];
+        XCTAssert(records != nil, @"Pass");
+        XCTAssert(records.count >= 1, @"Pass");
+        record = [records objectAtIndex:0];
+        XCTAssert(record.ttl >= 0, @"Pass");
 }
 
 @end

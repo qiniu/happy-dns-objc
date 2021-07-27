@@ -17,10 +17,6 @@
 
 #include "QNGetAddrInfo.h"
 
-const int kQNDomainHijackingCode = -7001;
-const int kQNDomainNotOwnCode = -7002;
-const int kQNDomainSeverError = -7003;
-
 @interface QNDnsManager ()
 
 @property (nonatomic, strong) QNLruCache *cache;

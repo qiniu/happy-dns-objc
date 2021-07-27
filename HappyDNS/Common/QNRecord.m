@@ -28,6 +28,21 @@ const int kQNTypeTXT = 16;
     return self;
 }
 
+- (instancetype)init:(NSString *)value
+                 ttl:(int)ttl
+                type:(int)type
+           timeStamp:(long long)timeStamp
+              source:(QNRecordSource)source {
+    if (self = [super init]) {
+        _value = value;
+        _type = type;
+        _ttl = ttl;
+        _source = source;
+        _timeStamp = timeStamp;
+    }
+    return self;
+}
+
 - (BOOL)expired:(long long)time {
     return time > _timeStamp + _ttl;
 }

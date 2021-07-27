@@ -6,11 +6,7 @@
 //  Copyright (c) 2015年 Qiniu Cloud Storage. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
-extern const int kQNDomainHijackingCode;
-extern const int kQNDomainNotOwnCode;
-extern const int kQNDomainSeverError;
+#import "QNDnsError.h"
 
 #define QN_DNS_DEFAULT_TIMEOUT 20 //seconds
 
