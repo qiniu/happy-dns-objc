@@ -13,6 +13,7 @@ extern const int kQNDomainHijackingCode;
 extern const int kQNDomainNotOwnCode;
 extern const int kQNDomainSeverError;
 
+extern const int kQNDnsMethodErrorCode;
 extern const int kQNDnsInvalidParamCode;
 extern const int kQNDnsResponseBadTypeCode;
 extern const int kQNDnsResponseBadClassCode;
@@ -26,6 +27,7 @@ extern const int kQNDnsResponseFormatCode;
 
 @end
 
+#define kQNDnsMethodError(description)            [QNDnsError error:kQNDnsMethodErrorCode desc:description]
 #define kQNDnsInvalidParamError(description)      [QNDnsError error:kQNDnsInvalidParamCode desc:description]
 #define kQNDnsResponseBadTypeError(description)   [QNDnsError error:kQNDnsResponseBadTypeCode desc:description]
 #define kQNDnsResponseBadClassError(description)  [QNDnsError error:kQNDnsResponseBadClassCode desc:description]

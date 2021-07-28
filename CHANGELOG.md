@@ -1,4 +1,12 @@
 #Changelog
+## 1.0.0 (2021-07-28)
+
+### 增加
+* 新增 dns udp 解析 api
+* 新增 doh 解析 api
+* 调整 QNRecord api
+* 废弃 QNDnspodFree init api
+
 ## 0.3.17 (2020-07-03)
 
 ### 修改

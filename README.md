@@ -9,7 +9,7 @@
 
 ## 用途
 
-调用系统底层Dns解析库，可以使用114 等第三方dns解析，也可以集成dnspod等httpdns。另外也有丰富的hosts 域名配置。
+调用系统底层Dns解析库，可以使用114 等第三方dns解析，可以使用 Doh 协议的 Dns 解析方案，也可以集成dnspod等httpdns。另外也有丰富的hosts 域名配置。
 
 ## 安装
 
@@ -28,6 +28,7 @@ pod "HappyDNS"
  NSMutableArray *array = [[NSMutableArray alloc] init];
 [array addObject:[QNResolver systemResolver]];
 [array addObject:[[QNResolver alloc] initWithAddress:@"119.29.29.29"]];
+[array addObject:[QNDohResolver resolverWithServer:@"https://dns.alidns.com/dns-query"]];
 QNDnsManager *dns = [[QNDnsManager alloc] init:array networkInfo:[QNNetworkInfo normal]];
 NSArray *ips = [dns query:@"www.qiniu.com"];
 ```

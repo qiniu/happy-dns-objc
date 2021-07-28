@@ -36,19 +36,22 @@
 @implementation QNDnsUdpResolver
 
 + (instancetype)resolverWithServerIP:(NSString *)serverIP
+                          recordType:(int)recordType
                              timeout:(int)timeout {
-    return [super resolverWithServer:serverIP timeout:timeout];
+    return [super resolverWithServer:serverIP recordType:recordType timeout:timeout];
 }
 
 + (instancetype)resolverWithServerIPs:(NSArray <NSString *> *)serverIPs
+                           recordType:(int)recordType
                               timeout:(int)timeout {
-    return [super resolverWithServers:serverIPs timeout:timeout];
+    return [super resolverWithServers:serverIPs recordType:recordType timeout:timeout];
 }
 
 + (instancetype)resolverWithServerIPs:(NSArray <NSString *> *)servers
+                           recordType:(int)recordType
                                 queue:(dispatch_queue_t _Nullable)queue
                               timeout:(int)timeout {
-    QNDnsUdpResolver *resolver = [super resolverWithServers:servers timeout:timeout];
+    QNDnsUdpResolver *resolver = [super resolverWithServers:servers recordType:recordType timeout:timeout];
     resolver.queue = queue;
     return resolver;
 }
@@ -66,55 +69,6 @@
     }
     return _flows;
 }
-
-//- (NSArray *)query:(QNDomain *)domain networkInfo:(QNNetworkInfo *)netInfo error:(NSError *__autoreleasing *)error {
-//
-//    NSError *err = nil;
-//    QNDnsResponse *response = [self lookupHost:domain.domain recordType:kQNTypeA error:&err];
-//    if (err != nil) {
-//        *error = err;
-//        return @[];
-//    }
-//
-//    NSMutableArray *records = [NSMutableArray array];
-//    for (QNRecord *record in response.answerArray) {
-//        if (record.type == kQNTypeA || record.type == kQNTypeAAAA) {
-//            [records addObject:record];
-//        }
-//    }
-//    return [records copy];
-//}
-//
-//- (QNDnsResponse *)lookupHost:(NSString *)host
-//                   recordType:(int)recordType
-//                        error:(NSError *__autoreleasing  _Nullable *)error {
-//    if (self.servers == nil || self.servers.count == 0) {
-//        if (error != nil) {
-//            *error = kQNDnsInvalidParamError(@"server can not be empty");
-//        }
-//        return nil;
-//    }
-//
-//    dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
-//
-//    __block NSError *errorP = nil;
-//    __block QNDnsResponse *dnsResponse = nil;
-//    for (NSString *server in self.servers) {
-//        [self request:server host:host recordType:recordType complete:^(QNDnsResponse *response, NSError *err) {
-//            errorP = err;
-//            dnsResponse = response;
-//            dispatch_semaphore_signal(semaphore);
-//        }];
-//    }
-//
-//    dispatch_semaphore_wait(semaphore, dispatch_time(DISPATCH_TIME_NOW, self.timeout * NSEC_PER_SEC));
-//
-//    if (error != NULL) {
-//        *error = errorP;
-//    }
-//
-//    return dnsResponse;
-//}
 
 - (void)request:(NSString *)server
            host:(NSString *)host

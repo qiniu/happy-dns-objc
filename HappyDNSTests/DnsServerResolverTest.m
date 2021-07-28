@@ -18,19 +18,19 @@
 
 - (void)testSimpleDns {
     NSString *host = @"qiniu.com";
-    
-    QNDnsUdpResolver *server = [QNDnsUdpResolver resolverWithServer:@"8.8.8.8" timeout:5];
     NSError *err = nil;
     
     NSArray *typeArray = @[@(kQNTypeA), @(kQNTypeCname), @(kQNTypeAAAA), @(kQNTypeTXT)];
     for (NSNumber *type in typeArray) {
-        QNDnsResponse *response = [server lookupHost:host recordType:type.intValue error:&err];
+        QNDnsUdpResolver *server = [QNDnsUdpResolver resolverWithServer:@"8.8.8.8" recordType:type.intValue timeout:5];
+        QNDnsResponse *response = [server lookupHost:host error:&err];
         NSLog(@"response:%@", response);
         
         XCTAssertNil(err, "error:%@", err);
         XCTAssertTrue(response.rCode == 0, "type:%@ response:%@", type, response);
     }
     
+    QNDnsUdpResolver *server = [QNDnsUdpResolver resolverWithServer:@"8.8.8.8"];
     NSArray *ipv4List = [server query:[[QNDomain alloc] init:host] networkInfo:nil error:&err];
     XCTAssertNil(err, "ipv4 query error:%@", err);
     XCTAssertNotNil(ipv4List, "ipv4 query result nil");
@@ -39,19 +39,19 @@
 
 - (void)testMutiDnsServer {
     NSString *host = @"qiniu.com";
-    
-    QNDnsUdpResolver *server = [QNDnsUdpResolver resolverWithServerIPs:@[@"8.8.8.8", @"114.114.114.114"] queue:nil timeout:5];
     NSError *err = nil;
     
     NSArray *typeArray = @[@(kQNTypeA), @(kQNTypeCname), @(kQNTypeAAAA), @(kQNTypeTXT)];
     for (NSNumber *type in typeArray) {
-        QNDnsResponse *response = [server lookupHost:host recordType:type.intValue error:&err];
+        QNDnsUdpResolver *server = [QNDnsUdpResolver resolverWithServerIPs:@[@"8.8.8.8", @"114.114.114.114"] recordType:type.intValue queue:nil timeout:5];
+        QNDnsResponse *response = [server lookupHost:host error:&err];
         NSLog(@"response:%@", response);
         
         XCTAssertNil(err, "error:%@", err);
         XCTAssertTrue(response.rCode == 0, "type:%@ response:%@", type, response);
     }
     
+    QNDnsUdpResolver *server = [QNDnsUdpResolver resolverWithServerIPs:@[@"8.8.8.8", @"114.114.114.114"] recordType:kQNTypeA queue:nil timeout:5];
     NSArray *ipv4List = [server query:[[QNDomain alloc] init:host] networkInfo:nil error:&err];
     XCTAssertNil(err, "ipv4 query error:%@", err);
     XCTAssertNotNil(ipv4List, "ipv4 query result nil");

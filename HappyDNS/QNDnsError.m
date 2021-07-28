@@ -11,10 +11,12 @@ const int kQNDomainHijackingCode = -7001;
 const int kQNDomainNotOwnCode = -7002;
 const int kQNDomainSeverError = -7003;
 
-const int kQNDnsInvalidParamCode = -7004;
-const int kQNDnsResponseBadTypeCode = -7005;
-const int kQNDnsResponseBadClassCode = -7006;
-const int kQNDnsResponseFormatCode = -7007;
+const int kQNDnsMethodErrorCode = -7010;
+
+const int kQNDnsInvalidParamCode = -7021;
+const int kQNDnsResponseBadTypeCode = -7022;
+const int kQNDnsResponseBadClassCode = -7023;
+const int kQNDnsResponseFormatCode = -7024;
 
 @implementation QNDnsError
 

@@ -17,20 +17,21 @@
 
 - (void)testSimpleDns {
     NSString *host = @"qiniu.com";
-    // https://dns.alidns.com/dns-query
-    // https://dns.google/dns-query
-    QNDohResolver *server = [QNDohResolver resolverWithServer:@"https://dns.alidns.com/dns-query" timeout:5];
     NSError *err = nil;
     
     NSArray *typeArray = @[@(kQNTypeA), @(kQNTypeCname), @(kQNTypeAAAA), @(kQNTypeTXT)];
     for (NSNumber *type in typeArray) {
-        QNDnsResponse *response = [server lookupHost:host recordType:type.intValue error:&err];
+        // https://dns.alidns.com/dns-query
+        // https://dns.google/dns-query
+        QNDohResolver *server = [QNDohResolver resolverWithServer:@"https://dns.alidns.com/dns-query" recordType:type.intValue timeout:5];
+        QNDnsResponse *response = [server lookupHost:host error:&err];
         NSLog(@"response:%@", response);
         
         XCTAssertNil(err, "error:%@", err);
         XCTAssertTrue(response.rCode == 0, "type:%@ response:%@", type, response);
     }
     
+    QNDohResolver *server = [QNDohResolver resolverWithServer:@"https://dns.alidns.com/dns-query"];
     NSArray *ipv4List = [server query:[[QNDomain alloc] init:host] networkInfo:nil error:&err];
     NSLog(@"host:%@ ips:%@", host, ipv4List);
     XCTAssertNil(err, "ipv4 query error:%@", err);
@@ -40,21 +41,21 @@
 
 - (void)testMutiDnsServer {
     NSString *host = @"qiniu.com";
-    
-    // https://dns.alidns.com/dns-query
-    // https://dns.google/dns-query
-    QNDohResolver *server = [QNDohResolver resolverWithServers:@[@"https://dns.alidns.com/dns-query", @"https://dns.google/dns-query"] timeout:5];
     NSError *err = nil;
     
     NSArray *typeArray = @[@(kQNTypeA), @(kQNTypeCname), @(kQNTypeAAAA), @(kQNTypeTXT)];
     for (NSNumber *type in typeArray) {
-        QNDnsResponse *response = [server lookupHost:host recordType:type.intValue error:&err];
+        // https://dns.alidns.com/dns-query
+        // https://dns.google/dns-query
+        QNDohResolver *server = [QNDohResolver resolverWithServers:@[@"https://dns.alidns.com/dns-query", @"https://dns.google/dns-query"] recordType:type.intValue timeout:5];
+        QNDnsResponse *response = [server lookupHost:host error:&err];
         NSLog(@"response:%@", response);
         
         XCTAssertNil(err, "error:%@", err);
         XCTAssertTrue(response.rCode == 0, "type:%@ response:%@", type, response);
     }
     
+    QNDohResolver *server = [QNDohResolver resolverWithServers:@[@"https://dns.alidns.com/dns-query", @"https://dns.google/dns-query"] recordType:kQNTypeA timeout:5];
     NSArray *ipv4List = [server query:[[QNDomain alloc] init:host] networkInfo:nil error:&err];
     XCTAssertNil(err, "ipv4 query error:%@", err);
     XCTAssertNotNil(ipv4List, "ipv4 query result nil");

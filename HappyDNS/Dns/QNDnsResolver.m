@@ -13,20 +13,28 @@
 
 @interface QNDnsResolver()
 
+@property(nonatomic, assign)int recordType;
 @property(nonatomic, assign)int timeout;
 @property(nonatomic,   copy)NSArray *servers;
 
 @end
 @implementation QNDnsResolver
 
++ (instancetype)resolverWithServer:(NSString *)server {
+    return [self resolverWithServer:server recordType:kQNTypeA timeout:QN_DNS_DEFAULT_TIMEOUT];
+}
+
 + (instancetype)resolverWithServer:(NSString *)server
+                        recordType:(int)recordType
                            timeout:(int)timeout {
-    return [self resolverWithServers:server ? @[server] : @[] timeout:timeout];
+    return [self resolverWithServers:server ? @[server] : @[] recordType:recordType timeout:timeout];
 }
 
 + (instancetype)resolverWithServers:(NSArray <NSString *> *)servers
+                         recordType:(int)recordType
                             timeout:(int)timeout {
     QNDnsResolver *resolver = [[self alloc] init];
+    resolver.recordType = recordType;
     resolver.servers = [servers copy] ?: @[];
     resolver.timeout = timeout;
     return resolver;
@@ -34,7 +42,7 @@
 
 - (NSArray *)query:(QNDomain *)domain networkInfo:(QNNetworkInfo *)netInfo error:(NSError *__autoreleasing *)error {
     NSError *err = nil;
-    QNDnsResponse *response = [self lookupHost:domain.domain recordType:kQNTypeA error:&err];
+    QNDnsResponse *response = [self lookupHost:domain.domain error:&err];
     if (err != nil) {
         *error = err;
         return @[];
@@ -49,15 +57,13 @@
     return [records copy];
 }
 
-- (QNDnsResponse *)lookupHost:(NSString *)host
-                   recordType:(int)recordType
-                        error:(NSError *__autoreleasing  _Nullable *)error {
+- (QNDnsResponse *)lookupHost:(NSString *)host error:(NSError *__autoreleasing  _Nullable *)error {
     
     dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
     
     __block NSError *errorP = nil;
     __block QNDnsResponse *dnsResponse = nil;
-    [self request:host recordType:recordType complete:^(QNDnsResponse *response, NSError *err) {
+    [self request:host recordType:self.recordType complete:^(QNDnsResponse *response, NSError *err) {
         errorP = err;
         dnsResponse = response;
         dispatch_semaphore_signal(semaphore);
@@ -108,6 +114,10 @@
 - (void)request:(NSString *)server
            host:(NSString *)host
      recordType:(int)recordType
-       complete:(void(^)(QNDnsResponse *response, NSError *error))complete {}
+       complete:(void(^)(QNDnsResponse *response, NSError *error))complete {
+    if (complete != nil) {
+        complete(nil, kQNDnsMethodError(@"use sub class of QNDnsResolver"));
+    }
+}
 
 @end
