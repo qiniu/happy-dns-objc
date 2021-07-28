@@ -46,7 +46,7 @@
 @interface QNDnsResponse()
 
 @property(nonatomic, assign)NSInteger timestamp;
-
+@property(nonatomic, assign)QNRecordSource source;
 @property(nonatomic,   copy)NSString *server;
 @property(nonatomic, strong)QNDnsRequest *request;
 @property(nonatomic, strong)NSData *recordData;
@@ -71,9 +71,10 @@
 @synthesize rd;
 @synthesize rCode;
 
-+ (instancetype)dnsResponse:(NSString *)server request:(QNDnsRequest *)request dnsRecordData:(NSData *)recordData error:(NSError *__autoreleasing  _Nullable *)error {
++ (instancetype)dnsResponse:(NSString *)server source:(QNRecordSource)source request:(QNDnsRequest *)request dnsRecordData:(NSData *)recordData error:(NSError *__autoreleasing  _Nullable *)error {
     QNDnsResponse *record = [[QNDnsResponse alloc] init];
     record.server = server;
+    record.source = source;
     record.request = request;
     record.recordData = recordData;
     record.timestamp = [[NSDate date] timeIntervalSince1970] * 1000;
@@ -244,7 +245,7 @@
         NSString *value = [self readData:type range:NSMakeRange(index, rdLength)];
         
         if (class == 0x01 && (type == kQNTypeCname || type == self.request.recordType)) {
-            QNRecord *record = [[QNRecord alloc] init:[value copy] ttl:ttl type:type timeStamp:self.timestamp source:0];
+            QNRecord *record = [[QNRecord alloc] init:[value copy] ttl:ttl type:type timeStamp:self.timestamp server:self.server source:self.source];
             [resource.records addObject:record];
         }
         
@@ -323,12 +324,12 @@
             }
             dataString = [ipv6 copy];
         }
-    } else if (recordType == kQNTypeA) {
+    } else if (recordType == kQNTypeCname) {
         if (dataValue.length > 1) {
             QNDnsRecordName *name = [self getNameFrom:range.location];
             dataString = [name.name copy];
         }
-    } else if (recordType == kQNTypeA) {
+    } else if (recordType == kQNTypeTXT) {
         if (dataValue.length > 1) {
             dataString = [[NSString alloc] initWithData:[dataValue subdataWithRange:NSMakeRange(1, dataValue.length - 1)] encoding:NSUTF8StringEncoding];
         }

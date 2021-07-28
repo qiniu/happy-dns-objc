@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface QNDnsResponse : QNDnsMessage
 
 @property(nonatomic, assign, readonly)NSInteger timestamp;
-
+@property(nonatomic, assign, readonly)QNRecordSource source;
 @property(nonatomic,   copy, readonly)NSString *server;
 @property(nonatomic, strong, readonly)QNDnsRequest *request;
 @property(nonatomic, strong, readonly)NSData *recordData;
@@ -39,7 +39,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,   copy, readonly)NSArray <QNRecord *> *authorityArray;
 @property(nonatomic,   copy, readonly)NSArray <QNRecord *> *additionalArray;
 
-+ (instancetype)dnsResponse:(NSString *)server request:(QNDnsRequest *)request dnsRecordData:(NSData *)recordData error:(NSError **)error;
++ (instancetype)dnsResponse:(NSString *)server source:(QNRecordSource)source request:(QNDnsRequest *)request dnsRecordData:(NSData *)recordData error:(NSError **)error;
 
 @end
 

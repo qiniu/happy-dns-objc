@@ -33,11 +33,14 @@ typedef NS_ENUM(NSUInteger, QNRecordSource) {
     QNRecordSourceDnspodFree,
     QNRecordSourceDnspodEnterprise,
     QNRecordSourceSystem,
+    QNRecordSourceUdp,
+    QNRecordSourceDoh,
 };
 
 @interface QNRecord : NSObject
 
-@property (nonatomic, strong, readonly) NSString *value;
+@property (nonatomic,   copy, readonly) NSString *value;
+@property(nonatomic,    copy, readonly) NSString *server;
 @property (nonatomic, readonly) int ttl;
 @property (nonatomic, readonly) int type;
 @property (nonatomic, readonly) long long timeStamp;
@@ -52,6 +55,7 @@ typedef NS_ENUM(NSUInteger, QNRecordSource) {
                  ttl:(int)ttl
                 type:(int)type
            timeStamp:(long long)timeStamp
+              server:(NSString *)server
               source:(QNRecordSource)source;
 
 - (BOOL)expired:(long long)time;
