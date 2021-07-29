@@ -7,7 +7,37 @@
 
 #import "QNDohResolver.h"
 
+@interface QNDohResolver()
+
+@property(nonatomic, assign)int recordType;
+@property(nonatomic, assign)int timeout;
+@property(nonatomic,   copy)NSArray *servers;
+
+@end
 @implementation QNDohResolver
+@synthesize recordType;
+@synthesize timeout;
+@synthesize servers;
+
++ (instancetype)resolverWithServer:(NSString *)server {
+    return [self resolverWithServer:server recordType:kQNTypeA timeout:QN_DNS_DEFAULT_TIMEOUT];
+}
+
++ (instancetype)resolverWithServer:(NSString *)server
+                        recordType:(int)recordType
+                           timeout:(int)timeout {
+    return [self resolverWithServers:server ? @[server] : @[] recordType:recordType timeout:timeout];
+}
+
++ (instancetype)resolverWithServers:(NSArray <NSString *> *)servers
+                         recordType:(int)recordType
+                            timeout:(int)timeout {
+    QNDohResolver *resolver = [[self alloc] init];
+    resolver.recordType = recordType;
+    resolver.servers = [servers copy] ?: @[];
+    resolver.timeout = timeout;
+    return resolver;
+}
 
 - (void)request:(NSString *)server
            host:(NSString *)host

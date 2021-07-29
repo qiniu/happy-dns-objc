@@ -29,29 +29,44 @@
 #define kGetPortMaxTime 10
 @interface QNDnsUdpResolver()<QNAsyncUdpSocketDelegate>
 
+@property(nonatomic, assign)int recordType;
+@property(nonatomic, assign)int timeout;
+@property(nonatomic,   copy)NSArray *servers;
 @property(nonatomic, strong)dispatch_queue_t queue;
 @property(nonatomic, strong)NSMutableDictionary *flows;
 
 @end
+
 @implementation QNDnsUdpResolver
+@synthesize recordType;
+@synthesize timeout;
+@synthesize servers;
+
++ (instancetype)resolverWithServerIP:(NSString *)serverIP {
+    return [self resolverWithServerIP:serverIP recordType:kQNTypeA timeout:QN_DNS_DEFAULT_TIMEOUT];
+}
 
 + (instancetype)resolverWithServerIP:(NSString *)serverIP
                           recordType:(int)recordType
                              timeout:(int)timeout {
-    return [super resolverWithServer:serverIP recordType:recordType timeout:timeout];
+    return [self resolverWithServerIPs:serverIP ? @[serverIP] : @[] recordType:recordType timeout:timeout];
 }
 
 + (instancetype)resolverWithServerIPs:(NSArray <NSString *> *)serverIPs
                            recordType:(int)recordType
                               timeout:(int)timeout {
-    return [super resolverWithServers:serverIPs recordType:recordType timeout:timeout];
+    return [self resolverWithServerIPs:serverIPs recordType:recordType queue:nil timeout:timeout];
 }
 
 + (instancetype)resolverWithServerIPs:(NSArray <NSString *> *)servers
                            recordType:(int)recordType
                                 queue:(dispatch_queue_t _Nullable)queue
                               timeout:(int)timeout {
-    QNDnsUdpResolver *resolver = [super resolverWithServers:servers recordType:recordType timeout:timeout];
+    
+    QNDnsUdpResolver *resolver = [[self alloc] init];
+    resolver.recordType = recordType;
+    resolver.servers = [servers copy] ?: @[];
+    resolver.timeout = timeout;
     resolver.queue = queue;
     return resolver;
 }

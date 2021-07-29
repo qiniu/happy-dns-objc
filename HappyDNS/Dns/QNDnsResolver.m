@@ -11,34 +11,7 @@
 #import "QNDnsError.h"
 #import "QNDnsResolver.h"
 
-@interface QNDnsResolver()
-
-@property(nonatomic, assign)int recordType;
-@property(nonatomic, assign)int timeout;
-@property(nonatomic,   copy)NSArray *servers;
-
-@end
 @implementation QNDnsResolver
-
-+ (instancetype)resolverWithServer:(NSString *)server {
-    return [self resolverWithServer:server recordType:kQNTypeA timeout:QN_DNS_DEFAULT_TIMEOUT];
-}
-
-+ (instancetype)resolverWithServer:(NSString *)server
-                        recordType:(int)recordType
-                           timeout:(int)timeout {
-    return [self resolverWithServers:server ? @[server] : @[] recordType:recordType timeout:timeout];
-}
-
-+ (instancetype)resolverWithServers:(NSArray <NSString *> *)servers
-                         recordType:(int)recordType
-                            timeout:(int)timeout {
-    QNDnsResolver *resolver = [[self alloc] init];
-    resolver.recordType = recordType;
-    resolver.servers = [servers copy] ?: @[];
-    resolver.timeout = timeout;
-    return resolver;
-}
 
 - (NSArray *)query:(QNDomain *)domain networkInfo:(QNNetworkInfo *)netInfo error:(NSError *__autoreleasing *)error {
     NSError *err = nil;

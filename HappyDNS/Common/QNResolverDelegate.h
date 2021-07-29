@@ -13,5 +13,7 @@
 @class QNDomain;
 @class QNNetworkInfo;
 @protocol QNResolverDelegate <NSObject>
+
 - (NSArray *)query:(QNDomain *)domain networkInfo:(QNNetworkInfo *)netInfo error:(NSError **)error;
+
 @end

@@ -22,7 +22,7 @@
     
     NSArray *typeArray = @[@(kQNTypeA), @(kQNTypeCname), @(kQNTypeAAAA), @(kQNTypeTXT)];
     for (NSNumber *type in typeArray) {
-        QNDnsUdpResolver *server = [QNDnsUdpResolver resolverWithServer:@"8.8.8.8" recordType:type.intValue timeout:5];
+        QNDnsUdpResolver *server = [QNDnsUdpResolver resolverWithServerIP:@"8.8.8.8" recordType:type.intValue timeout:5];
         QNDnsResponse *response = [server lookupHost:host error:&err];
         NSLog(@"response:%@", response);
         
@@ -30,7 +30,7 @@
         XCTAssertTrue(response.rCode == 0, "type:%@ response:%@", type, response);
     }
     
-    QNDnsUdpResolver *server = [QNDnsUdpResolver resolverWithServer:@"8.8.8.8"];
+    QNDnsUdpResolver *server = [QNDnsUdpResolver resolverWithServerIP:@"8.8.8.8"];
     NSArray *ipv4List = [server query:[[QNDomain alloc] init:host] networkInfo:nil error:&err];
     XCTAssertNil(err, "ipv4 query error:%@", err);
     XCTAssertNotNil(ipv4List, "ipv4 query result nil");

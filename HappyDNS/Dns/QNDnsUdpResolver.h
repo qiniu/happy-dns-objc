@@ -11,6 +11,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface QNDnsUdpResolver : QNDnsResolver
 
+
+/// 构造函数
+/// @param serverIP 指定 dns local server1. eg:8.8.8.8
++ (instancetype)resolverWithServerIP:(NSString *)serverIP;
+
 /// 构造函数
 /// @param serverIP 指定 dns local server1. eg:8.8.8.8
 /// @param recordType 记录类型 eg：kQNTypeA
