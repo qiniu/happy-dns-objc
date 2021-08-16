@@ -7,7 +7,6 @@
 //
 
 #import "QNDnsManager.h"
-#import "QNDnspodFree.h"
 #import "QNDomain.h"
 #import "QNHijackingDetectWrapper.h"
 #import "QNNetworkInfo.h"
@@ -114,12 +113,6 @@
     r = [dns queryWithDomain:domain];
     XCTAssertEqual(r.count, 1, @"PASS");
     XCTAssertFalse([@"3.3.3.3" isEqualToString:r[0]], @"PASS");
-}
-
-- (void)testHttpDNS {
-    QNDnsManager *dns = [[QNDnsManager alloc] init:@[ [[QNDnspodFree alloc] init] ] networkInfo:nil];
-    NSArray *ipArr = [dns query:@"www.github.com"];
-    XCTAssertTrue(ipArr.count > 0, @"PASS");
 }
 
 - (void)testUrlQuery {
