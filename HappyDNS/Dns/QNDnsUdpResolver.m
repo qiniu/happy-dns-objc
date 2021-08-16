@@ -23,10 +23,7 @@
 @implementation QNDnsFlow
 @end
 
-#define kMinPort 10000
-#define kMaxPort (0xFFFF)
 #define kDnsPort 53
-#define kGetPortMaxTime 10
 @interface QNDnsUdpResolver()<QNAsyncUdpSocketDelegate>
 
 @property(nonatomic, assign)int recordType;
@@ -202,10 +199,6 @@ withFilterContext:(nullable id)filterContext {
     @synchronized (self) {
         [self.flows removeObjectForKey:key];
     }
-}
-
-- (long)refreshPort {
-    return arc4random()%(kMaxPort + kMinPort) - kMinPort;
 }
 
 @end
