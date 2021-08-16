@@ -104,15 +104,8 @@
     }
     
     QNAsyncUdpSocket *socket = [[QNAsyncUdpSocket alloc] initWithDelegate:self delegateQueue:self.queue];
-    int time = 0;
-    while (time < kGetPortMaxTime) {
-        [socket bindToPort:[self refreshPort] error: &error];
-        if (!error) {
-            break;
-        }
-        error = nil;
-        time++;
-    }
+    // 由系统决定端口号
+    [socket bindToPort:0 error: &error];
     if (error) {
         complete(nil, error);
         return;

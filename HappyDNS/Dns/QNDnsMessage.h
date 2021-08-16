@@ -18,9 +18,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  * 请求类型，目前有三类值：
- * 0 QUERY，标准查询
- * 1 IQUERY， 反向查询
- * 2 STATUS， DNS状态请求
+ * 0 QUERY, 标准查询
+ * 1 IQUERY, 反向查询
+ * 2 STATUS, DNS状态请求
  * 5 UPDATE, DNS域更新请求
  */
 @property(nonatomic, assign, readonly)int opCode;

@@ -80,14 +80,14 @@
     record.timestamp = [[NSDate date] timeIntervalSince1970] * 1000;
     
     NSError *err = nil;
-    [record prase:&err];
+    [record parse:&err];
     if (error != nil) {
         *error = err;
     }
     return record;
 }
 
-- (void)prase:(NSError **)error {
+- (void)parse:(NSError **)error {
     
     if (self.recordData.length < 12) {
         [self copyError:kQNDnsResponseFormatError(@"response data too small") toErrorPoint:error];

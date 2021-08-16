@@ -37,7 +37,7 @@
     XCTAssertTrue(ipv4List.count > 0, "ipv4 query result empty");
 }
 
-- (void)testMutiDnsServer {
+- (void)testMultiDnsServer {
     NSString *host = @"qiniu.com";
     NSError *err = nil;
     

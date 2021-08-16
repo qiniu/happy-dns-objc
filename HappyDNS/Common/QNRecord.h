@@ -40,7 +40,7 @@ typedef NS_ENUM(NSUInteger, QNRecordSource) {
 @interface QNRecord : NSObject
 
 @property (nonatomic,   copy, readonly) NSString *value;
-@property(nonatomic,    copy, readonly) NSString *server;
+@property (nonatomic,   copy, readonly) NSString *server;
 @property (nonatomic, readonly) int ttl;
 @property (nonatomic, readonly) int type;
 @property (nonatomic, readonly) long long timeStamp;
