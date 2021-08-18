@@ -50,7 +50,7 @@ const int kQNTypeTXT = 16;
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"value:%@, ttl:%lld, timestamp:%d, type:%d server:%@ source:%lu", _value, _timeStamp, _ttl, _type, _server, (unsigned long)_source];
+    return [NSString stringWithFormat:@"value:%@, ttl:%ld, timestamp:%lld, type:%d server:%@ source:%lu", _value,  _ttl, _type, _timeStamp, _server, (unsigned long)_source];
 }
 
 @end
