@@ -371,6 +371,8 @@
 		3159B75D26B00B6000380B4F /* Dns */ = {
 			isa = PBXGroup;
 			children = (
+				3159B7D826B019A400380B4F /* QNDohResolver.h */,
+				3159B7D726B019A400380B4F /* QNDohResolver.m */,
 				3159B82726B1114F00380B4F /* QNDnsUdpResolver.h */,
 				3159B82826B1114F00380B4F /* QNDnsUdpResolver.m */,
 				3159B76026B00B6000380B4F /* QNDnsDefine.h */,
@@ -384,15 +386,6 @@
 				3159B81526B10CBC00380B4F /* QNDnsResolver.m */,
 			);
 			path = Dns;
-			sourceTree = "<group>";
-		};
-		3159B7D626B019A400380B4F /* Doh */ = {
-			isa = PBXGroup;
-			children = (
-				3159B7D826B019A400380B4F /* QNDohResolver.h */,
-				3159B7D726B019A400380B4F /* QNDohResolver.m */,
-			);
-			path = Doh;
 			sourceTree = "<group>";
 		};
 		3AA9FDBAFF7915B2F079FC24 /* Frameworks */ = {
@@ -459,7 +452,6 @@
 		DF22C0C11B37B9B90010FEBF /* HappyDNS */ = {
 			isa = PBXGroup;
 			children = (
-				3159B7D626B019A400380B4F /* Doh */,
 				3159B75D26B00B6000380B4F /* Dns */,
 				DF1DA8931B3BDF1800A88CB6 /* HappyDNS.h */,
 				DFE09E481D3E2C0500235B71 /* Refresh */,

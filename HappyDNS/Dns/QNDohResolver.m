@@ -53,7 +53,7 @@
     }
     
     int messageId = arc4random()%(0xFFFF);
-    QNDnsRequest *dnsRequest = [QNDnsRequest request:messageId recordType:recordType host:@"upload.qiniup.com"];
+    QNDnsRequest *dnsRequest = [QNDnsRequest request:messageId recordType:recordType host:host];
     NSError *error = nil;
     NSData *requestData = [dnsRequest toDnsQuestionData:&error];
     if (error) {

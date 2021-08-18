@@ -148,7 +148,7 @@
     }
     
     // |00|01|02|03|04|05|06|07|
-    // |RA|r1|r2|r3| RCODE     |
+    // |QR|  OPCODE   |AA|TC|RD|
     int field0 = [self.recordData qn_readInt8:2];
     int qr = [self.recordData qn_readInt8:2] & 0x80;
     // 非 dns 响应数据
@@ -157,14 +157,14 @@
         return;
     }
     
-    self.opCode = field0 & 0x78;
-    self.aa = field0 & 0x04;
+    self.opCode = (field0 >> 3) & 0x07;
+    self.aa = (field0 >> 2) & 0x01;
     self.rd = field0 & 0x01;
     
     // |00|01|02|03|04|05|06|07|
     // |RA|r1|r2|r3| RCODE     |
     int field1 = [self.recordData qn_readInt8:3];
-    self.ra = field1 & 0x80;
+    self.ra = (field1 >> 7) & 0x1;
     self.rCode = field1 & 0x0F;
 }
 

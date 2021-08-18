@@ -15,7 +15,21 @@
 
 @implementation DohResolverTest
 
+- (void)testA {
+    NSString *server = @"https://dns.alidns.com/dns-query";
+    NSString *host = @"upload.qiniup.com";
+    NSError *err = nil;
+    
+    QNDohResolver *resolver = [QNDohResolver resolverWithServer:server recordType:kQNTypeA timeout:5];
+    QNDnsResponse *response = [resolver lookupHost:host error:&err];
+    NSLog(@"response:%@", response);
+    
+    XCTAssertNil(err, "error:%@", err);
+    XCTAssertTrue(response.rCode == 0, "type:%@ response:%@", kQNTypeCname, response);
+}
+
 - (void)testSimpleDns {
+    NSString *server = @"https://dns.alidns.com/dns-query";
     NSString *host = @"qiniu.com";
     NSError *err = nil;
     
@@ -23,16 +37,16 @@
     for (NSNumber *type in typeArray) {
         // https://dns.alidns.com/dns-query
         // https://dns.google/dns-query
-        QNDohResolver *server = [QNDohResolver resolverWithServer:@"https://dns.alidns.com/dns-query" recordType:type.intValue timeout:5];
-        QNDnsResponse *response = [server lookupHost:host error:&err];
+        QNDohResolver *resolver = [QNDohResolver resolverWithServer:server recordType:type.intValue timeout:5];
+        QNDnsResponse *response = [resolver lookupHost:host error:&err];
         NSLog(@"response:%@", response);
         
         XCTAssertNil(err, "error:%@", err);
         XCTAssertTrue(response.rCode == 0, "type:%@ response:%@", type, response);
     }
     
-    QNDohResolver *server = [QNDohResolver resolverWithServer:@"https://dns.alidns.com/dns-query"];
-    NSArray *ipv4List = [server query:[[QNDomain alloc] init:host] networkInfo:nil error:&err];
+    QNDohResolver *resolver = [QNDohResolver resolverWithServer:server];
+    NSArray *ipv4List = [resolver query:[[QNDomain alloc] init:host] networkInfo:nil error:&err];
     NSLog(@"host:%@ ips:%@", host, ipv4List);
     XCTAssertNil(err, "ipv4 query error:%@", err);
     XCTAssertNotNil(ipv4List, "ipv4 query result nil");
