@@ -11,7 +11,20 @@
 #import "QNDnsError.h"
 #import "QNDnsResolver.h"
 
+@interface QNDnsResolver()
+
+@property(nonatomic, strong)dispatch_queue_t timerQueue;
+
+@end
 @implementation QNDnsResolver
++ (dispatch_queue_t)timerQueue {
+    static dispatch_once_t onceToken;
+    static dispatch_queue_t timerQueue;
+    dispatch_once(&onceToken, ^{
+        timerQueue = dispatch_queue_create("com.happyDns.timerQueue", DISPATCH_QUEUE_CONCURRENT);
+    });
+    return timerQueue;
+}
 
 - (NSArray *)query:(QNDomain *)domain networkInfo:(QNNetworkInfo *)netInfo error:(NSError *__autoreleasing *)error {
     NSError *err = nil;
@@ -32,6 +45,7 @@
 
 - (QNDnsResponse *)lookupHost:(NSString *)host error:(NSError *__autoreleasing  _Nullable *)error {
     
+    // 异步转同步
     dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
     
     __block NSError *errorP = nil;
@@ -65,6 +79,22 @@
     NSLock *locker = [[NSLock alloc] init];
     __block BOOL hasCallBack = false;
     __block BOOL completeCount = 0;
+    
+    // 超时处理
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(self.timeout * NSEC_PER_SEC)), [QNDnsResolver timerQueue], ^{
+        BOOL shouldCallBack = false;
+        [locker lock];
+        if (!hasCallBack) {
+            shouldCallBack = true;
+            hasCallBack = true;
+        }
+        [locker unlock];
+        
+        if (shouldCallBack) {
+            complete(nil, kQNDnsInvalidParamError(@"resolver timeout"));
+        }
+    });
+    
     for (NSString *server in self.servers) {
         [self request:server host:host recordType:recordType complete:^(QNDnsResponse *response, NSError *error) {
             BOOL shouldCallBack = false;
@@ -73,6 +103,7 @@
             completeCount++;
             if (completeCount == self.servers.count || (response != nil && response.rCode == 0 && !hasCallBack)) {
                 shouldCallBack = true;
+                hasCallBack = true;
             }
             [locker unlock];
             
