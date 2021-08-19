@@ -8,6 +8,7 @@
 #import "QNRecord.h"
 #import "QNDomain.h"
 #import "QNDnsError.h"
+#import "QNDnsResponse.h"
 #import "QNDnsUdpResolver.h"
 #import <QNAsyncUdpSocket.h>
 

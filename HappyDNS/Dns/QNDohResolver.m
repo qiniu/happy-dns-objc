@@ -4,7 +4,7 @@
 //
 //  Created by yangsen on 2021/7/15.
 //
-
+#import "QNDnsResponse.h"
 #import "QNDohResolver.h"
 
 @interface QNDohResolver()

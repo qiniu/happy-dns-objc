@@ -9,6 +9,7 @@
 #import "QNRecord.h"
 #import "QNDomain.h"
 #import "QNDnsError.h"
+#import "QNDnsResponse.h"
 #import "QNDnsResolver.h"
 
 @interface QNDnsResolver()

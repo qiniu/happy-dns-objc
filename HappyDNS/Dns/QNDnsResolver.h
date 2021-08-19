@@ -7,11 +7,12 @@
 //
 
 #import "QNDnsDefine.h"
-#import "QNDnsResponse.h"
+#import "QNRecord.h"
 #import "QNResolverDelegate.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class QNDnsResponse;
 // 抽象对象，不能直接使用，使用其子类
 @interface QNDnsResolver : NSObject <QNResolverDelegate>
 
@@ -19,8 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, assign, readonly)int timeout;
 @property(nonatomic,   copy, readonly)NSArray *servers;
 
-- (QNDnsResponse *)lookupHost:(NSString *)host
-                        error:(NSError **)error;
+
 
 // 抽象方法，子类实现
 - (void)request:(NSString *)server

@@ -14,5 +14,9 @@
 #import <HappyDNS/QNGetAddrInfo.h>
 #import <HappyDNS/QNNetworkInfo.h>
 #import <HappyDNS/QNResolverDelegate.h>
+#import <HappyDNS/QNDnsResolver.h>
+#import <HappyDNS/QNDnsUdpResolver.h>
+#import <HappyDNS/QNDohResolver.h>
+#import <HappyDNS/QNDnsDefine.h>
 #import <HappyDNS/QNDnspodEnterprise.h>
 #import <HappyDNS/QNHijackingDetectWrapper.h>

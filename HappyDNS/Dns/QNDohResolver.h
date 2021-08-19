@@ -7,7 +7,6 @@
 
 #import "QNDnsResolver.h"
 #import "QNDnsDefine.h"
-#import "QNDnsResponse.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
