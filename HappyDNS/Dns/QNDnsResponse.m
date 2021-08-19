@@ -344,7 +344,7 @@
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"messageId:%d rd:%d ra:%d aa:%d rCode:%d \n server:%@ \n request:%@ \n answerArray:%@ \n authorityArray:%@ \n additionalArray:%@", self.messageId, self.rd, self.ra, self.aa, self.rCode, self.server, self.request, self.answerArray, self.authorityArray, self.additionalArray];
+    return [NSString stringWithFormat:@"{messageId:%d, rd:%d, ra:%d, aa:%d, rCode:%d, server:%@, request:%@, answerArray:%@, authorityArray:%@, additionalArray:%@}", self.messageId, self.rd, self.ra, self.aa, self.rCode, self.server, self.request, self.answerArray, self.authorityArray, self.additionalArray];
 }
 
 @end
