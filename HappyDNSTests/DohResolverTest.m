@@ -45,8 +45,6 @@
         XCTAssertNotNil(records, "type:%@ query result nil", type);
         XCTAssertTrue(records.count > 0, "type:%@ query result empty", type);
     }
-    
-    
 }
 
 @end
