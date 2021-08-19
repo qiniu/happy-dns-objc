@@ -1,5 +1,5 @@
 //
-//  QNDnspodFree.m
+//  QNDnspodEnterprise.m
 //  HappyDNS
 //
 //  Created by bailong on 15/6/23.

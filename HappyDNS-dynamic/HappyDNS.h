@@ -10,7 +10,6 @@
 #import <HappyDNS/QNDomain.h>
 #import <HappyDNS/QNRecord.h>
 #import <HappyDNS/QNResolver.h>
-#import <HappyDNS/QNDnspodFree.h>
 #import <HappyDNS/QNDnsManager.h>
 #import <HappyDNS/QNGetAddrInfo.h>
 #import <HappyDNS/QNNetworkInfo.h>

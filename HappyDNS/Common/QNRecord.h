@@ -30,7 +30,6 @@ extern const int kQNTypeTXT;
 
 typedef NS_ENUM(NSUInteger, QNRecordSource) {
     QNRecordSourceUnknown,
-    QNRecordSourceDnspodFree,
     QNRecordSourceDnspodEnterprise,
     QNRecordSourceSystem,
     QNRecordSourceUdp,
