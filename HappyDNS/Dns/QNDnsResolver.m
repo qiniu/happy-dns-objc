@@ -18,11 +18,11 @@
 
 @end
 @implementation QNDnsResolver
-+ (dispatch_queue_t)timerQueue {
++ (dispatch_queue_t)timeoutQueue {
     static dispatch_once_t onceToken;
     static dispatch_queue_t timerQueue;
     dispatch_once(&onceToken, ^{
-        timerQueue = dispatch_queue_create("com.happyDns.timerQueue", DISPATCH_QUEUE_CONCURRENT);
+        timerQueue = dispatch_queue_create("com.happyDns.timeoutQueue", DISPATCH_QUEUE_CONCURRENT);
     });
     return timerQueue;
 }
@@ -82,7 +82,7 @@
     __block BOOL completeCount = 0;
     
     // 超时处理
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(self.timeout * NSEC_PER_SEC)), [QNDnsResolver timerQueue], ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(self.timeout * NSEC_PER_SEC)), [QNDnsResolver timeoutQueue], ^{
         BOOL shouldCallBack = false;
         [locker lock];
         if (!hasCallBack) {
