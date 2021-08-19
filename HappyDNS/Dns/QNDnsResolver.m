@@ -37,7 +37,7 @@
     
     NSMutableArray *records = [NSMutableArray array];
     for (QNRecord *record in response.answerArray) {
-        if (record.type == kQNTypeA || record.type == kQNTypeAAAA) {
+        if (record.type == kQNTypeA || record.type == kQNTypeAAAA || record.type == kQNTypeCname) {
             [records addObject:record];
         }
     }
