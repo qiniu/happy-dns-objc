@@ -81,9 +81,6 @@
 		93FFD15220906779001DA341 /* QNMD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 93FFD15020906779001DA341 /* QNMD5.m */; };
 		93FFD15320906E0C001DA341 /* QNMD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 93FFD15020906779001DA341 /* QNMD5.m */; };
 		B0E79D852105DA0D000F6903 /* HappyDNS.h in Headers */ = {isa = PBXBuildFile; fileRef = B0E79D832105DA0D000F6903 /* HappyDNS.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B0E79D892105DB12000F6903 /* QNRefresher.m in Sources */ = {isa = PBXBuildFile; fileRef = DFE09E541D3F0D8700235B71 /* QNRefresher.m */; };
-		B0E79D8A2105DB12000F6903 /* QNIpModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DFE09E5A1D3F0DF200235B71 /* QNIpModel.m */; };
-		B0E79D8B2105DB12000F6903 /* QNAssessment.m in Sources */ = {isa = PBXBuildFile; fileRef = DFE09E5B1D3F0DF200235B71 /* QNAssessment.m */; };
 		B0E79D8C2105DB12000F6903 /* QNHex.m in Sources */ = {isa = PBXBuildFile; fileRef = DFFC8AA21B6BBEB400EC938D /* QNHex.m */; };
 		B0E79D8D2105DB12000F6903 /* QNDes.m in Sources */ = {isa = PBXBuildFile; fileRef = DFFC8AAA1B6BD73900EC938D /* QNDes.m */; };
 		B0E79D8E2105DB12000F6903 /* QNIP.m in Sources */ = {isa = PBXBuildFile; fileRef = DFDD2A741CF58887006ECFCE /* QNIP.m */; };
@@ -170,15 +167,6 @@
 		DFDD2A771CF58887006ECFCE /* QNIP.m in Sources */ = {isa = PBXBuildFile; fileRef = DFDD2A741CF58887006ECFCE /* QNIP.m */; };
 		DFDD2A7B1CF65906006ECFCE /* IPTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DFDD2A7A1CF65906006ECFCE /* IPTest.m */; };
 		DFDD2A7C1CF65906006ECFCE /* IPTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DFDD2A7A1CF65906006ECFCE /* IPTest.m */; };
-		DFE09E551D3F0D8700235B71 /* QNRefresher.h in Headers */ = {isa = PBXBuildFile; fileRef = DFE09E531D3F0D8700235B71 /* QNRefresher.h */; };
-		DFE09E561D3F0D8700235B71 /* QNRefresher.m in Sources */ = {isa = PBXBuildFile; fileRef = DFE09E541D3F0D8700235B71 /* QNRefresher.m */; };
-		DFE09E571D3F0D8700235B71 /* QNRefresher.m in Sources */ = {isa = PBXBuildFile; fileRef = DFE09E541D3F0D8700235B71 /* QNRefresher.m */; };
-		DFE09E5C1D3F0DF200235B71 /* QNAssessment.h in Headers */ = {isa = PBXBuildFile; fileRef = DFE09E581D3F0DF200235B71 /* QNAssessment.h */; };
-		DFE09E5D1D3F0DF200235B71 /* QNIpModel.h in Headers */ = {isa = PBXBuildFile; fileRef = DFE09E591D3F0DF200235B71 /* QNIpModel.h */; };
-		DFE09E5E1D3F0DF200235B71 /* QNIpModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DFE09E5A1D3F0DF200235B71 /* QNIpModel.m */; };
-		DFE09E5F1D3F0DF200235B71 /* QNIpModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DFE09E5A1D3F0DF200235B71 /* QNIpModel.m */; };
-		DFE09E601D3F0DF200235B71 /* QNAssessment.m in Sources */ = {isa = PBXBuildFile; fileRef = DFE09E5B1D3F0DF200235B71 /* QNAssessment.m */; };
-		DFE09E611D3F0DF200235B71 /* QNAssessment.m in Sources */ = {isa = PBXBuildFile; fileRef = DFE09E5B1D3F0DF200235B71 /* QNAssessment.m */; };
 		DFFC8AA31B6BBEB400EC938D /* QNHex.h in Headers */ = {isa = PBXBuildFile; fileRef = DFFC8AA11B6BBEB400EC938D /* QNHex.h */; };
 		DFFC8AA41B6BBEB400EC938D /* QNHex.m in Sources */ = {isa = PBXBuildFile; fileRef = DFFC8AA21B6BBEB400EC938D /* QNHex.m */; };
 		DFFC8AA51B6BBEB400EC938D /* QNHex.m in Sources */ = {isa = PBXBuildFile; fileRef = DFFC8AA21B6BBEB400EC938D /* QNHex.m */; };
@@ -305,12 +293,6 @@
 		DFDD2A731CF58887006ECFCE /* QNIP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QNIP.h; path = Util/QNIP.h; sourceTree = "<group>"; };
 		DFDD2A741CF58887006ECFCE /* QNIP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QNIP.m; path = Util/QNIP.m; sourceTree = "<group>"; };
 		DFDD2A7A1CF65906006ECFCE /* IPTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPTest.m; sourceTree = "<group>"; };
-		DFE09E531D3F0D8700235B71 /* QNRefresher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QNRefresher.h; sourceTree = "<group>"; };
-		DFE09E541D3F0D8700235B71 /* QNRefresher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QNRefresher.m; sourceTree = "<group>"; };
-		DFE09E581D3F0DF200235B71 /* QNAssessment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QNAssessment.h; path = Assessment/QNAssessment.h; sourceTree = "<group>"; };
-		DFE09E591D3F0DF200235B71 /* QNIpModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QNIpModel.h; path = Assessment/QNIpModel.h; sourceTree = "<group>"; };
-		DFE09E5A1D3F0DF200235B71 /* QNIpModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QNIpModel.m; path = Assessment/QNIpModel.m; sourceTree = "<group>"; };
-		DFE09E5B1D3F0DF200235B71 /* QNAssessment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QNAssessment.m; path = Assessment/QNAssessment.m; sourceTree = "<group>"; };
 		DFFC8AA11B6BBEB400EC938D /* QNHex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QNHex.h; path = Util/QNHex.h; sourceTree = "<group>"; };
 		DFFC8AA21B6BBEB400EC938D /* QNHex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QNHex.m; path = Util/QNHex.m; sourceTree = "<group>"; };
 		DFFC8AA61B6BD47100EC938D /* DnspodEnterpriseTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DnspodEnterpriseTest.m; sourceTree = "<group>"; };
@@ -455,8 +437,6 @@
 			children = (
 				3159B75D26B00B6000380B4F /* Dns */,
 				DF1DA8931B3BDF1800A88CB6 /* HappyDNS.h */,
-				DFE09E481D3E2C0500235B71 /* Refresh */,
-				DFE09E471D3E2BD400235B71 /* Assessment */,
 				DF801F5C1B3944BA00866FDE /* Util */,
 				DF801F5B1B3944AF00866FDE /* Common */,
 				DF801F5A1B3944A900866FDE /* Local */,
@@ -561,26 +541,6 @@
 			name = Util;
 			sourceTree = "<group>";
 		};
-		DFE09E471D3E2BD400235B71 /* Assessment */ = {
-			isa = PBXGroup;
-			children = (
-				DFE09E581D3F0DF200235B71 /* QNAssessment.h */,
-				DFE09E591D3F0DF200235B71 /* QNIpModel.h */,
-				DFE09E5A1D3F0DF200235B71 /* QNIpModel.m */,
-				DFE09E5B1D3F0DF200235B71 /* QNAssessment.m */,
-			);
-			name = Assessment;
-			sourceTree = "<group>";
-		};
-		DFE09E481D3E2C0500235B71 /* Refresh */ = {
-			isa = PBXGroup;
-			children = (
-				DFE09E531D3F0D8700235B71 /* QNRefresher.h */,
-				DFE09E541D3F0D8700235B71 /* QNRefresher.m */,
-			);
-			name = Refresh;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -634,16 +594,13 @@
 				3159B76D26B00B6000380B4F /* QNDnsRequest.h in Headers */,
 				DF5B33801D2BB28500CD608F /* QNLruCache.h in Headers */,
 				DF801F871B396F5500866FDE /* QNResolverDelegate.h in Headers */,
-				DFE09E5C1D3F0DF200235B71 /* QNAssessment.h in Headers */,
 				3159B76F26B00B6000380B4F /* QNDnsDefine.h in Headers */,
 				DFFC8AAB1B6BD73900EC938D /* QNDes.h in Headers */,
 				DFDD2A751CF58887006ECFCE /* QNIP.h in Headers */,
-				DFE09E551D3F0D8700235B71 /* QNRefresher.h in Headers */,
 				3159B87126B141BD00380B4F /* QNAsyncUdpSocket.h in Headers */,
 				DFFC8AB01B6BD77000EC938D /* QNDnspodEnterprise.h in Headers */,
 				DF801F8C1B39743200866FDE /* QNDomain.h in Headers */,
 				DF90509B1CFD888F008B98C2 /* QNResolvUtil.h in Headers */,
-				DFE09E5D1D3F0DF200235B71 /* QNIpModel.h in Headers */,
 				DFFC8AA31B6BBEB400EC938D /* QNHex.h in Headers */,
 				3159B7DC26B019A400380B4F /* QNDohResolver.h in Headers */,
 				DF1DA8941B3BDF1800A88CB6 /* HappyDNS.h in Headers */,
@@ -880,10 +837,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B0E79D892105DB12000F6903 /* QNRefresher.m in Sources */,
-				B0E79D8A2105DB12000F6903 /* QNIpModel.m in Sources */,
 				3159B82D26B1115000380B4F /* QNDnsUdpResolver.m in Sources */,
-				B0E79D8B2105DB12000F6903 /* QNAssessment.m in Sources */,
 				B0E79D8C2105DB12000F6903 /* QNHex.m in Sources */,
 				B0E79D8D2105DB12000F6903 /* QNDes.m in Sources */,
 				B0E79D8E2105DB12000F6903 /* QNIP.m in Sources */,
@@ -918,12 +872,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				93FFD15220906779001DA341 /* QNMD5.m in Sources */,
-				DFE09E561D3F0D8700235B71 /* QNRefresher.m in Sources */,
 				DF801F741B396E3C00866FDE /* QNResolver.m in Sources */,
 				DFDD2A761CF58887006ECFCE /* QNIP.m in Sources */,
 				DFFC8AB11B6BD77000EC938D /* QNDnspodEnterprise.m in Sources */,
 				DF801F6A1B396DA000866FDE /* QNDnsManager.m in Sources */,
-				DFE09E5E1D3F0DF200235B71 /* QNIpModel.m in Sources */,
 				3159B78826B00B6000380B4F /* QNDnsError.m in Sources */,
 				DF2B76F61C3C1D5300643678 /* QNTxtResolver.m in Sources */,
 				DF5B33811D2BB28500CD608F /* QNLruCache.m in Sources */,
@@ -932,7 +884,6 @@
 				3159B7D926B019A400380B4F /* QNDohResolver.m in Sources */,
 				DFFC8AAC1B6BD73900EC938D /* QNDes.m in Sources */,
 				DF801F651B396D5100866FDE /* QNRecord.m in Sources */,
-				DFE09E601D3F0DF200235B71 /* QNAssessment.m in Sources */,
 				3159B81826B10CBC00380B4F /* QNDnsResolver.m in Sources */,
 				DFFC8AA41B6BBEB400EC938D /* QNHex.m in Sources */,
 				DF801F8D1B39743200866FDE /* QNDomain.m in Sources */,
@@ -973,12 +924,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				93FFD15320906E0C001DA341 /* QNMD5.m in Sources */,
-				DFE09E571D3F0D8700235B71 /* QNRefresher.m in Sources */,
 				DF90509C1CFD88AA008B98C2 /* QNResolvUtil.m in Sources */,
 				DF1552541B3B9316008D3E7C /* QNDnsManager.m in Sources */,
 				DFDD2A771CF58887006ECFCE /* QNIP.m in Sources */,
 				DFFC8AB21B6BD77000EC938D /* QNDnspodEnterprise.m in Sources */,
-				DFE09E5F1D3F0DF200235B71 /* QNIpModel.m in Sources */,
 				3159B78926B00B6000380B4F /* QNDnsError.m in Sources */,
 				DF1552561B3B9316008D3E7C /* QNRecord.m in Sources */,
 				DF5B33821D2BB28500CD608F /* QNLruCache.m in Sources */,
@@ -988,7 +937,6 @@
 				3159B7DA26B019A400380B4F /* QNDohResolver.m in Sources */,
 				DF1552591B3B9316008D3E7C /* QNDomain.m in Sources */,
 				DFFC8AAD1B6BD73900EC938D /* QNDes.m in Sources */,
-				DFE09E611D3F0DF200235B71 /* QNAssessment.m in Sources */,
 				3159B81926B10CBC00380B4F /* QNDnsResolver.m in Sources */,
 				DF15525B1B3B9316008D3E7C /* QNResolver.m in Sources */,
 				DFFC8AA51B6BBEB400EC938D /* QNHex.m in Sources */,
