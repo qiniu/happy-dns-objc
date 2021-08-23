@@ -48,9 +48,6 @@ typedef void (^QNIpStatusCallback)(NSString *ip, int code, int ms);
  */
 @interface QNDnsManager : NSObject
 
-/// 默认ttl值 单位：秒
-@property(nonatomic, assign)int defaultTtl;
-
 /// 查询失败时抛出错误信息回调
 @property(nonatomic,  copy)void(^queryErrorHandler)(NSError *error, NSString *host);
 

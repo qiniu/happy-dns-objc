@@ -120,7 +120,7 @@ static NSArray<QNRecord *> * filterInvalidRecords(NSArray *records) {
         return nil;
     }
     if ([QNIP mayBeIpV4:domain.domain]) {
-        QNRecord *record = [[QNRecord alloc] init:domain.domain ttl:self.defaultTtl type:kQNTypeA source:QNRecordSourceUnknown];
+        QNRecord *record = [[QNRecord alloc] init:domain.domain ttl:kQNRecordForeverTTL type:kQNTypeA source:QNRecordSourceUnknown];
         return [NSArray arrayWithObject:record];
     }
     NSArray<QNRecord *> *records = [self queryInternalWithDomain:domain];
