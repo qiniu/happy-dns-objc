@@ -40,7 +40,7 @@ static NSArray<QNHostsValue *> *filter(NSArray *input, int provider) {
     if (special.count != 0) {
         return special;
     }
-    return normal;
+    return [normal copy];
 }
 
 @interface QNHosts ()
@@ -57,12 +57,16 @@ static NSArray<QNHostsValue *> *filter(NSArray *input, int provider) {
     if (x == nil || x.count == 0) {
         return nil;
     }
-    if (x.count >= 2) {
-        QNHostsValue *first = [x firstObject];
-        [x removeObjectAtIndex:0];
-        [x addObject:first];
+    
+    @synchronized (_dict) {
+        if (x.count >= 2) {
+            QNHostsValue *first = [x firstObject];
+            [x removeObjectAtIndex:0];
+            [x addObject:first];
+        }
     }
-    NSArray <QNHostsValue *> *values = filter(x, netInfo.provider);
+    
+    NSArray <QNHostsValue *> *values = filter([x copy], netInfo.provider);
     return [self toRecords:values];
 }
 
