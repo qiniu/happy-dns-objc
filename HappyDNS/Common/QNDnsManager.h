@@ -6,11 +6,10 @@
 //  Copyright (c) 2015年 Qiniu Cloud Storage. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "QNRecord.h"
 
 @class QNNetworkInfo;
 @class QNDomain;
-@class QNRecord;
 
 /**
  *    getaddrinfo 回调上层的函数
@@ -18,7 +17,7 @@
  *    @param host    请求的域名
  *    @return        ip 列表
  */
-typedef NSArray * (^QNGetAddrInfoCallback)(NSString *host);
+typedef NSArray<NSString *> * (^QNGetAddrInfoCallback)(NSString *host);
 
 /**
  *    ip status 回调上层的函数
@@ -30,9 +29,9 @@ typedef NSArray * (^QNGetAddrInfoCallback)(NSString *host);
 typedef void (^QNIpStatusCallback)(NSString *ip, int code, int ms);
 
 /**
- *    外部IP 排序接口
+ *    外部 Record 排序接口
  */
-@protocol QNIpSorter <NSObject>
+@protocol QNRecordSorter <NSObject>
 
 /**
  *    排序方法
@@ -41,7 +40,7 @@ typedef void (^QNIpStatusCallback)(NSString *ip, int code, int ms);
  *
  *    @return 返回排序好的IP 列表
  */
-- (NSArray *)sort:(NSArray *)ips;
+- (NSArray<QNRecord *> *)sort:(NSArray<QNRecord *> *)ips;
 @end
 
 /**
@@ -60,15 +59,6 @@ typedef void (^QNIpStatusCallback)(NSString *ip, int code, int ms);
  *
  *    @param domain 域名
  *
- *    @return IP列表
- */
-- (NSArray <NSString *> *)query:(NSString *)domain;
-
-/**
- *    解析域名
- *
- *    @param domain 域名
- *
  *    @return QNRecord列表  QNRecord.value即为host
 */
 - (NSArray <QNRecord *> *)queryRecords:(NSString *)domain;
@@ -80,7 +70,7 @@ typedef void (^QNIpStatusCallback)(NSString *ip, int code, int ms);
  *
  *    @return IP 列表
  */
-- (NSArray <NSString *> *)queryWithDomain:(QNDomain *)domain;
+- (NSArray <QNRecord *> *)queryRecordsWithDomain:(QNDomain *)domain;
 
 /**
  *    通知网络发生变化
@@ -108,28 +98,40 @@ typedef void (^QNIpStatusCallback)(NSString *ip, int code, int ms);
  *
  *    @return DnsManager
  */
-- (instancetype)init:(NSArray *)resolvers networkInfo:(QNNetworkInfo *)netInfo sorter:(id<QNIpSorter>)sorter;
+- (instancetype)init:(NSArray *)resolvers networkInfo:(QNNetworkInfo *)netInfo sorter:(id<QNRecordSorter>)sorter;
 
 /**
  *    内置 Hosts 解析
  *
- *    @param domain 域名
- *    @param ip     对应IP
+ *    @param domain    域名
+ *    @param ipv4      对应IPv4 ip
  *
  *    @return 当前Dnsmanager, 为了链式调用
  */
-- (instancetype)putHosts:(NSString *)domain ip:(NSString *)ip;
+- (instancetype)putHosts:(NSString *)domain ipv4:(NSString *)ipv4;
 
 /**
  *    内置 Hosts 解析
  *
  *    @param domain 域名
  *    @param ip     对应IP
+ *    @param type     ip 类别，kQNTypeA / kQNTypeAAAA
  *    @param provider 网络运营商
  *
  *    @return 当前Dnsmanager, 为了链式调用
  */
-- (instancetype)putHosts:(NSString *)domain ip:(NSString *)ip provider:(int)provider;
+- (instancetype)putHosts:(NSString *)domain ip:(NSString *)ip type:(int)type provider:(int)provider;
+
+/**
+ *    内置 Hosts 解析
+ *
+ *    @param domain 域名
+ *    @param record 对应 record 记录
+ *    @param provider 网络运营商
+ *
+ *    @return 当前Dnsmanager, 为了链式调用
+ */
+- (instancetype)putHosts:(NSString *)domain record:(QNRecord *)record provider:(int)provider;
 
 /**
  *    设置底层 getaddrinfo 使用的回调
@@ -154,7 +156,6 @@ typedef void (^QNIpStatusCallback)(NSString *ip, int code, int ms);
 
 /**
  *    根据时区判断是否要设置httpDns
- *
  */
 + (BOOL)needHttpDns;
 

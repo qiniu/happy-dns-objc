@@ -12,6 +12,7 @@ const int kQNTypeA = 1;
 const int kQNTypeAAAA = 28;
 const int kQNTypeCname = 5;
 const int kQNTypeTXT = 16;
+const int kQNRecordForeverTTL = -1;
 
 @implementation QNRecord
 - (instancetype)init:(NSString *)value
@@ -46,6 +47,9 @@ const int kQNTypeTXT = 16;
 }
 
 - (BOOL)expired:(long long)time {
+    if (_ttl == kQNRecordForeverTTL) {
+        return false;
+    }
     return time > _timeStamp + _ttl;
 }
 

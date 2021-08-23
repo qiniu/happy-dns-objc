@@ -28,13 +28,20 @@ extern const int kQNTypeCname;
  */
 extern const int kQNTypeTXT;
 
+/**
+ *  永久有效的 ttl
+ */
+extern const int kQNRecordForeverTTL;
+
 typedef NS_ENUM(NSUInteger, QNRecordSource) {
     QNRecordSourceUnknown,
+    QNRecordSourceCustom,
     QNRecordSourceDnspodEnterprise,
     QNRecordSourceSystem,
     QNRecordSourceUdp,
     QNRecordSourceDoh,
 };
+
 
 @interface QNRecord : NSObject
 

@@ -85,7 +85,7 @@
 //}
 
 - (void)testGoogle {
-    [self template:@"8.8.4.4"];
+    [self template:@"8.8.8.8"];
 }
 
 //    http://www.dnspai.com/
