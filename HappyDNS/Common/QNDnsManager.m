@@ -225,7 +225,7 @@ static NSArray<QNRecord *> * filterInvalidRecords(NSArray *records) {
 }
 
 - (instancetype)putHosts:(NSString *)domain ip:(NSString *)ip type:(int)type provider:(int)provider {
-    return [self putHosts:domain record:[[QNRecord alloc] init:ip ttl:-1 type:type source:QNRecordSourceCustom] provider:provider];
+    return [self putHosts:domain record:[[QNRecord alloc] init:ip ttl:kQNRecordForeverTTL type:type source:QNRecordSourceCustom] provider:provider];
 }
 
 - (instancetype)putHosts:(NSString *)domain record:(QNRecord *)record provider:(int)provider {
