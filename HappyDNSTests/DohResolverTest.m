@@ -6,6 +6,7 @@
 //  Copyright © 2021 Qiniu Cloud Storage. All rights reserved.
 //
 #import <XCTest/XCTest.h>
+#import "QNDnsManager.h"
 #import "QNDohResolver.h"
 #import "QNDomain.h"
 
@@ -28,6 +29,15 @@
         XCTAssertNotNil(records, "type:%@ query result nil", type);
         XCTAssertTrue(records.count > 0, "type:%@ query result empty", type);
     }
+    
+    for (NSNumber *type in typeArray) {
+        QNDohResolver *server = [QNDohResolver resolverWithServers:@[@"https://dns.alidns.com/dns-query"] recordType:type.intValue timeout:5];
+        QNDnsManager *manager = [[QNDnsManager alloc] init:@[server] networkInfo:nil];
+        NSArray *records = [manager queryRecords:host];
+        NSLog(@"== records:%@", records);
+        XCTAssertNotNil(records, "type:%@ query result nil", type);
+        XCTAssertTrue(records.count > 0, "type:%@ query result empty", type);
+    }
 }
 
 - (void)testMultiDnsServer {
@@ -45,6 +55,7 @@
         XCTAssertNotNil(records, "type:%@ query result nil", type);
         XCTAssertTrue(records.count > 0, "type:%@ query result empty", type);
     }
+    
 }
 
 @end
