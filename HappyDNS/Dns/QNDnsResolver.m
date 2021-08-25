@@ -92,7 +92,8 @@
         [locker unlock];
         
         if (shouldCallBack) {
-            complete(nil, kQNDnsInvalidParamError(@"resolver timeout"));
+            NSString *error = [NSString stringWithFormat:@"resolver timeout for server:%@ host:%@",[self.servers description], host];
+            complete(nil, kQNDnsInvalidParamError(error));
         }
     });
     

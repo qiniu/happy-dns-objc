@@ -18,11 +18,12 @@
 
 - (void)testSimpleDns {
     NSString *host = @"en.wikipedia.org";
+    NSString *serverUrl = @"https://223.6.6.6/dns-query";
     NSError *err = nil;
     
     NSArray *typeArray = @[@(kQNTypeA), @(kQNTypeAAAA)];
     for (NSNumber *type in typeArray) {
-        QNDohResolver *server = [QNDohResolver resolverWithServer:@"https://dns.alidns.com/dns-query" recordType:type.intValue timeout:5];
+        QNDohResolver *server = [QNDohResolver resolverWithServer:serverUrl recordType:type.intValue timeout:2];
         NSArray *records = [server query:[[QNDomain alloc] init:host] networkInfo:nil error:&err];
         NSLog(@"== records:%@", records);
         XCTAssertNil(err, "query error:%@", err);
@@ -31,7 +32,7 @@
     }
     
     for (NSNumber *type in typeArray) {
-        QNDohResolver *server = [QNDohResolver resolverWithServers:@[@"https://dns.alidns.com/dns-query"] recordType:type.intValue timeout:5];
+        QNDohResolver *server = [QNDohResolver resolverWithServers:@[serverUrl] recordType:type.intValue timeout:5];
         QNDnsManager *manager = [[QNDnsManager alloc] init:@[server] networkInfo:nil];
         NSArray *records = [manager queryRecords:host];
         NSLog(@"== records:%@", records);
