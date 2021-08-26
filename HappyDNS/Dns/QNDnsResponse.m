@@ -77,7 +77,7 @@
     record.source = source;
     record.request = request;
     record.recordData = recordData;
-    record.timestamp = [[NSDate date] timeIntervalSince1970] * 1000;
+    record.timestamp = [[NSDate date] timeIntervalSince1970];
     
     NSError *err = nil;
     [record parse:&err];
