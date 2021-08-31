@@ -10,7 +10,6 @@
 #import <netdb.h>
 
 #import "QNDnsManager.h"
-#import "QNDnspodFree.h"
 #import "QNDomain.h"
 #import "QNNetworkInfo.h"
 #import "QNResolver.h"

@@ -6,13 +6,15 @@
 //  Copyright (c) 2015年 Qiniu Cloud Storage. All rights reserved.
 //
 
+#import "QNRecord.h"
 #import "QNResolverDelegate.h"
 #import <Foundation/Foundation.h>
 
 @interface QNHosts : NSObject
 
-- (NSArray *)query:(QNDomain *)domain networkInfo:(QNNetworkInfo *)netInfo;
-- (void)put:(NSString *)domain ip:(NSString *)ip;
-- (void)put:(NSString *)domain ip:(NSString *)ip provider:(int)provider;
-- (instancetype)init;
+- (NSArray <QNRecord *> *)query:(QNDomain *)domain networkInfo:(QNNetworkInfo *)netInfo;
+
+- (void)put:(NSString *)domain record:(QNRecord *)record;
+- (void)put:(NSString *)domain record:(QNRecord *)record provider:(int)provider;
+
 @end

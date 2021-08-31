@@ -7,7 +7,6 @@
 //
 
 #import "QNDnsManager.h"
-#import "QNDnspodFree.h"
 #import "QNDomain.h"
 #import "QNHijackingDetectWrapper.h"
 #import "QNNetworkInfo.h"
@@ -51,9 +50,9 @@
     [array addObject:[QNResolver systemResolver]];
     [array addObject:[[QNResolver alloc] initWithAddress:@"119.29.29.29"]];
     QNDnsManager *dns = [[QNDnsManager alloc] init:array networkInfo:[QNNetworkInfo normal]];
-    NSArray *ips = [dns query:@"www.baidu.com"];
-    XCTAssertNotNil(ips, @"PASS");
-    XCTAssertTrue(ips.count > 0, @"PASS");
+    NSArray *records = [dns queryRecords:@"www.baidu.com"];
+    XCTAssertNotNil(records, @"PASS");
+    XCTAssertTrue(records.count > 0, @"PASS");
 }
 
 - (void)testCnc {
@@ -62,14 +61,14 @@
     [array addObject:[[QNResolver alloc] initWithAddress:@"119.29.29.29"]];
     QNNetworkInfo *info = [[QNNetworkInfo alloc] init:kQNMOBILE provider:kQNISP_CNC];
     QNDnsManager *dns = [[QNDnsManager alloc] init:array networkInfo:info];
-    [dns putHosts:@"hello.qiniu.com" ip:@"1.1.1.1"];
-    [dns putHosts:@"hello.qiniu.com" ip:@"2.2.2.2"];
-    [dns putHosts:@"qiniu.com" ip:@"3.3.3.3"];
-    [dns putHosts:@"qiniu.com" ip:@"4.4.4.4" provider:kQNISP_CNC];
+    [dns putHosts:@"hello.qiniu.com" ipv4:@"1.1.1.1"];
+    [dns putHosts:@"hello.qiniu.com" ipv4:@"2.2.2.2"];
+    [dns putHosts:@"qiniu.com" ipv4:@"3.3.3.3"];
+    [dns putHosts:@"qiniu.com" ip:@"4.4.4.4" type:kQNTypeA provider:kQNISP_CNC];
     QNDomain *domain = [[QNDomain alloc] init:@"qiniu.com" hostsFirst:YES hasCname:NO maxTtl:0];
-    NSArray *r = [dns queryWithDomain:domain];
+    NSArray<QNRecord *> *r = [dns queryRecordsWithDomain:domain];
     XCTAssertEqual(r.count, 1, @"PASS");
-    XCTAssertEqualObjects(@"4.4.4.4", r[0], @"PASS");
+    XCTAssertEqualObjects(@"4.4.4.4", [r.firstObject value], @"PASS");
 }
 
 - (void)testTtl {
@@ -78,20 +77,20 @@
     [array addObject:[[QNHijackingDetectWrapper alloc] initWithResolver:[[QNResolver alloc] initWithAddress:@"114.114.115.115"]]];
     QNNetworkInfo *info = [[QNNetworkInfo alloc] init:kQNMOBILE provider:kQNISP_CNC];
     QNDnsManager *dns = [[QNDnsManager alloc] init:array networkInfo:info];
-    [dns putHosts:@"hello.qiniu.com" ip:@"1.1.1.1"];
-    [dns putHosts:@"hello.qiniu.com" ip:@"2.2.2.2"];
-    [dns putHosts:@"qiniu.com" ip:@"3.3.3.3"];
-    [dns putHosts:@"qiniu.com" ip:@"4.4.4.4" provider:kQNISP_CNC];
+    [dns putHosts:@"hello.qiniu.com" ipv4:@"1.1.1.1"];
+    [dns putHosts:@"hello.qiniu.com" ipv4:@"2.2.2.2"];
+    [dns putHosts:@"qiniu.com" ipv4:@"3.3.3.3"];
+    [dns putHosts:@"qiniu.com" ip:@"4.4.4.4" type:kQNTypeA provider:kQNISP_CNC];
 
     QNDomain *domain = [[QNDomain alloc] init:@"qiniu.com" hostsFirst:NO hasCname:NO maxTtl:10];
-    NSArray *r = [dns queryWithDomain:domain];
+    NSArray<QNRecord *> *r = [dns queryRecordsWithDomain:domain];
     XCTAssertEqual(r.count, 1, @"PASS");
-    XCTAssertEqualObjects(@"4.4.4.4", r[0], @"PASS");
+    XCTAssertEqualObjects(@"4.4.4.4", [r.firstObject value], @"PASS");
 
     domain = [[QNDomain alloc] init:@"qiniu.com" hostsFirst:NO hasCname:NO maxTtl:1000];
-    r = [dns queryWithDomain:domain];
+    r = [dns queryRecordsWithDomain:domain];
     XCTAssertEqual(r.count, 1, @"PASS");
-    XCTAssertFalse([@"4.4.4.4" isEqualToString:r[0]], @"PASS");
+    XCTAssertFalse([@"4.4.4.4" isEqualToString:[r.firstObject value]], @"PASS");
 }
 
 - (void)testCname {
@@ -100,26 +99,20 @@
     [array addObject:[[QNHijackingDetectWrapper alloc] initWithResolver:[[QNResolver alloc] initWithAddress:@"114.114.115.115"]]];
     QNNetworkInfo *info = [QNNetworkInfo normal];
     QNDnsManager *dns = [[QNDnsManager alloc] init:array networkInfo:info];
-    [dns putHosts:@"hello.qiniu.com" ip:@"1.1.1.1"];
-    [dns putHosts:@"hello.qiniu.com" ip:@"2.2.2.2"];
-    [dns putHosts:@"qiniu.com" ip:@"3.3.3.3"];
-    [dns putHosts:@"qiniu.com" ip:@"4.4.4.4" provider:kQNISP_CNC];
+    [dns putHosts:@"hello.qiniu.com" ipv4:@"1.1.1.1"];
+    [dns putHosts:@"hello.qiniu.com" ipv4:@"2.2.2.2"];
+    [dns putHosts:@"qiniu.com" ipv4:@"3.3.3.3"];
+    [dns putHosts:@"qiniu.com" ip:@"4.4.4.4" type:kQNTypeA provider:kQNISP_CNC];
 
     QNDomain *domain = [[QNDomain alloc] init:@"qiniu.com" hostsFirst:NO hasCname:YES maxTtl:0];
-    NSArray *r = [dns queryWithDomain:domain];
+    NSArray<QNRecord *> *r = [dns queryRecordsWithDomain:domain];
     XCTAssertEqual(r.count, 1, @"PASS");
-    XCTAssertEqualObjects(@"3.3.3.3", r[0], @"PASS");
+    XCTAssertEqualObjects(@"3.3.3.3", [r.firstObject value], @"PASS");
 
     domain = [[QNDomain alloc] init:@"qiniu.com" hostsFirst:NO hasCname:NO maxTtl:0];
-    r = [dns queryWithDomain:domain];
+    r = [dns queryRecordsWithDomain:domain];
     XCTAssertEqual(r.count, 1, @"PASS");
     XCTAssertFalse([@"3.3.3.3" isEqualToString:r[0]], @"PASS");
-}
-
-- (void)testHttpDNS {
-    QNDnsManager *dns = [[QNDnsManager alloc] init:@[ [[QNDnspodFree alloc] init] ] networkInfo:nil];
-    NSArray *ipArr = [dns query:@"www.github.com"];
-    XCTAssertTrue(ipArr.count > 0, @"PASS");
 }
 
 - (void)testUrlQuery {
