@@ -30,7 +30,7 @@ pod "HappyDNS"
 [array addObject:[[QNResolver alloc] initWithAddress:@"119.29.29.29"]];
 [array addObject:[QNDohResolver resolverWithServer:@"https://dns.alidns.com/dns-query"]];
 QNDnsManager *dns = [[QNDnsManager alloc] init:array networkInfo:[QNNetworkInfo normal]];
-NSArray *ips = [dns query:@"www.qiniu.com"];
+NSArray <QNRecord *> *records = [dns queryRecords:@"www.qiniu.com"];
 ```
 ＊ url 请求，返回一个IP 替换URL 里的domain
 ```

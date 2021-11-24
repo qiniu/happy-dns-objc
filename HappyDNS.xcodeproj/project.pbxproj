@@ -724,6 +724,7 @@
 					};
 					DF22C0C91B37B9B90010FEBF = {
 						CreatedOnToolsVersion = 6.3.2;
+						DevelopmentTeam = 5G98NLC322;
 					};
 					DF801F941B3A4F4D00866FDE = {
 						CreatedOnToolsVersion = 6.3.2;
@@ -1205,6 +1206,7 @@
 			baseConfigurationReference = 1E328F479E1702CED8C0DDDC /* Pods-HappyDNS_MacTests.debug.xcconfig */;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 5G98NLC322;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
@@ -1225,6 +1227,7 @@
 			baseConfigurationReference = 1DEA89BB118E6B53C505D328 /* Pods-HappyDNS_MacTests.release.xcconfig */;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 5G98NLC322;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
