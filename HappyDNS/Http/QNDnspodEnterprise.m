@@ -30,13 +30,13 @@ const int kQN_DECRYPT_FAILED = -10002;
 
 - (instancetype)initWithId:(NSString *)userId
                        key:(NSString *)key {
-    return [self initWithId:userId key:key server:@"119.29.29.29"];
+    return [self initWithId:userId key:key server:@"119.29.29.98"];
 }
 
 - (instancetype)initWithId:(NSString *)userId
                        key:(NSString *)key
                     server:(NSString *)server {
-    return [self initWithId:userId key:key server:@"119.29.29.29" timeout:QN_DNS_DEFAULT_TIMEOUT];
+    return [self initWithId:userId key:key server:@"119.29.29.98" timeout:QN_DNS_DEFAULT_TIMEOUT];
 }
 
 - (instancetype)initWithId:(NSString *)userId
