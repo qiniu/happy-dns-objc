@@ -65,13 +65,25 @@ static NSArray<QNHostsValue *> *filter(NSArray *input, int provider) {
             [x addObject:first];
         }
     }
-    
-    NSArray *hosts = nil;
-    @synchronized(_dict) {
-        hosts = [x copy];
-    }
-    return filter(hosts, netInfo.provider);
+
+    NSArray <QNHostsValue *> *values = filter([x copy], netInfo.provider);
+    return [self toRecords:values];
 }
+
+- (NSArray <QNRecord *> *)toRecords:(NSArray <QNHostsValue *> *)values {
+    if (values == nil) {
+        return nil;
+    }
+
+    NSMutableArray<QNRecord *> *records = [NSMutableArray array];
+    for (QNHostsValue *value in values) {
+        if (value.record != nil && value.record.value != nil) {
+            [records addObject:value.record];
+        }
+    }
+    return [records copy];
+}
+
 
 - (void)put:(NSString *)domain record:(QNRecord *)record {
     [self put:domain record:record provider:kQNISP_GENERAL];

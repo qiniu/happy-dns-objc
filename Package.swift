@@ -4,20 +4,22 @@
 import PackageDescription
 
 let package = Package(
-    name: "HappyDns",
+    name: "HappyDNS",
     platforms: [
         .macOS(.v10_10),
-        .iOS(.v8)
+        .iOS(.v9)
     ],
     products: [
         .library(
-            name: "HappyDns",
-            targets: ["HappyDns"]),
+            name: "HappyDNS",
+            targets: ["HappyDNS"]),
+    ],
+    dependencies: [
     ],
     targets: [
         .target(
-            name: "HappyDns",
-            path: "HappyDns",
+            name: "HappyDNS",
+            path: "HappyDNS",
             sources: ["Common", "Dns", "Http", "Local", "Util"],
             cSettings: [
                 .headerSearchPath("Util"),
@@ -25,6 +27,9 @@ let package = Package(
                 .headerSearchPath("Dns"),
                 .headerSearchPath("Http"),
                 .headerSearchPath("Local"),
+            ],
+            linkerSettings:[
+                .linkedLibrary("resolv", nil)
             ]),
     ]
 )
