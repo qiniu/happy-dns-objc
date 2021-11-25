@@ -7,7 +7,7 @@ let package = Package(
     name: "HappyDNS",
     platforms: [
         .macOS(.v10_10),
-        .iOS(.v9)
+        .iOS(.v8)
     ],
     products: [
         .library(
