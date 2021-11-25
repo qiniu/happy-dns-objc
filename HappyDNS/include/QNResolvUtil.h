@@ -1,1 +1,0 @@
-../Local/QNResolvUtil.h

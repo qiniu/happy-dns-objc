@@ -8,22 +8,18 @@
 
 #import <Foundation/Foundation.h>
 
-#ifndef _HappyDns_
-    #define _HappyDns_
-
-    #import "QNDnsManager.h"
-    #import "QNDnspodEnterprise.h"
-    #import "QNDomain.h"
-    #import "QNDnsResolver.h"
-    #import "QNDnsUdpResolver.h"
-    #import "QNDohResolver.h"
-    #import "QNDnsDefine.h"
-    #import "QNHijackingDetectWrapper.h"
-    #import "QNIP.h"
-    #import "QNNetworkInfo.h"
-    #import "QNRecord.h"
-    #import "QNResolver.h"
-    #import "QNResolverDelegate.h"
-    #import "QNGetAddrInfo.h"
-
-#endif /* _HappyDns_ */
+#import "QNDnsError.h"
+#import "QNDnsManager.h"
+#import "QNDnspodEnterprise.h"
+#import "QNDomain.h"
+#import "QNDnsResolver.h"
+#import "QNDnsUdpResolver.h"
+#import "QNDohResolver.h"
+#import "QNDnsDefine.h"
+#import "QNHijackingDetectWrapper.h"
+#import "QNIP.h"
+#import "QNNetworkInfo.h"
+#import "QNRecord.h"
+#import "QNResolver.h"
+#import "QNResolverDelegate.h"
+#import "QNGetAddrInfo.h"
