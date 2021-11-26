@@ -20,7 +20,6 @@ let package = Package(
         .target(
             name: "HappyDNS",
             path: "HappyDNS",
-            publicHeadersPath: "include",
             cSettings: [
                 .headerSearchPath("."),
             ],
