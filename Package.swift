@@ -20,9 +20,13 @@ let package = Package(
         .target(
             name: "HappyDNS",
             path: "HappyDNS",
-            sources: ["."],
+            sources: ["Common", "Dns", "Http", "Local", "Util"],
             cSettings: [
-                .headerSearchPath("."),
+                .headerSearchPath("Common"),
+                .headerSearchPath("Dns"),
+                .headerSearchPath("Http"),
+                .headerSearchPath("Local"),
+                .headerSearchPath("Util"),
             ],
             linkerSettings:[
                 .linkedLibrary("resolv", nil)
