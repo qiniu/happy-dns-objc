@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = 'HappyDNS'
-  s.version      = '1.0.0'
+  s.version      = '1.0.1'
   s.summary      = 'DNS library for iOS and Mac'
   s.homepage     = 'https://github.com/qiniu/happy-dns-objc'
   s.social_media_url = 'http://weibo.com/qiniutek'
@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '6.0'
   s.osx.deployment_target = '10.8'
   s.libraries = 'resolv'
-  s.source_files = 'HappyDNS/**/*.{h,m}'
+  s.source_files = 'HappyDNS/Common/*.{h,m}','HappyDNS/Dns/*.{h,m}','HappyDNS/Http/*.{h,m}','HappyDNS/Local/*.{h,m}','HappyDNS/Util/*.{h,m}','HappyDNS/HappyDNS.h'
   s.requires_arc = true
   s.license = { :type => 'MIT', :text => <<-LICENSE
 The MIT License (MIT)

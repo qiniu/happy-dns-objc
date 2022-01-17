@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+#import "QNDnsError.h"
 #import "QNDnsManager.h"
 #import "QNDnspodEnterprise.h"
 #import "QNDomain.h"

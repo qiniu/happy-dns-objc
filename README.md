@@ -14,9 +14,24 @@
 ## 安装
 
 通过CocoaPods
-
 ```ruby
 pod "HappyDNS"
+```
+
+通过 Swift Package Manager (Xcode 11+)
+```
+App 对接:
+File -> Swift Packages -> Add Package Dependency，输入 HappyDNS 库链接，选择相应版本即可
+库链接: https://github.com/qiniu/happy-dns-objc
+
+库对接:
+let package = Package(
+    dependencies: [
+        .package(url: "https://github.com/qiniu/happy-dns-objc", from: "1.0.1")
+    ],
+    // ...
+)
+
 ```
 
 ## 运行环境
@@ -30,7 +45,7 @@ pod "HappyDNS"
 [array addObject:[[QNResolver alloc] initWithAddress:@"119.29.29.29"]];
 [array addObject:[QNDohResolver resolverWithServer:@"https://dns.alidns.com/dns-query"]];
 QNDnsManager *dns = [[QNDnsManager alloc] init:array networkInfo:[QNNetworkInfo normal]];
-NSArray <QNRecord *> *records = [dns queryRecords:@"www.qiniu.com"];;
+NSArray <QNRecord *> *records = [dns queryRecords:@"www.qiniu.com"];
 ```
 ＊ url 请求，返回一个IP 替换URL 里的domain
 ```

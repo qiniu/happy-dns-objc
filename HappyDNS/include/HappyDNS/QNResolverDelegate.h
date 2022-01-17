@@ -1,0 +1,1 @@
+../../Common/QNResolverDelegate.h

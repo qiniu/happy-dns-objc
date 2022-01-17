@@ -1,4 +1,8 @@
 #Changelog
+## 1.0.1 (2021-11-25)
+* 支持 Swift Package Manager
+* Dnspod 默认 server ip 切至 119.29.29.98
+
 ## 1.0.0 (2021-09-02)
 
 * 新增 dns udp 解析 api

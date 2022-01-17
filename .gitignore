@@ -35,3 +35,4 @@ DerivedData
 #
 Pods/
 Podfile.lock
+.swiftpm

@@ -65,7 +65,7 @@ static NSArray<QNHostsValue *> *filter(NSArray *input, int provider) {
             [x addObject:first];
         }
     }
-    
+
     NSArray <QNHostsValue *> *values = filter([x copy], netInfo.provider);
     return [self toRecords:values];
 }
@@ -74,7 +74,7 @@ static NSArray<QNHostsValue *> *filter(NSArray *input, int provider) {
     if (values == nil) {
         return nil;
     }
-    
+
     NSMutableArray<QNRecord *> *records = [NSMutableArray array];
     for (QNHostsValue *value in values) {
         if (value.record != nil && value.record.value != nil) {
@@ -83,6 +83,7 @@ static NSArray<QNHostsValue *> *filter(NSArray *input, int provider) {
     }
     return [records copy];
 }
+
 
 - (void)put:(NSString *)domain record:(QNRecord *)record {
     [self put:domain record:record provider:kQNISP_GENERAL];
