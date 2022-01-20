@@ -10,7 +10,7 @@
 #import "QNDnsError.h"
 #import "QNDnsResponse.h"
 #import "QNDnsUdpResolver.h"
-#import <QNAsyncUdpSocket.h>
+#import "QNAsyncUdpSocket.h"
 
 @interface QNDnsFlow : NSObject
 
