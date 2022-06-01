@@ -1,10 +1,13 @@
 #Changelog
+## 1.0.2 (2022-06-02)
+* 优化 udp dns reslover 的线程队列使用
+
+
 ## 1.0.1 (2021-11-25)
 * 支持 Swift Package Manager
 * Dnspod 默认 server ip 切至 119.29.29.98
 
 ## 1.0.0 (2021-09-02)
-
 * 新增 dns udp 解析 api
 * 新增 doh 解析 api
 * 调整 QNRecord api
