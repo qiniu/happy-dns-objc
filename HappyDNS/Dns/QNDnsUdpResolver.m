@@ -69,9 +69,18 @@
     return resolver;
 }
 
++ (dispatch_queue_t)defaultQueue {
+    static dispatch_once_t onceToken;
+    static dispatch_queue_t timerQueue;
+    dispatch_once(&onceToken, ^{
+        timerQueue = dispatch_queue_create("com.qiniu.dns.udp.queue", DISPATCH_QUEUE_CONCURRENT);
+    });
+    return timerQueue;
+}
+
 - (dispatch_queue_t)queue {
     if (_queue == nil) {
-        _queue = dispatch_queue_create("com.qiniu.dns.server.queue", DISPATCH_QUEUE_CONCURRENT);
+        _queue = [QNDnsUdpResolver defaultQueue];
     }
     return _queue;
 }
