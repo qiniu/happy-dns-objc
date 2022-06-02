@@ -50,10 +50,8 @@
 		3159B7DD26B019A400380B4F /* QNDohResolver.h in Headers */ = {isa = PBXBuildFile; fileRef = 3159B7D826B019A400380B4F /* QNDohResolver.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3159B7F326B0F7B400380B4F /* DnsServerResolverTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3159B7F126B0F7B400380B4F /* DnsServerResolverTest.m */; };
 		3159B7F426B0F7B400380B4F /* DnsServerResolverTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3159B7F126B0F7B400380B4F /* DnsServerResolverTest.m */; };
-		3159B7F526B0F7B400380B4F /* DnsServerResolverTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3159B7F126B0F7B400380B4F /* DnsServerResolverTest.m */; };
 		3159B80526B1051200380B4F /* DohResolverTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3159B80326B1051200380B4F /* DohResolverTest.m */; };
 		3159B80626B1051200380B4F /* DohResolverTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3159B80326B1051200380B4F /* DohResolverTest.m */; };
-		3159B80726B1051200380B4F /* DohResolverTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3159B80326B1051200380B4F /* DohResolverTest.m */; };
 		3159B81626B10CBC00380B4F /* QNDnsResolver.h in Headers */ = {isa = PBXBuildFile; fileRef = 3159B81426B10CBC00380B4F /* QNDnsResolver.h */; };
 		3159B81726B10CBC00380B4F /* QNDnsResolver.h in Headers */ = {isa = PBXBuildFile; fileRef = 3159B81426B10CBC00380B4F /* QNDnsResolver.h */; };
 		3159B81826B10CBC00380B4F /* QNDnsResolver.m in Sources */ = {isa = PBXBuildFile; fileRef = 3159B81526B10CBC00380B4F /* QNDnsResolver.m */; };
@@ -871,8 +869,6 @@
 				B0E79D992105DB13000F6903 /* QNHijackingDetectWrapper.m in Sources */,
 				B0E79D9A2105DB13000F6903 /* QNTxtResolver.m in Sources */,
 				3159B77726B00B6000380B4F /* QNDnsMessage.m in Sources */,
-				3159B7F526B0F7B400380B4F /* DnsServerResolverTest.m in Sources */,
-				3159B80726B1051200380B4F /* DohResolverTest.m in Sources */,
 				B0E79D9C2105DB13000F6903 /* QNDnspodEnterprise.m in Sources */,
 				3159B7BB26B00C4400380B4F /* NSData+QNRW.m in Sources */,
 				3159B81A26B10CBC00380B4F /* QNDnsResolver.m in Sources */,

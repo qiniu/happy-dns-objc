@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = 'HappyDNS'
-  s.version      = '1.0.1'
+  s.version      = '1.0.2'
   s.summary      = 'DNS library for iOS and Mac'
   s.homepage     = 'https://github.com/qiniu/happy-dns-objc'
   s.social_media_url = 'http://weibo.com/qiniutek'
