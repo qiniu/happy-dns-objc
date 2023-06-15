@@ -96,7 +96,7 @@ if([QNDnsManager needHttpDns]){
 }else{
     NSMutableArray *array = [[NSMutableArray alloc] init];
     [array addObject:[QNResolver systemResolver]];
-    [array addObject:[[QNResolver alloc] initWithAddress:@"8.8.8.8"]];
+    [array addObject:[[QNResolver alloc] initWithAddress:@"114.114.114.114"]];
     dns = [[QNDnsManager alloc] init:array networkInfo:[QNNetworkInfo normal]];
 }
 ```

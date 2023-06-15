@@ -22,6 +22,14 @@
 #import <UIKit/UIKit.h>
 #endif
 
+#ifndef kQNDnsDefaultIPv4IP
+#define kQNDnsDefaultIPv4IP "114.114.114.114"
+#endif
+
+#ifndef kQNDnsDefaultIPv6IP
+#define kQNDnsDefaultIPv6IP "2400:3200::1"
+#endif
+
 void qn_nat64(char *buf, int buf_size, uint32_t ipv4addr) {
     bzero(buf, buf_size);
     //nat 4 to ipv6
@@ -99,11 +107,11 @@ int qn_local_ip_internal(char *buf, int buf_size, const char *t_ip) {
 }
 
 int qn_localIp(char *buf, int buf_size) {
-    int ret = qn_local_ip_internal(buf, buf_size, "8.8.8.8");
+    int ret = qn_local_ip_internal(buf, buf_size, kQNDnsDefaultIPv4IP);
     if (ret != 0) {
 #ifdef __IPHONE_OS_VERSION_MAX_ALLOWED
         if (![QNIP isIpV6FullySupported]) {
-            ret = qn_local_ip_internal(buf, buf_size, "64:ff9b::808:808");
+            ret = qn_local_ip_internal(buf, buf_size, kQNDnsDefaultIPv6IP);
         }
 #endif
     }
@@ -116,7 +124,8 @@ int qn_localIp(char *buf, int buf_size) {
     struct addrinfo hints = {0}, *ai;
     hints.ai_family = AF_UNSPEC;
     hints.ai_socktype = SOCK_STREAM;
-    int ret = getaddrinfo("8.8.8.8", "http", &hints, &ai);
+    hints.ai_flags = AI_NUMERICHOST;
+    int ret = getaddrinfo(kQNDnsDefaultIPv4IP, "http", &hints, &ai);
     if (ret != 0) {
         return NO;
     }
@@ -126,7 +135,7 @@ int qn_localIp(char *buf, int buf_size) {
 #ifdef __IPHONE_OS_VERSION_MAX_ALLOWED
     if (![QNIP isIpV6FullySupported] && !ret) {
         char buf[64] = {0};
-        ret = qn_local_ip_internal(buf, sizeof(buf), "64:ff9b::808:808");
+        ret = qn_local_ip_internal(buf, sizeof(buf), kQNDnsDefaultIPv6IP);
         if (strchr(buf, ':') != NULL) {
             result = YES;
         }
@@ -156,7 +165,7 @@ int qn_localIp(char *buf, int buf_size) {
 #ifdef __IPHONE_OS_VERSION_MAX_ALLOWED
     if (![QNIP isIpV6FullySupported] && family == AF_INET) {
         char buf2[64] = {0};
-        ret = qn_local_ip_internal(buf2, sizeof(buf2), "64:ff9b::808:808");
+        ret = qn_local_ip_internal(buf2, sizeof(buf2), kQNDnsDefaultIPv6IP);
         if (strchr(buf2, ':') != NULL) {
             bzero(buf, sizeof(buf));
             qn_nat64(buf, sizeof(buf), *((uint32_t *)addr));

@@ -13,11 +13,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 /// 构造函数
-/// @param serverIP 指定 dns local server1. eg:8.8.8.8
+/// @param serverIP 指定 dns local server1. eg:114.114.114.114
 + (instancetype)resolverWithServerIP:(NSString *)serverIP;
 
 /// 构造函数
-/// @param serverIP 指定 dns local server1. eg:8.8.8.8
+/// @param serverIP 指定 dns local server1. eg:114.114.114.114
 /// @param recordType 记录类型 eg：kQNTypeA
 /// @param timeout 超时时间
 + (instancetype)resolverWithServerIP:(NSString *)serverIP
