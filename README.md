@@ -27,7 +27,7 @@ File -> Swift Packages -> Add Package Dependency，输入 HappyDNS 库链接，�
 库对接:
 let package = Package(
     dependencies: [
-        .package(url: "https://github.com/qiniu/happy-dns-objc", from: "1.0.2")
+        .package(url: "https://github.com/qiniu/happy-dns-objc", from: "1.0.3")
     ],
     // ...
 )
