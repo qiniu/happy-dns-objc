@@ -82,13 +82,25 @@ const int kQN_DECRYPT_FAILED = -10002;
         }
         return nil;
     }
+    
+    dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+    
+    __block NSData *data = nil;
+    __block NSError *httpError = nil;
+    __block NSHTTPURLResponse *response = nil;
     NSString *url = [NSString stringWithFormat:@"http://%@/d?ttl=1&dn=%@&id=%@", [QNIP ipHost:_server], encrypt, _userId];
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:url] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:_timeout];
-    NSHTTPURLResponse *response = nil;
-    NSError *httpError = nil;
-    NSData *data = [NSURLConnection sendSynchronousRequest:urlRequest
-                                         returningResponse:&response
-                                                     error:&httpError];
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSURLSessionTask *task = [session dataTaskWithRequest:urlRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable resp, NSError * _Nullable error) {
+        
+        data = data;
+        httpError = error;
+        response = (NSHTTPURLResponse *)resp;
+        dispatch_semaphore_signal(semaphore);
+    }];
+    [task resume];
+    
+    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
 
     if (httpError != nil) {
         if (error != nil) {
