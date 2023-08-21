@@ -7,8 +7,8 @@ Pod::Spec.new do |s|
   s.author       = 'Qiniu => sdk@qiniu.com'
   s.source       = {:git => 'https://github.com/qiniu/happy-dns-objc.git', :tag => "v#{s.version}"}
 
-  s.ios.deployment_target = '6.0'
-  s.osx.deployment_target = '10.8'
+  s.ios.deployment_target = '9.0'
+  s.osx.deployment_target = '10.10'
   s.libraries = 'resolv'
   s.source_files = 'HappyDNS/Common/*.{h,m}','HappyDNS/Dns/*.{h,m}','HappyDNS/Http/*.{h,m}','HappyDNS/Local/*.{h,m}','HappyDNS/Util/*.{h,m}','HappyDNS/HappyDNS.h'
   s.requires_arc = true

@@ -64,7 +64,7 @@ int setup_dns_server(void *_res_state, NSString *dns_server, NSUInteger timeout)
         if ([QNIP isV6]) {
             freeaddrinfo(ai);
             ai = NULL;
-            bzero(&hints, 0);
+            bzero(&hints, (size_t)0);
             hints.ai_family = AF_UNSPEC;
             hints.ai_socktype = SOCK_STREAM;
             char buf[64] = {0};
