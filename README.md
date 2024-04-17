@@ -9,11 +9,11 @@
 
 ## 用途
 
-调用系统底层Dns解析库，可以使用114 等第三方dns解析，可以使用 Doh 协议的 Dns 解析方案，也可以集成dnspod等httpdns。另外也有丰富的hosts 域名配置。
+调用系统底层Dns解析库，可以使用 114 等第三方 dns 解析，可以使用 Doh 协议的 Dns 解析方案，也可以集成 dnspod 等 httpdns。另外也有丰富的 hosts 域名配置。
 
 ## 安装
 
-通过CocoaPods
+通过 CocoaPods
 ```ruby
 pod "HappyDNS"
 ```
@@ -27,7 +27,7 @@ File -> Swift Packages -> Add Package Dependency，输入 HappyDNS 库链接，�
 库对接:
 let package = Package(
     dependencies: [
-        .package(url: "https://github.com/qiniu/happy-dns-objc", from: "1.0.3")
+        .package(url: "https://github.com/qiniu/happy-dns-objc", from: "1.0.4")
     ],
     // ...
 )
@@ -38,7 +38,7 @@ let package = Package(
 
 
 ## 使用方法
-＊ 返回IP列表
+＊ 返回 IP 列表
 ```
  NSMutableArray *array = [[NSMutableArray alloc] init];
 [array addObject:[QNResolver systemResolver]];
@@ -56,7 +56,7 @@ QNDnsManager *dns = [[QNDnsManager alloc] init:array networkInfo:[QNNetworkInfo 
 NSURL *u = [[NSURL alloc] initWithString:@"rtmp://www.qiniu.com/abc?q=1"];
 NSURL *u2 = [dns queryAndReplaceWithIP:u];
 ```
-* 兼容 getaddrinfo, 方便底层C代码接入
+* 兼容 getaddrinfo, 方便底层 C 代码接入
 ```
 static QNDnsManager *dns = nil;
 dns = [[QNDnsManager alloc] init:@[ [QNResolver systemResolver] ] networkInfo:nil];

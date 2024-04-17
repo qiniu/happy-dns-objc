@@ -80,6 +80,7 @@
 		31BF5459274F957D005A74A8 /* QNMD5.h in Headers */ = {isa = PBXBuildFile; fileRef = 93FFD14F20906779001DA341 /* QNMD5.h */; };
 		31BF545A274F9587005A74A8 /* QNDes.h in Headers */ = {isa = PBXBuildFile; fileRef = DFFC8AA91B6BD73900EC938D /* QNDes.h */; };
 		31BF545B274F958B005A74A8 /* QNHex.h in Headers */ = {isa = PBXBuildFile; fileRef = DFFC8AA11B6BBEB400EC938D /* QNHex.h */; };
+		4545D30E2BAD66DE00932C3F /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 4545D30D2BAD66DE00932C3F /* PrivacyInfo.xcprivacy */; };
 		6B6090D36D2ECCD34FCE6DAE /* libPods-HappyDNS_iOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B7A5E527D9CF80E564A69D85 /* libPods-HappyDNS_iOSTests.a */; };
 		71FB87ACF7AF0163E3F8AF2F /* libPods-HappyDNS_MacTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 04A4DFEA159C0945AFABEA3A /* libPods-HappyDNS_MacTests.a */; };
 		93FFD15120906779001DA341 /* QNMD5.h in Headers */ = {isa = PBXBuildFile; fileRef = 93FFD14F20906779001DA341 /* QNMD5.h */; };
@@ -243,6 +244,7 @@
 		3159B87026B141BD00380B4F /* QNAsyncUdpSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QNAsyncUdpSocket.m; path = Util/QNAsyncUdpSocket.m; sourceTree = "<group>"; };
 		31BF544D274F9483005A74A8 /* QNDnsError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QNDnsError.m; path = Common/QNDnsError.m; sourceTree = "<group>"; };
 		31BF544E274F9483005A74A8 /* QNDnsError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QNDnsError.h; path = Common/QNDnsError.h; sourceTree = "<group>"; };
+		4545D30D2BAD66DE00932C3F /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		9387D718204EA24300B91879 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		9387D71B204EA28700B91879 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		93FFD14F20906779001DA341 /* QNMD5.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = QNMD5.h; path = Util/QNMD5.h; sourceTree = "<group>"; };
@@ -445,6 +447,7 @@
 				DF801F5B1B3944AF00866FDE /* Common */,
 				DF801F5A1B3944A900866FDE /* Local */,
 				DF801F591B39449C00866FDE /* Http */,
+				4545D30D2BAD66DE00932C3F /* PrivacyInfo.xcprivacy */,
 			);
 			path = HappyDNS;
 			sourceTree = "<group>";
@@ -773,6 +776,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4545D30E2BAD66DE00932C3F /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
