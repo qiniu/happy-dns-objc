@@ -6,7 +6,7 @@ import PackageDescription
 let package = Package(
     name: "HappyDNS",
     platforms: [
-        .macOS(.v10_10),
+        .macOS(.v10_11),
         .iOS(.v9)
     ],
     products: [

@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
   s.source       = {:git => 'https://github.com/qiniu/happy-dns-objc.git', :tag => "v#{s.version}"}
 
   s.ios.deployment_target = '9.0'
-  s.osx.deployment_target = '10.10'
+  s.osx.deployment_target = '10.11'
   s.libraries = 'resolv'
   s.source_files = 'HappyDNS/Common/*.{h,m}','HappyDNS/Dns/*.{h,m}','HappyDNS/Http/*.{h,m}','HappyDNS/Local/*.{h,m}','HappyDNS/Util/*.{h,m}','HappyDNS/HappyDNS.h'
   s.resource_bundle = {"HappyDNS.privacy"=>"HappyDNS/PrivacyInfo.xcprivacy"}
